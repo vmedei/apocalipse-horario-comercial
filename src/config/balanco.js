@@ -43,7 +43,8 @@ export const BALANCO = Object.freeze({
     acertoAlto: 0.85,
     reducaoIntervaloAcertoAlto: 0.15,
     acertoBaixo: 0.5,
-    aumentoIntervaloAcertoBaixo: 0.25
+    aumentoIntervaloAcertoBaixo: 0.25,
+    filaTranquila: 1 // só acelera se houver no máximo 1 ligação esperando
   }),
 
   // Modo Hora Extra

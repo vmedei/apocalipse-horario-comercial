@@ -1,0 +1,622 @@
+[
+  {
+    "id": "d4_ze_poco",
+    "hora": "08:10",
+    "personagem": "seu_ze",
+    "bairro": "serra_seca",
+    "titulo_fila": "Poço seco",
+    "icone": "calor",
+    "emocao": "calmo",
+    "climatica": true,
+    "evento": "seca",
+    "trote": false,
+    "orgao_correto": "199",
+    "gravidade": 2,
+    "tempo_limite": 80,
+    "fala_inicial": "Seu Zé aqui. O poço secou de vez. Faz três dias que a família toda tá sem água, e não chove na Serra há dois meses.",
+    "perguntas": [
+      {
+        "id": "pessoas",
+        "texto": "Quantas pessoas estão sem água?",
+        "resposta": "Eu, a patroa, três netos e a vizinhança toda."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Sítio Boa Esperança, Serra Seca."
+      }
+    ],
+    "feedback_acerto": "A Defesa Civil incluiu o sítio na rota do caminhão-pipa.",
+    "feedback_erro": "Falta de água por seca é com a Defesa Civil (199), que organiza o abastecimento emergencial.",
+    "mitigada_por": "cisternas_serra"
+  },
+  {
+    "id": "d4_fogo_estrada",
+    "hora": "08:40",
+    "personagem": "motorista",
+    "bairro": "serra_seca",
+    "titulo_fila": "Fogo no mato",
+    "icone": "fogo",
+    "emocao": "nervoso",
+    "climatica": true,
+    "evento": "queimada",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 2,
+    "tempo_limite": 65,
+    "fala_inicial": "Tem fogo no mato seco na beira da estrada da Serra. O vento tá levando para o lado das plantações.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Quilômetro 4 da estrada da Serra Seca."
+      },
+      {
+        "id": "casas",
+        "texto": "Tem casas perto?",
+        "resposta": "Umas três, lá no fundo."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros controlaram o fogo antes de chegar às plantações.",
+    "feedback_erro": "Incêndio em vegetação é com os Bombeiros (193).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_juninho_sol",
+    "hora": "09:10",
+    "personagem": "juninho",
+    "bairro": "centro",
+    "titulo_fila": "Sol no quintal",
+    "icone": "telefone",
+    "emocao": "risonho",
+    "climatica": false,
+    "evento": null,
+    "trote": true,
+    "orgao_correto": null,
+    "gravidade": 1,
+    "tempo_limite": 60,
+    "fala_inicial": "Moço, o SOL caiu no meu quintal! Tá tudo pegando fogo de tão quente! (risadinha)",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "No meu quintal, né! (risada)"
+      },
+      {
+        "id": "adulto",
+        "texto": "Tem algum adulto aí?",
+        "resposta": "...agora não. Tchau!"
+      }
+    ],
+    "feedback_acerto": "Trote identificado. Quarto dia seguido do Juninho.",
+    "feedback_erro": "O sol não cai no quintal, e a risadinha é conhecida: era o Juninho.",
+    "mitigada_por": null
+  },
+  {
+    "id": "d4_asma_fumaca",
+    "hora": "09:40",
+    "personagem": "moradora",
+    "bairro": "centro",
+    "titulo_fila": "Criança com falta de ar",
+    "icone": "fumaca",
+    "emocao": "desesperada",
+    "climatica": true,
+    "evento": "fumaca",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "A fumaça das queimadas entrou em casa e minha filha tá com crise de asma. A bombinha não tá adiantando!",
+    "perguntas": [
+      {
+        "id": "idade",
+        "texto": "Quantos anos ela tem?",
+        "resposta": "Seis."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua das Palmeiras, 88."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu a menina. A fumaça das queimadas piora muito as doenças respiratórias.",
+    "feedback_erro": "Falta de ar é emergência médica: SAMU (192).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_arlindo_calor",
+    "hora": "10:10",
+    "personagem": "seu_arlindo",
+    "bairro": "centro",
+    "titulo_fila": "Seu Arlindo passando mal",
+    "icone": "calor",
+    "emocao": "nervoso",
+    "climatica": true,
+    "evento": "onda_calor",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "Minha filha... é o Arlindo... tô com uma tontura... a casa tá muito quente e essa fumaça... não tô conseguindo levantar.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua das Acácias, 40... a porta tá aberta."
+      },
+      {
+        "id": "sozinho",
+        "texto": "O senhor está sozinho?",
+        "resposta": "Só eu e o Bolinha."
+      }
+    ],
+    "feedback_acerto": "O SAMU chegou a tempo. Seu Arlindo está internado, mas fora de perigo.",
+    "feedback_erro": "Idoso com sintomas de calor extremo precisa do SAMU (192), e rápido.",
+    "mitigada_por": "arborizacao_centro"
+  },
+  {
+    "id": "d4_fila_pipa",
+    "hora": "10:40",
+    "personagem": "agricultora",
+    "bairro": "serra_seca",
+    "titulo_fila": "Briga na fila da água",
+    "icone": "som",
+    "emocao": "irritada",
+    "climatica": true,
+    "evento": "seca",
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 2,
+    "tempo_limite": 75,
+    "fala_inicial": "Tá tendo briga na fila do caminhão-pipa! Um homem furou a fila e já empurrou duas senhoras.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Praça da Serra Seca, onde o caminhão para."
+      },
+      {
+        "id": "feridos",
+        "texto": "Tem alguém ferido?",
+        "resposta": "Uma senhora caiu, mas levantou."
+      }
+    ],
+    "feedback_acerto": "A Polícia organizou a fila e conteve a briga.",
+    "feedback_erro": "Briga e agressão é com a Polícia (190).",
+    "mitigada_por": "cisternas_serra"
+  },
+  {
+    "id": "d4_parque_cercados",
+    "hora": "11:10",
+    "personagem": "turista",
+    "bairro": "parque",
+    "titulo_fila": "Trilheiros cercados pelo fogo",
+    "icone": "fogo",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "incendio_florestal",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 50,
+    "fala_inicial": "O fogo pegou a mata e a gente tá cercado na trilha! Somos cinco, tem fumaça para todo lado!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Trilha do mirante, perto da placa do quilômetro 3."
+      },
+      {
+        "id": "saida",
+        "texto": "Vocês conseguem voltar?",
+        "resposta": "Não! O fogo tá dos dois lados!"
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros abriram caminho e retiraram os cinco trilheiros.",
+    "feedback_erro": "Incêndio florestal com pessoas em risco é com os Bombeiros (193).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_furto_fios",
+    "hora": "11:40",
+    "personagem": "comerciante",
+    "bairro": "centro",
+    "titulo_fila": "Furto de fios",
+    "icone": "bolsa",
+    "emocao": "irritado",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 100,
+    "fala_inicial": "Roubaram os fios de cobre do poste aqui da frente. A rua toda ficou sem luz.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua do Comércio, 300."
+      },
+      {
+        "id": "visto",
+        "texto": "Alguém viu os ladrões?",
+        "resposta": "Dois caras numa bicicleta."
+      }
+    ],
+    "feedback_acerto": "A Polícia registrou o furto e avisou a companhia de energia.",
+    "feedback_erro": "Furto é com a Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d4_orla_insolacao",
+    "hora": "12:10",
+    "personagem": "guarda_vidas",
+    "bairro": "orla",
+    "titulo_fila": "Banhista desmaiado",
+    "icone": "calor",
+    "emocao": "nervoso",
+    "climatica": true,
+    "evento": "insolacao",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 60,
+    "fala_inicial": "Guarda-vidas do posto 3. Um banhista desmaiou de calor. Tá 41 graus na areia.",
+    "perguntas": [
+      {
+        "id": "consciente",
+        "texto": "Ele está consciente?",
+        "resposta": "Acordou, mas tá confuso e vomitando."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Posto 3, Praia do Sossego."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu o banhista: insolação grave.",
+    "feedback_erro": "Insolação é emergência médica: SAMU (192).",
+    "mitigada_por": "pontos_hidratacao_orla"
+  },
+  {
+    "id": "d4_morro_terreno",
+    "hora": "12:40",
+    "personagem": "vizinha_morro",
+    "bairro": "morro",
+    "titulo_fila": "Fogo perto das casas",
+    "icone": "fogo",
+    "emocao": "desesperada",
+    "climatica": true,
+    "evento": "queimada",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "Dona Cida! Pegou fogo no terreno baldio aqui do lado, e o capim seco tá levando as chamas para o muro das casas!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Beco 3, o terreno ao lado da minha casa."
+      },
+      {
+        "id": "pessoas",
+        "texto": "Tem gente em casa?",
+        "resposta": "Todo mundo, e as crianças."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros apagaram o fogo antes de atingir as casas.",
+    "feedback_erro": "Incêndio é com os Bombeiros (193).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_oxigenio",
+    "hora": "13:05",
+    "personagem": "morador",
+    "bairro": "centro",
+    "titulo_fila": "Sem luz para o oxigênio",
+    "icone": "luz",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "queda_energia",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "Faltou luz com esse calor e o aparelho de oxigênio da minha avó parou! Ela tá ficando roxa!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Avenida Beira-Rio, 1200, apartamento 302."
+      },
+      {
+        "id": "respira",
+        "texto": "Ela está respirando?",
+        "resposta": "Com muita dificuldade!"
+      }
+    ],
+    "feedback_acerto": "O SAMU levou um cilindro de oxigênio e estabilizou a avó.",
+    "feedback_erro": "Pessoa com dificuldade para respirar precisa do SAMU (192).",
+    "mitigada_por": "abrigos_climatizados"
+  },
+  {
+    "id": "d4_fumaca_estrada",
+    "hora": "13:35",
+    "personagem": "motorista",
+    "bairro": "serra_seca",
+    "titulo_fila": "Batida na fumaça",
+    "icone": "fumaca",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "fumaca",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "A fumaça das queimadas cobriu a estrada e dois carros bateram de frente. Tem gente presa nas ferragens!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Quilômetro 12 da estrada da Serra Seca."
+      },
+      {
+        "id": "presos",
+        "texto": "Quantas pessoas presas?",
+        "resposta": "Duas, no carro vermelho."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros retiraram as vítimas das ferragens.",
+    "feedback_erro": "Pessoas presas em ferragens precisam de resgate: Bombeiros (193).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_gado",
+    "hora": "14:05",
+    "personagem": "agricultora",
+    "bairro": "serra_seca",
+    "titulo_fila": "Gado morrendo de sede",
+    "icone": "vaca",
+    "emocao": "nervosa",
+    "climatica": true,
+    "evento": "seca",
+    "trote": false,
+    "orgao_correto": "199",
+    "gravidade": 1,
+    "tempo_limite": 90,
+    "fala_inicial": "O açude secou e o gado tá caindo de sede. Já perdi quatro bezerros esta semana.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Fazenda Pedra Branca, Serra Seca."
+      },
+      {
+        "id": "pessoas",
+        "texto": "As pessoas têm água?",
+        "resposta": "Só o que a gente guardou em balde."
+      }
+    ],
+    "feedback_acerto": "A Defesa Civil incluiu a fazenda no plano de abastecimento de emergência.",
+    "feedback_erro": "Falta de água por seca é com a Defesa Civil (199).",
+    "mitigada_por": "cisternas_serra"
+  },
+  {
+    "id": "d4_kelly_desmaio",
+    "hora": "14:35",
+    "personagem": "kelly",
+    "bairro": "orla",
+    "titulo_fila": "Cliente desmaiou",
+    "icone": "calor",
+    "emocao": "nervosa",
+    "climatica": true,
+    "evento": "insolacao",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 60,
+    "fala_inicial": "Kelly do quiosque! Uma cliente desmaiou aqui. Tava sentada no sol esperando mesa.",
+    "perguntas": [
+      {
+        "id": "consciente",
+        "texto": "Ela está consciente?",
+        "resposta": "Voltou, mas tá pálida e tremendo."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Quiosque 12."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu a cliente no quiosque.",
+    "feedback_erro": "Desmaio por calor é com o SAMU (192).",
+    "mitigada_por": "pontos_hidratacao_orla"
+  },
+  {
+    "id": "d4_escola",
+    "hora": "15:05",
+    "personagem": "professora",
+    "bairro": "centro",
+    "titulo_fila": "Alunos passando mal",
+    "icone": "calor",
+    "emocao": "nervosa",
+    "climatica": true,
+    "evento": "onda_calor",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 60,
+    "fala_inicial": "Professora da Escola Municipal. Três alunos estão com tontura e vômito. A sala tá 38 graus e o ventilador quebrou.",
+    "perguntas": [
+      {
+        "id": "quantos",
+        "texto": "Quantos estão mal?",
+        "resposta": "Três, mas outros estão reclamando de dor de cabeça."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Escola Municipal Porto Ameno, Rua das Flores."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu os alunos e a escola liberou as turmas mais cedo.",
+    "feedback_erro": "Crianças passando mal de calor precisam do SAMU (192).",
+    "mitigada_por": "arborizacao_centro"
+  },
+  {
+    "id": "d4_balao",
+    "hora": "15:35",
+    "personagem": "morador",
+    "bairro": "morro",
+    "titulo_fila": "Soltando balão",
+    "icone": "fogo",
+    "emocao": "irritado",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 90,
+    "fala_inicial": "Uns rapazes estão soltando balão aqui no Morro, no meio dessa secura! Se isso cair no mato, pega fogo em tudo!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Campinho do Morro da Vista."
+      },
+      {
+        "id": "quantos",
+        "texto": "Quantas pessoas?",
+        "resposta": "Uns cinco rapazes."
+      }
+    ],
+    "feedback_acerto": "A Polícia apreendeu os balões. Soltar balão é crime e causa incêndios.",
+    "feedback_erro": "Soltar balão é crime: Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d4_morro_fumaca",
+    "hora": "16:05",
+    "personagem": "moradora",
+    "bairro": "morro",
+    "titulo_fila": "Idoso com falta de ar",
+    "icone": "fumaca",
+    "emocao": "nervosa",
+    "climatica": true,
+    "evento": "fumaca",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 60,
+    "fala_inicial": "A fumaça do Parque desceu para o Morro e meu pai tá com falta de ar. Ele tem enfisema.",
+    "perguntas": [
+      {
+        "id": "idade",
+        "texto": "Quantos anos ele tem?",
+        "resposta": "Setenta e cinco."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Beco 5 do Morro da Vista."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu o idoso.",
+    "feedback_erro": "Falta de ar é emergência médica: SAMU (192).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_cachorro_poco",
+    "hora": "16:35",
+    "personagem": "agricultora",
+    "bairro": "serra_seca",
+    "titulo_fila": "Cachorro no poço",
+    "icone": "cachorro",
+    "emocao": "nervosa",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 1,
+    "tempo_limite": 90,
+    "fala_inicial": "Meu cachorro caiu no poço velho. Pelo menos tá seco, mas ele não consegue sair.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Sítio Mandacaru, Serra Seca."
+      },
+      {
+        "id": "fundo",
+        "texto": "O poço é fundo?",
+        "resposta": "Uns seis metros."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros resgataram o cachorro com cordas.",
+    "feedback_erro": "Resgate de animal é com os Bombeiros (193).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d4_escola_rural",
+    "hora": "17:05",
+    "personagem": "professora",
+    "bairro": "serra_seca",
+    "titulo_fila": "Fogo perto da escola",
+    "icone": "fogo",
+    "emocao": "desesperada",
+    "climatica": true,
+    "evento": "queimada",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 50,
+    "fala_inicial": "O fogo da Serra tá vindo na direção da escola rural! Tenho vinte crianças aqui!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Escola Rural da Serra Seca, final da estrada de terra."
+      },
+      {
+        "id": "distancia",
+        "texto": "A que distância está o fogo?",
+        "resposta": "Uns duzentos metros, e o vento tá a favor dele."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros abriram um aceiro e as crianças foram retiradas em segurança.",
+    "feedback_erro": "Incêndio ameaçando pessoas é com os Bombeiros (193).",
+    "mitigada_por": "brigada_incendio"
+  },
+  {
+    "id": "d4_roubo",
+    "hora": "17:35",
+    "personagem": "transeunte",
+    "bairro": "orla",
+    "titulo_fila": "Bolsa roubada",
+    "icone": "bolsa",
+    "emocao": "irritada",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 100,
+    "fala_inicial": "Roubaram a minha bolsa enquanto eu estava na água.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Praia do Sossego, perto do posto 2."
+      },
+      {
+        "id": "visto",
+        "texto": "Viu quem levou?",
+        "resposta": "Um rapaz de boné vermelho."
+      }
+    ],
+    "feedback_acerto": "A Polícia fez a ronda na orla.",
+    "feedback_erro": "Roubo é com a Polícia (190).",
+    "mitigada_por": null
+  }
+]

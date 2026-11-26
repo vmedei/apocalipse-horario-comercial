@@ -10,19 +10,22 @@ import { resumoEmLista } from './demitido.js';
  */
 export function telaFimDia(container, dados) {
   const r = dados?.resumo;
+  const dia = dados?.dia ?? 1;
   const todas = r && r.naoAtendidas === 0;
   container.append(
     el('div', { class: 'tela tela-resultado' }, [
-      el('p', { class: 'sobretitulo', texto: `Dia ${dados?.dia ?? 1} · ${dados?.hora ?? '18:00'}` }),
+      el('p', { class: 'sobretitulo', texto: `Dia ${dia} de 5 · ${dados?.hora ?? '18:00'}` }),
       el('h1', { texto: 'Fim do expediente' }),
       el('p', {
         class: 'destaque-texto',
         texto: todas ? 'Você atendeu todas as ligações do dia. A central sobreviveu.' : 'Deu 18:00 e a central sobreviveu ao dia.'
       }),
       r ? resumoEmLista(r) : null,
-      el('p', { class: 'nota', texto: 'O relatório completo do dia e os dias 2 a 5 chegam nos próximos marcos.' }),
+      el('p', { class: 'nota', texto: 'O relatório completo do dia, com gráfico e comparação, chega no Marco 4.' }),
       el('div', { class: 'acoes-resultado' }, [
-        el('button', { type: 'button', class: 'botao-principal', texto: '↻ Jogar o dia de novo', aoClicar: () => irPara('jogo') }),
+        dia < 5
+          ? el('button', { type: 'button', class: 'botao-principal', texto: 'Continuar →', aoClicar: () => irPara('investimentos', { dia }) })
+          : el('button', { type: 'button', class: 'botao-principal', texto: 'Encerrar a semana →', aoClicar: () => irPara('semana') }),
         el('button', { type: 'button', class: 'botao-secundario', texto: '☰ Menu', aoClicar: () => irPara('menu') })
       ])
     ])

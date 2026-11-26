@@ -12,7 +12,9 @@ export const estado = {
   dia: parametros.dia ?? 1,
   semente: parametros.seed ?? sementeAleatoria(),
   velocidade: parametros.vel,
-  gabarito: false
+  gabarito: false,
+  /** @type {import('./sistemas/partida.js').Partida | null} */
+  partida: null
 };
 
 /**

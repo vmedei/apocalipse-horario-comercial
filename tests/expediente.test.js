@@ -137,3 +137,100 @@ describe('expediente', () => {
     expect(exp.colapso).toBe(0);
   });
 });
+
+import { avaliarRitmo, reescalonar } from '../src/sistemas/dificuldade.js';
+import { novaPartida, registrarDia, condicoesDaNoite, escolherJornal, desfechoJuninho } from '../src/sistemas/partida.js';
+import { DIAS } from '../src/dados/chamadas.js';
+import jornais from '../src/dados/jornais.json';
+
+const acertos = (n, total) => Array.from({ length: total }, (_, i) => ({ resultado: { acertou: i < n } }));
+
+describe('dificuldade adaptativa', () => {
+  it('espera algumas chamadas antes de mudar', () => {
+    expect(avaliarRitmo(acertos(3, 3)).ritmo).toBe(1);
+  });
+  it('acelera quem acerta muito e desacelera quem erra muito', () => {
+    expect(avaliarRitmo(acertos(6, 6)).ritmo).toBeCloseTo(0.85);
+    expect(avaliarRitmo(acertos(1, 6)).ritmo).toBeCloseTo(1.25);
+    expect(avaliarRitmo(acertos(4, 6)).ritmo).toBe(1);
+  });
+  it('não acelera quem acerta mas já está com a fila cheia', () => {
+    expect(avaliarRitmo(acertos(6, 6), 3).ritmo).toBe(1);
+  });
+  it('reescalona só o que ainda não chegou, a partir de agora', () => {
+    const r = reescalonar([{ chegaEm: 120 }, { chegaEm: 200 }], 100, 1, 0.5);
+    expect(r.map((c) => c.chegaEm)).toEqual([110, 150]);
+  });
+  it('no expediente adaptativo, quem acerta tudo recebe as chamadas mais cedo', () => {
+    let exp = criarExpediente({ chamadas: DIAS[4], orgaos, adaptativo: true });
+    const original = exp.pendentes.at(-1).chegaEm;
+    let mudou = false;
+    for (let t = 0; t < 200 && !exp.fim; t += 0.5) {
+      ({ exp } = avancar(exp, 0.5));
+      if (!exp.ativa && exp.fila.length) ({ exp } = atender(exp, exp.fila[0].chamada.id));
+      if (exp.ativa) {
+        const c = exp.ativa.chamada;
+        const r = despachar(exp, c.trote ? 'trote' : c.orgao_correto);
+        if (r.erro) continue;
+        exp = r.exp;
+        if (r.eventos.some((e) => e.tipo === 'ritmo_mudou')) mudou = true;
+      }
+    }
+    expect(mudou).toBe(true);
+    expect(exp.ritmo).toBeLessThan(1);
+    if (exp.pendentes.length) expect(exp.pendentes.at(-1).chegaEm).toBeLessThan(original);
+  });
+  it('a semente muda pouco os horários e é repetível', () => {
+    const a = criarExpediente({ chamadas: dia1, orgaos, semente: 42 }).pendentes.map((c) => c.chegaEm);
+    const b = criarExpediente({ chamadas: dia1, orgaos, semente: 42 }).pendentes.map((c) => c.chegaEm);
+    const sem = criarExpediente({ chamadas: dia1, orgaos }).pendentes.map((c) => c.chegaEm);
+    expect(a).toEqual(b);
+    a.forEach((t, i) => expect(Math.abs(t - sem[i])).toBeLessThanOrEqual(3));
+  });
+});
+
+describe('partida e jornais', () => {
+  /** Joga um dia; `escolher` decide o despacho de cada chamada. */
+  function jogarDia(chamadas, escolher) {
+    let exp = criarExpediente({ chamadas, orgaos });
+    for (let t = 0; t < 400 && !exp.fim; t += 0.5) {
+      ({ exp } = avancar(exp, 0.5));
+      if (!exp.ativa && exp.fila.length) ({ exp } = atender(exp, exp.fila[0].chamada.id));
+      if (exp.ativa) {
+        const r = despachar(exp, escolher(exp.ativa.chamada));
+        if (!r.erro) exp = r.exp;
+      }
+    }
+    return exp;
+  }
+  const certo = (c) => (c.trote ? 'trote' : c.orgao_correto);
+
+  it('conta os trotes do Juninho e o resgate na ligação real', () => {
+    let partida = novaPartida();
+    partida = registrarDia(partida, 1, jogarDia(DIAS[0], certo));
+    expect(partida.trotesJuninho).toBe(2);
+    const dia5 = jogarDia(DIAS[4], certo);
+    expect(desfechoJuninho(dia5)).toBe('resgatado');
+  });
+
+  it('quem desacredita o Juninho no dia 5 vê o jornal sobre o resgate pelos vizinhos', () => {
+    const ignorar = (c) => (c.arco === 'juninho_real' || c.trote ? 'trote' : c.orgao_correto);
+    let partida = registrarDia(novaPartida(5), 5, jogarDia(DIAS[4], ignorar));
+    expect(partida.juninhoReal).toBe('ignorado');
+    const condicoes = condicoesDaNoite(partida, 5);
+    expect(condicoes[0]).toBe('juninho_ignorado');
+    expect(escolherJornal(jornais, 5, 'noite', condicoes).condicao).toBe('juninho_ignorado');
+  });
+
+  it('sem condição especial, usa a edição padrão', () => {
+    expect(escolherJornal(jornais, 2, 'noite', []).condicao).toBeUndefined();
+    expect(escolherJornal(jornais, 2, 'manha', ['colapso_alto']).turno).toBe('manha');
+  });
+
+  it('jogando perfeito, todos os dias terminam sem colapso', () => {
+    DIAS.forEach((dia, i) => {
+      const exp = jogarDia(dia, certo);
+      expect(exp.fim, `dia ${i + 1}`).toBe('expediente');
+    });
+  });
+});

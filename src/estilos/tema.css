@@ -58,3 +58,19 @@
     --mapa-agua-linha: #3f6481;
   }
 }
+
+/* ---------- Cores por dia: esquentam a cada dia (azul → amarelo → laranja → vermelho) ---------- */
+
+body.dia-1 { --cor-fundo: #f2f5f8; --cor-dia: #4f86b5; }
+body.dia-2 { --cor-fundo: #f6f4ec; --cor-dia: #c69a1d; }
+body.dia-3 { --cor-fundo: #f8efe4; --cor-dia: #d4823a; }
+body.dia-4 { --cor-fundo: #f9e7d6; --cor-dia: #cf5a26; }
+body.dia-5 { --cor-fundo: #f7ddd4; --cor-dia: #b02e26; }
+
+@media (prefers-color-scheme: dark) {
+  body.dia-1 { --cor-fundo: #15191e; --cor-dia: #7fb0db; }
+  body.dia-2 { --cor-fundo: #1b1a15; --cor-dia: #e0bd52; }
+  body.dia-3 { --cor-fundo: #1f1913; --cor-dia: #eba264; }
+  body.dia-4 { --cor-fundo: #231811; --cor-dia: #f08255; }
+  body.dia-5 { --cor-fundo: #261413; --cor-dia: #f06a5e; }
+}

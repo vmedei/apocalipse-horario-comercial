@@ -1,0 +1,22 @@
+{
+  "1": {
+    "icone": "❄️",
+    "texto": "ar-condicionado ligado"
+  },
+  "2": {
+    "icone": "❄️",
+    "texto": "ar-condicionado no máximo"
+  },
+  "3": {
+    "icone": "🌀",
+    "texto": "o ar quebrou: ventilador"
+  },
+  "4": {
+    "icone": "💡",
+    "texto": "a luz está piscando"
+  },
+  "5": {
+    "icone": "💧",
+    "texto": "goteira no teto"
+  }
+}

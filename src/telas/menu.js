@@ -2,6 +2,7 @@
 import { el } from '../ui/dom.js';
 import { irPara } from '../roteador.js';
 import { lerSalvo } from '../estado.js';
+import { novaSemana } from '../fluxo.js';
 
 /** Menu inicial (wireframe: referencias/wireframes/tela1_menu_inicial.png). */
 export function telaMenu(container) {
@@ -32,7 +33,7 @@ export function telaMenu(container) {
       el('nav', { class: 'menu-botoes', 'aria-label': 'Menu principal' }, [
         botao('Começar Expediente', '▶', {
           class: 'botao-menu principal',
-          aoClicar: () => irPara('jogo')
+          aoClicar: () => novaSemana(1)
         }),
         botao(
           'Hora Extra',

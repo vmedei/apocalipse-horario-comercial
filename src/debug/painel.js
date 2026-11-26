@@ -7,7 +7,8 @@ import { estado, parametros, atualizarEstado, apagarSalvos } from '../estado.js'
 import { textoVersao } from '../versao.js';
 import { ouvir, emitir } from '../eventos.js';
 import { irPara } from '../roteador.js';
-import dia1 from '../dados/chamadas/dia_1.json';
+import { chamadasDoDia } from '../dados/chamadas.js';
+import { iniciarDia } from '../fluxo.js';
 
 export function instalarPainelDebug() {
   if (!parametros.debug) return;
@@ -20,6 +21,7 @@ export function instalarPainelDebug() {
     info.replaceChildren(
       ...linha('Tela', estado.tela),
       ...linha('Dia', String(estado.dia)),
+      ...linha('Juninho', estado.partida ? `${estado.partida.trotesJuninho} trotes · ${estado.partida.juninhoReal ?? '—'}` : '—'),
       ...linha('Semente', String(estado.semente)),
       ...linha('Velocidade', `${estado.velocidade}×`),
       ...linha('Versão', textoVersao())
@@ -35,12 +37,21 @@ export function instalarPainelDebug() {
     })
   );
 
-  const seletorChamada = /** @type {HTMLSelectElement} */ (
-    el(
-      'select',
-      { 'aria-label': 'Chamada de teste' },
-      dia1.map((c) => el('option', { value: c.id, texto: `${c.hora} · ${c.titulo_fila}${c.trote ? ' (trote)' : ''}` }))
-    )
+  const seletorChamada = /** @type {HTMLSelectElement} */ (el('select', { 'aria-label': 'Chamada de teste' }));
+  let diaDoSeletor = 0;
+  const preencherSeletor = () => {
+    if (diaDoSeletor === estado.dia) return;
+    diaDoSeletor = estado.dia;
+    seletorChamada.replaceChildren(
+      ...chamadasDoDia(estado.dia).map((c) =>
+        el('option', { value: c.id, texto: `${c.hora} · ${c.titulo_fila}${c.trote ? ' (trote)' : ''}${c.arco ? ' ★' : ''}` })
+      )
+    );
+  };
+  preencherSeletor();
+
+  const seletorDia = /** @type {HTMLSelectElement} */ (
+    el('select', { 'aria-label': 'Ir para o dia' }, [1, 2, 3, 4, 5].map((d) => el('option', { value: String(d), texto: `Dia ${d}` })))
   );
 
   const botaoGabarito = el('button', {
@@ -57,7 +68,11 @@ export function instalarPainelDebug() {
     el('p', { class: 'debug-rotulo', texto: 'Ir para' }),
     el('div', { class: 'debug-linha' }, [
       el('button', { type: 'button', texto: 'Menu', aoClicar: () => irPara('menu') }),
-      el('button', { type: 'button', texto: 'Jogo', aoClicar: () => irPara('jogo') })
+      el('button', { type: 'button', texto: 'Recomeçar o dia', aoClicar: () => irPara('jogo') })
+    ]),
+    el('div', { class: 'debug-linha' }, [
+      seletorDia,
+      el('button', { type: 'button', texto: 'Ir (jornal da manhã)', aoClicar: () => iniciarDia(Number(seletorDia.value)) })
     ]),
     el('p', { class: 'debug-rotulo', texto: 'Expediente' }),
     el('div', { class: 'debug-linha' }, [
@@ -108,6 +123,8 @@ export function instalarPainelDebug() {
   atualizarInfo();
   ouvir('estado_mudou', () => {
     atualizarInfo();
+    preencherSeletor();
+    seletorDia.value = String(estado.dia);
     botaoGabarito.setAttribute('aria-pressed', String(estado.gabarito));
     botoesVelocidade.forEach((b, i) =>
       b.setAttribute('aria-pressed', String([1, 4, 10].at(i) === estado.velocidade))

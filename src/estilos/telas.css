@@ -281,3 +281,111 @@
     margin-bottom: 0.75rem;
   }
 }
+
+/* ---------- Jornal Ameno ---------- */
+
+.tela-jornal {
+  max-width: 40rem;
+  margin: 1.5rem auto 0;
+  padding: 0 0 1.25rem;
+  border: 3px solid var(--cor-borda);
+  border-radius: 14px;
+  background: var(--cor-superficie);
+  overflow: hidden;
+}
+
+.tela-jornal > :not(.vinheta) {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.vinheta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.25rem;
+  background: var(--cor-dia, var(--cor-borda));
+  color: #fff;
+}
+
+.vinheta p {
+  margin: 0;
+}
+
+.vinheta-marca {
+  font-size: 1.6rem;
+}
+
+.vinheta-nome {
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.vinheta-edicao {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.ao-vivo {
+  margin-left: auto;
+  padding: 0.15rem 0.55rem;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.tela-jornal.tom-4 .ao-vivo,
+.tela-jornal.tom-5 .ao-vivo {
+  animation: plantao 1.2s steps(2, start) infinite;
+}
+
+@keyframes plantao {
+  50% { background: #fff; color: var(--cor-dia); }
+}
+
+.manchete {
+  margin-top: 1.25rem;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.outras-manchetes {
+  padding-left: 1.2rem;
+  color: var(--cor-texto-suave);
+}
+
+.outras-manchetes li {
+  margin-bottom: 0.35rem;
+}
+
+.previsao {
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid var(--cor-dia, var(--cor-borda));
+  background: var(--cor-superficie-suave);
+  border-radius: 0 8px 8px 0;
+}
+
+.tela-jornal .fala-socorro {
+  margin-top: 1rem;
+}
+
+/* ---------- Fim da semana ---------- */
+
+.tabela-semana {
+  width: 100%;
+  margin: 1rem 0;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabela-semana th,
+.tabela-semana td {
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--cor-borda-suave);
+  text-align: right;
+}
+
+.tabela-semana th:first-child {
+  text-align: left;
+}

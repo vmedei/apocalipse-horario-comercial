@@ -14,7 +14,14 @@ const PORTIPO = {
   calor: '🌡️',
   chuva: '🌧️',
   encosta: '⛰️',
-  fumaca: '💨'
+  fumaca: '💨',
+  carro: '🚗',
+  luz: '💡',
+  cachorro: '🐕',
+  arvore: '🌳',
+  casa: '🏚️',
+  onda: '🌊',
+  raio: '⚡'
 };
 
 const PORORGAO = {

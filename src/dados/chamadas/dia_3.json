@@ -1,0 +1,498 @@
+[
+  {
+    "id": "d3_batida",
+    "hora": "08:10",
+    "personagem": "motorista",
+    "bairro": "centro",
+    "titulo_fila": "Batida na chuva",
+    "icone": "carro",
+    "emocao": "irritado",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 95,
+    "fala_inicial": "O carro da frente freou do nada na chuva e eu bati. Ninguém se machucou, mas ele tá gritando comigo.",
+    "perguntas": [
+      {
+        "id": "feridos",
+        "texto": "Tem alguém ferido?",
+        "resposta": "Não, ninguém."
+      },
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua do Comércio, em frente à farmácia."
+      }
+    ],
+    "feedback_acerto": "A Polícia registrou o acidente e acalmou os ânimos.",
+    "feedback_erro": "Acidente sem feridos, com discussão, é com a Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_carro_ilhado",
+    "hora": "08:50",
+    "personagem": "motorista",
+    "bairro": "centro",
+    "titulo_fila": "Carro ilhado",
+    "icone": "chuva",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "alagamento",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "Meu carro morreu na Beira-Rio e a água já tá na altura da janela! Eu tô aqui dentro!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Avenida Beira-Rio, embaixo do viaduto."
+      },
+      {
+        "id": "sair",
+        "texto": "Você consegue sair?",
+        "resposta": "A porta não abre com a força da água!"
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros tiraram o motorista pelo teto do carro.",
+    "feedback_erro": "Pessoa presa na água precisa de resgate: Bombeiros (193).",
+    "mitigada_por": "drenagem_beira_rio"
+  },
+  {
+    "id": "d3_cida_rachadura",
+    "hora": "09:25",
+    "personagem": "vizinha_morro",
+    "bairro": "morro",
+    "titulo_fila": "Rachadura na parede",
+    "icone": "encosta",
+    "emocao": "nervosa",
+    "climatica": true,
+    "evento": "deslizamento",
+    "trote": false,
+    "orgao_correto": "199",
+    "gravidade": 2,
+    "tempo_limite": 70,
+    "fala_inicial": "Dona Cida de novo. Depois dessa chuva, apareceu uma rachadura enorme na parede do meu quarto. E o barranco atrás de casa tá escorrendo lama.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Beco 3 do Morro da Vista, casa azul."
+      },
+      {
+        "id": "feridos",
+        "texto": "Tem alguém ferido?",
+        "resposta": "Não. Mas eu tô com medo de dormir aqui."
+      }
+    ],
+    "feedback_acerto": "A Defesa Civil vistoriou a casa e retirou Dona Cida por precaução.",
+    "feedback_erro": "Rachadura e encosta escorrendo é risco de deslizamento: Defesa Civil (199).",
+    "mitigada_por": "alerta_sms_morro"
+  },
+  {
+    "id": "d3_juninho_sapo",
+    "hora": "10:05",
+    "personagem": "juninho",
+    "bairro": "centro",
+    "titulo_fila": "Chuva de sapos",
+    "icone": "telefone",
+    "emocao": "risonho",
+    "climatica": false,
+    "evento": null,
+    "trote": true,
+    "orgao_correto": null,
+    "gravidade": 1,
+    "tempo_limite": 60,
+    "fala_inicial": "Alô, bombeiro? Tá chovendo SAPO aqui em casa! Um caiu dentro do meu suco! (gargalhada)",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Aqui, ué! (risada abafada)"
+      },
+      {
+        "id": "adulto",
+        "texto": "Tem algum adulto aí?",
+        "resposta": "...tem não. Tchau!"
+      }
+    ],
+    "feedback_acerto": "Trote identificado. A Dona Socorro já reconhece a risada do Juninho de longe.",
+    "feedback_erro": "Chuva de sapo, gargalhada e o mesmo número: era o Juninho.",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_arvore_fio",
+    "hora": "10:40",
+    "personagem": "transeunte",
+    "bairro": "centro",
+    "titulo_fila": "Árvore sobre a fiação",
+    "icone": "arvore",
+    "emocao": "nervoso",
+    "climatica": true,
+    "evento": "tempestade",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 2,
+    "tempo_limite": 65,
+    "fala_inicial": "Uma árvore caiu em cima dos fios na Rua das Acácias. Tá saindo faísca e o pessoal tá passando do lado!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua das Acácias, número 80."
+      },
+      {
+        "id": "feridos",
+        "texto": "Tem alguém ferido?",
+        "resposta": "Não, mas tem criança curiosa chegando perto."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros isolaram a área e removeram a árvore com a companhia de energia.",
+    "feedback_erro": "Árvore sobre fios energizados é risco de choque e incêndio: Bombeiros (193).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_ze_capotado",
+    "hora": "11:20",
+    "personagem": "seu_ze",
+    "bairro": "serra_seca",
+    "titulo_fila": "Carro capotado",
+    "icone": "carro",
+    "emocao": "nervoso",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 70,
+    "fala_inicial": "Aqui na Serra não caiu uma gota, sabia? Mas um carro capotou na curva da estrada e o motorista tá sangrando.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Curva do quilômetro 9, estrada da Serra Seca."
+      },
+      {
+        "id": "consciente",
+        "texto": "Ele está acordado?",
+        "resposta": "Tá, mas não sente a perna."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu o motorista na estrada.",
+    "feedback_erro": "Pessoa ferida em acidente precisa do SAMU (192).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_morro_encosta",
+    "hora": "11:55",
+    "personagem": "moradora",
+    "bairro": "morro",
+    "titulo_fila": "Encosta se mexendo",
+    "icone": "encosta",
+    "emocao": "desesperada",
+    "climatica": true,
+    "evento": "deslizamento",
+    "trote": false,
+    "orgao_correto": "199",
+    "gravidade": 3,
+    "tempo_limite": 50,
+    "fala_inicial": "A terra tá estalando atrás das casas do Beco 7! Tem lama descendo e as árvores estão inclinando!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Beco 7, parte alta do Morro da Vista."
+      },
+      {
+        "id": "casas",
+        "texto": "Quantas casas estão perto?",
+        "resposta": "Umas dez casas, cheias de gente."
+      }
+    ],
+    "feedback_acerto": "A Defesa Civil evacuou o Beco 7 antes de a encosta ceder. Ninguém se feriu.",
+    "feedback_erro": "Sinais de deslizamento pedem evacuação preventiva: Defesa Civil (199). Dá tempo de agir antes da tragédia.",
+    "mitigada_por": "alerta_sms_morro"
+  },
+  {
+    "id": "d3_beira_rio_idosa",
+    "hora": "12:35",
+    "personagem": "morador",
+    "bairro": "centro",
+    "titulo_fila": "Água entrando em casa",
+    "icone": "chuva",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "enchente",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 55,
+    "fala_inicial": "A água do rio tá entrando em casa! A gente subiu para o segundo andar, mas a minha mãe é acamada e não consigo carregar ela sozinho.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua do Rio, 45, Beira-Rio."
+      },
+      {
+        "id": "nivel",
+        "texto": "Até onde a água chegou?",
+        "resposta": "Já passou da cintura no térreo."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros retiraram a família de barco.",
+    "feedback_erro": "Família ilhada na enchente precisa de resgate: Bombeiros (193).",
+    "mitigada_por": "drenagem_beira_rio"
+  },
+  {
+    "id": "d3_garagem",
+    "hora": "13:10",
+    "personagem": "morador",
+    "bairro": "centro",
+    "titulo_fila": "Briga por garagem",
+    "icone": "som",
+    "emocao": "irritado",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 110,
+    "fala_inicial": "O vizinho estacionou na frente da minha garagem de novo e agora tá me ameaçando.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua das Palmeiras, 15."
+      },
+      {
+        "id": "violencia",
+        "texto": "Ele está armado?",
+        "resposta": "Não, mas tá muito alterado."
+      }
+    ],
+    "feedback_acerto": "A Polícia conversou com os dois e o carro foi tirado.",
+    "feedback_erro": "Ameaça entre vizinhos é com a Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_bueiro",
+    "hora": "13:50",
+    "personagem": "transeunte",
+    "bairro": "centro",
+    "titulo_fila": "Pessoa arrastada",
+    "icone": "agua",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "alagamento",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 45,
+    "fala_inicial": "A enxurrada arrastou um rapaz para perto do bueiro! Ele tá agarrado num poste!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Esquina da Beira-Rio com a Rua do Mercado."
+      },
+      {
+        "id": "aguenta",
+        "texto": "Ele está conseguindo se segurar?",
+        "resposta": "Por enquanto, mas a água tá forte."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros resgataram o rapaz com cordas.",
+    "feedback_erro": "Pessoa arrastada pela água precisa de resgate imediato: Bombeiros (193).",
+    "mitigada_por": "drenagem_beira_rio"
+  },
+  {
+    "id": "d3_idoso_caiu",
+    "hora": "14:25",
+    "personagem": "transeunte",
+    "bairro": "centro",
+    "titulo_fila": "Idoso caído na água",
+    "icone": "saude",
+    "emocao": "nervoso",
+    "climatica": true,
+    "evento": "alagamento",
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 65,
+    "fala_inicial": "Um senhor escorregou na rua alagada e bateu a cabeça no meio-fio. A gente puxou ele para a calçada.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua do Comércio, perto da padaria."
+      },
+      {
+        "id": "consciente",
+        "texto": "Ele está consciente?",
+        "resposta": "Tá, mas sangrando bastante."
+      }
+    ],
+    "feedback_acerto": "O SAMU levou o senhor para o hospital.",
+    "feedback_erro": "Pessoa ferida, já fora de perigo da água, precisa do SAMU (192).",
+    "mitigada_por": "drenagem_beira_rio"
+  },
+  {
+    "id": "d3_arlindo_muro",
+    "hora": "15:05",
+    "personagem": "seu_arlindo",
+    "bairro": "centro",
+    "titulo_fila": "Muro inclinando",
+    "icone": "casa",
+    "emocao": "calmo",
+    "climatica": true,
+    "evento": "tempestade",
+    "trote": false,
+    "orgao_correto": "199",
+    "gravidade": 2,
+    "tempo_limite": 75,
+    "fala_inicial": "Minha filha, é o Arlindo. O muro do vizinho tá inclinando para o meu quintal com essa chuva. O Bolinha não sai de debaixo da cama.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua das Acácias, 40."
+      },
+      {
+        "id": "rachadura",
+        "texto": "O muro tem rachaduras?",
+        "resposta": "Uma rachadura grande, do chão até em cima."
+      }
+    ],
+    "feedback_acerto": "A Defesa Civil interditou o muro antes que caísse.",
+    "feedback_erro": "Estrutura com risco de desabar é com a Defesa Civil (199).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_furto_loja",
+    "hora": "15:40",
+    "personagem": "comerciante",
+    "bairro": "centro",
+    "titulo_fila": "Furto na loja",
+    "icone": "bolsa",
+    "emocao": "irritado",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 100,
+    "fala_inicial": "Aproveitaram a falta de luz e levaram duas caixas de mercadoria da minha loja.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Loja Tudo Barato, Rua do Comércio."
+      },
+      {
+        "id": "feridos",
+        "texto": "Tem alguém ferido?",
+        "resposta": "Não, ninguém."
+      }
+    ],
+    "feedback_acerto": "A Polícia registrou o furto.",
+    "feedback_erro": "Furto é com a Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_barco",
+    "hora": "16:20",
+    "personagem": "pescador",
+    "bairro": "orla",
+    "titulo_fila": "Barco virado",
+    "icone": "onda",
+    "emocao": "desesperado",
+    "climatica": true,
+    "evento": "tempestade",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 50,
+    "fala_inicial": "O barco do meu irmão virou com a ventania! Eu vejo ele agarrado no casco!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Uns duzentos metros depois da Praia do Sossego."
+      },
+      {
+        "id": "colete",
+        "texto": "Ele está de colete?",
+        "resposta": "Acho que não!"
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros e os guarda-vidas resgataram o pescador.",
+    "feedback_erro": "Pessoa em risco no mar é com os Bombeiros (193).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d3_soterrada",
+    "hora": "16:55",
+    "personagem": "moradora",
+    "bairro": "morro",
+    "titulo_fila": "Casa soterrada",
+    "icone": "encosta",
+    "emocao": "desesperada",
+    "climatica": true,
+    "evento": "deslizamento",
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 3,
+    "tempo_limite": 45,
+    "fala_inicial": "O barranco desceu em cima da casa do seu Toninho! Ele e a esposa estavam lá dentro!",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Beco 9 do Morro da Vista."
+      },
+      {
+        "id": "vozes",
+        "texto": "Dá para ouvir alguém?",
+        "resposta": "Dá! Ele tá gritando lá de dentro!"
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros retiraram o casal dos escombros com vida.",
+    "feedback_erro": "Quando o deslizamento já aconteceu e há pessoas soterradas, é resgate: Bombeiros (193).",
+    "mitigada_por": "alerta_sms_morro"
+  },
+  {
+    "id": "d3_moto_ferido",
+    "hora": "17:35",
+    "personagem": "transeunte",
+    "bairro": "parque",
+    "titulo_fila": "Motociclista ferido",
+    "icone": "saude",
+    "emocao": "nervoso",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 70,
+    "fala_inicial": "Um motoqueiro derrapou na lama da estrada do Parque e quebrou o braço.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Entrada do Parque Estadual."
+      },
+      {
+        "id": "consciente",
+        "texto": "Ele está consciente?",
+        "resposta": "Tá, gemendo de dor."
+      }
+    ],
+    "feedback_acerto": "O SAMU imobilizou o braço e levou o motociclista.",
+    "feedback_erro": "Pessoa ferida precisa do SAMU (192).",
+    "mitigada_por": null
+  }
+]

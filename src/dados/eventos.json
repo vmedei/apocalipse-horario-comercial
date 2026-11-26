@@ -9,5 +9,8 @@
   "seca": "seca",
   "queimada": "queimada",
   "incendio_florestal": "incêndio florestal",
-  "fumaca": "fumaça"
+  "fumaca": "fumaça",
+  "onda_calor": "onda de calor",
+  "queda_energia": "queda de energia",
+  "tempestade": "tempestade"
 }

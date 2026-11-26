@@ -9,6 +9,8 @@ import { cobrancaDeEspera } from './fila.js';
 import { veiculosLivres } from './frota.js';
 import { resolverDespacho } from './despacho.js';
 import { aplicarColapso, colapsou } from './colapso.js';
+import { avaliarRitmo, reescalonar } from './dificuldade.js';
+import { criarAleatorio } from './aleatorio.js';
 
 /**
  * @typedef {Object} Chamada
@@ -56,20 +58,29 @@ import { aplicarColapso, colapsou } from './colapso.js';
  * @property {number} colapso
  * @property {number} colapsoMax
  * @property {null | 'expediente' | 'colapso'} fim
+ * @property {number} ritmo   1 = horários do roteiro; menor = chamadas mais próximas
+ * @property {boolean} adaptativo  se a dificuldade se ajusta ao desempenho
  */
 
 /** @typedef {{ tipo: string, [k: string]: any }} Evento */
 
+/** Variação máxima, em segundos reais, no horário de chegada quando há semente. */
+const VARIACAO_CHEGADA = 3;
+
 /**
- * @param {{ chamadas: Chamada[], orgaos: {id: string, frota_inicial: number}[] }} entrada
+ * @param {{ chamadas: Chamada[], orgaos: {id: string, frota_inicial: number}[],
+ *           semente?: number, adaptativo?: boolean }} entrada
+ *   `semente` varia um pouco os horários de chegada (a mesma semente gera sempre a mesma partida).
  * @returns {Expediente}
  */
-export function criarExpediente({ chamadas, orgaos }) {
+export function criarExpediente({ chamadas, orgaos, semente, adaptativo = false }) {
+  const sorteio = semente === undefined ? null : criarAleatorio(semente);
+  const variar = (t) => (sorteio ? Math.max(1, t + sorteio.inteiro(-VARIACAO_CHEGADA, VARIACAO_CHEGADA)) : t);
   return {
     tempo: 0,
     duracao: BALANCO.duracaoDiaSegundos,
     pendentes: chamadas
-      .map((c) => ({ ...c, chegaEm: segundosDeHora(c.hora) }))
+      .map((c) => ({ ...c, chegaEm: variar(segundosDeHora(c.hora)) }))
       .sort((a, b) => a.chegaEm - b.chegaEm),
     fila: [],
     ativa: null,
@@ -79,7 +90,9 @@ export function criarExpediente({ chamadas, orgaos }) {
     frotaTotal: Object.fromEntries(orgaos.map((o) => [o.id, o.frota_inicial])),
     colapso: 0,
     colapsoMax: 0,
-    fim: null
+    fim: null,
+    ritmo: 1,
+    adaptativo
   };
 }
 
@@ -243,6 +256,16 @@ export function despachar(exp, escolha) {
     colapso,
     colapsoMax: Math.max(exp.colapsoMax, colapso)
   };
+
+  // Dificuldade adaptativa: ajusta quando chegam as próximas ligações.
+  if (novo.adaptativo) {
+    const { ritmo, motivo } = avaliarRitmo(novo.resolvidas, novo.fila.length);
+    if (ritmo !== novo.ritmo) {
+      eventos.push({ tipo: 'ritmo_mudou', de: novo.ritmo, para: ritmo, motivo });
+      novo = { ...novo, pendentes: reescalonar(novo.pendentes, novo.tempo, novo.ritmo, ritmo), ritmo };
+    }
+  }
+
   if (colapsou(colapso)) {
     novo = encerrar(novo, 'colapso');
     eventos.push({ tipo: 'colapsou' });

@@ -774,3 +774,37 @@
     flex: 1 1 12rem;
   }
 }
+
+/* ---------- Escalada por dia ---------- */
+
+.barra-superior {
+  border-top: 8px solid var(--cor-dia, var(--cor-borda));
+}
+
+body {
+  transition: background-color 0.8s ease;
+}
+
+.etiqueta.escritorio {
+  font-weight: 600;
+  border-style: dotted;
+}
+
+/* Dia 4 em diante: a luz do escritório pisca de vez em quando.
+   Desligado por quem pede "reduzir movimento" (base.css) e, no Marco 8, por uma opção. */
+body.dia-4:not(.sem-piscar) .tela-jogo::after,
+body.dia-5:not(.sem-piscar) .tela-jogo::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+  animation: luz-piscando 11s steps(1, end) infinite;
+}
+
+@keyframes luz-piscando {
+  0%, 93%, 95%, 97%, 100% { opacity: 0; }
+  94%, 96% { opacity: 0.18; }
+}

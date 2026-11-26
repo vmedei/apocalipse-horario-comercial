@@ -525,16 +525,16 @@ Cada marco termina em algo **jogável no link publicado**. Marque as caixas conf
 **Pronto quando:** o dia 1 é jogável do início ao fim, com vitória (18:00) e derrota (colapso).
 
 ### Marco 3 · Os cinco dias e a escalada
-- [ ] `dia.js` e `roteador.js`: sequência jornal da manhã → expediente → relatório → investimentos → próximo dia. Por enquanto, o relatório e os investimentos podem ser telas provisórias com um botão "Continuar".
-- [ ] Escrever `dia_2.json` a `dia_5.json` seguindo a progressão do GDD:
+- [x] `dia.js` e `roteador.js`: sequência jornal da manhã → expediente → relatório → investimentos → próximo dia. Por enquanto, o relatório e os investimentos podem ser telas provisórias com um botão "Continuar".
+- [x] Escrever `dia_2.json` a `dia_5.json` seguindo a progressão do GDD:
   - Dia 2: calor extremo (insolação na orla, mal-estar no Centro, quedas de energia).
   - Dia 3: chuvas intensas (alagamentos no Centro e na Beira-Rio, risco no Morro, evacuação preventiva com o 199).
   - Dia 4: seca e queimadas (poço do Seu Zé, incêndio na Serra Seca e no Parque, Seu Arlindo passa mal).
   - Dia 5: tempestade perfeita (ressaca no quiosque da Kelly, enchente, **ligação verdadeira do Juninho**).
-- [ ] Arco do Juninho: o estado guarda quantos trotes ele já passou. No dia 5, a ligação real tem pistas na transcrição (voz assustada, barulho de água, endereço em área de risco). Se o jogador encerrar como trote, o jornal da noite conta que **vizinhos resgataram o menino horas depois**, sem cena trágica, e a Dona Socorro comenta o ocorrido.
-- [ ] Mudança visual por dia: classe `dia-1` … `dia-5` no `<body>` muda as variáveis CSS (azul → laranja → vermelho). O ícone do ar-condicionado vira ventilador no dia 3, e a luz pisca no dia 4 (com animação CSS que respeita a opção de desligar piscadas e o `prefers-reduced-motion`).
-- [ ] `dificuldade.js` (seção 7).
-- [ ] Parâmetros `?dia=N` e `?seed=N`.
+- [x] Arco do Juninho: o estado guarda quantos trotes ele já passou. No dia 5, a ligação real tem pistas na transcrição (voz assustada, barulho de água, endereço em área de risco). Se o jogador encerrar como trote, o jornal da noite conta que **vizinhos resgataram o menino horas depois**, sem cena trágica, e a Dona Socorro comenta o ocorrido.
+- [x] Mudança visual por dia: classe `dia-1` … `dia-5` no `<body>` muda as variáveis CSS (azul → laranja → vermelho). O ícone do ar-condicionado vira ventilador no dia 3, e a luz pisca no dia 4 (com animação CSS que respeita a opção de desligar piscadas e o `prefers-reduced-motion`).
+- [x] `dificuldade.js` (seção 7).
+- [x] Parâmetros `?dia=N` e `?seed=N`.
 
 **Como testar:** abra o link com `?debug&dia=5` e procure a ligação real do Juninho. Teste os dois caminhos: acreditar e encerrar como trote. Compare as cores de `?dia=1` e `?dia=4`. Jogue os cinco dias com `?vel=10` e observe a fila crescer.
 

@@ -4,24 +4,150 @@
     "turno": "manha",
     "manchetes": [
       "Festa junina do Centro bate recorde de público",
-      "Prefeitura promete tapar buraco da Av. Beira-Rio"
+      "Prefeitura promete tapar buraco da Av. Beira-Rio",
+      "Porto Ameno FC empata no último minuto"
     ],
-    "nota": "Calor acima da média para a época."
+    "nota": "Previsão: calor acima da média para a época.",
+    "socorro": "Bom dia, meu filho. Primeiro dia, né? Fica tranquilo: aqui é gato na árvore e briga de vizinho. Em trinta anos de central, nunca vi nada de mais."
+  },
+  {
+    "dia": 1,
+    "turno": "noite",
+    "condicao": "colapso_alto",
+    "manchetes": [
+      "Novato da central sua a camisa no primeiro dia",
+      "Gato resgatado em mangueira vira assunto no bairro"
+    ]
+  },
+  {
+    "dia": 1,
+    "turno": "noite",
+    "manchetes": [
+      "Dia tranquilo na cidade: gato resgatado vira celebridade no Centro",
+      "Termômetros marcam 34 °C, dois graus acima da média"
+    ]
+  },
+  {
+    "dia": 2,
+    "turno": "manha",
+    "manchetes": [
+      "Onda de calor: termômetros podem chegar a 40 °C",
+      "Venda de ventiladores dispara nas lojas do Centro",
+      "Prefeitura pede que idosos evitem o sol entre 10h e 16h"
+    ],
+    "nota": "Previsão: sol forte o dia todo, sem chuva.",
+    "socorro": "Calorzinho, né? No meu tempo também fazia calor. Bebe água e bora trabalhar."
+  },
+  {
+    "dia": 2,
+    "turno": "noite",
+    "condicao": "colapso_alto",
+    "manchetes": [
+      "Calor recorde lota a central de emergência",
+      "Hospitais registram alta nos atendimentos por desidratação"
+    ]
+  },
+  {
+    "dia": 2,
+    "turno": "noite",
+    "manchetes": [
+      "Porto Ameno registra o dia mais quente do ano: 40,2 °C",
+      "Falta de energia atinge o Centro durante o pico de consumo"
+    ]
+  },
+  {
+    "dia": 3,
+    "turno": "manha",
+    "manchetes": [
+      "Alerta: chuva de um mês pode cair em poucas horas",
+      "Defesa Civil monitora áreas de risco no Morro da Vista",
+      "Calor dos últimos dias deixou o oceano mais quente, dizem meteorologistas"
+    ],
+    "nota": "Previsão: temporais a partir das 9h.",
+    "socorro": "O ar-condicionado quebrou ontem e hoje vem chuva grossa. Fica de olho no Morro, viu? Quando a terra encharca, ela desce."
   },
   {
     "dia": 3,
     "turno": "noite",
     "condicao": "colapso_alto",
     "manchetes": [
-      "Central de emergência não dá conta das chamadas durante temporal"
+      "Temporal deixa a central de emergência sobrecarregada",
+      "Moradores do Morro relatam demora no atendimento"
     ]
   },
   {
     "dia": 3,
     "turno": "noite",
-    "condicao": "padrao",
     "manchetes": [
-      "Chuva de um mês cai em seis horas; Defesa Civil evacua parte do Morro da Vista"
+      "Chuva de um mês cai em seis horas; Defesa Civil evacua parte do Morro da Vista",
+      "Beira-Rio amanhece com ruas alagadas e carros arrastados"
     ]
+  },
+  {
+    "dia": 4,
+    "turno": "manha",
+    "manchetes": [
+      "Serra Seca completa 60 dias sem chuva",
+      "Queimadas cobrem o Parque Estadual de fumaça",
+      "Caminhões-pipa não dão conta da demanda na zona rural"
+    ],
+    "nota": "Previsão: calor extremo, ar muito seco e risco alto de incêndio.",
+    "socorro": "Ontem enchente, hoje seca. Não tô entendendo mais nada, meu filho. Em trinta anos, nunca vi uma semana assim."
+  },
+  {
+    "dia": 4,
+    "turno": "noite",
+    "condicao": "colapso_alto",
+    "manchetes": [
+      "Fumaça, calor e falta d'água: central não dá conta das ligações",
+      "Brigadistas pedem reforço para conter o fogo no Parque"
+    ]
+  },
+  {
+    "dia": 4,
+    "turno": "noite",
+    "manchetes": [
+      "Fogo consome 800 hectares do Parque Estadual",
+      "Qualidade do ar em Porto Ameno é a pior já registrada"
+    ]
+  },
+  {
+    "dia": 5,
+    "turno": "manha",
+    "manchetes": [
+      "Alerta máximo: calor, ressaca e temporal podem chegar no mesmo dia",
+      "Especialistas ligam eventos extremos ao aquecimento global",
+      "Defesa Civil abre abrigos em escolas"
+    ],
+    "nota": "Previsão: mar agitado pela manhã e chuva muito forte à tarde.",
+    "socorro": "É, meu filho... alguma coisa mudou. Não é mais a cidade em que eu comecei. Hoje, respira fundo e faz o melhor que der."
+  },
+  {
+    "dia": 5,
+    "turno": "noite",
+    "condicao": "juninho_ignorado",
+    "manchetes": [
+      "Menino de 10 anos é resgatado por vizinhos horas depois de pedir ajuda",
+      "Temporal deixa mil desalojados em Porto Ameno"
+    ],
+    "socorro": "Era o Juninho, meu filho. Dessa vez era de verdade. Os vizinhos tiraram ele pela janela, ele está bem. Mas a gente aprende: quem passa trote também pode precisar de ajuda um dia."
+  },
+  {
+    "dia": 5,
+    "turno": "noite",
+    "condicao": "colapso_alto",
+    "manchetes": [
+      "Tempestade perfeita: semana termina com a central em colapso",
+      "Porto Ameno decreta situação de emergência"
+    ]
+  },
+  {
+    "dia": 5,
+    "turno": "noite",
+    "manchetes": [
+      "Tempestade perfeita: Porto Ameno decreta situação de emergência",
+      "Menino que passava trotes é resgatado por bombeiros em cima do guarda-roupa"
+    ],
+    "socorro": "Uma semana, meu filho. Uma semana. E o pior é saber que vai ter outras."
   }
 ]

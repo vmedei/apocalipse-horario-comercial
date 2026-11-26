@@ -1,10 +1,10 @@
 // @ts-check
 // Tela da central (wireframe: referencias/wireframes/tela2_jogo_hud.png).
-// Marco 2: o dia 1 inteiro — relógio, fila viva, veículos, Colapso, demissão e tutorial.
+// Um expediente (dia 1 a 5): relógio, fila viva, veículos, Colapso, demissão e tutorial.
 
 import { el } from '../ui/dom.js';
 import { irPara } from '../roteador.js';
-import { estado, parametros, lerSalvo, salvar } from '../estado.js';
+import { estado, parametros, lerSalvo, salvar, atualizarEstado } from '../estado.js';
 import { ouvir } from '../eventos.js';
 import { iconeOcorrencia, iconeOrgao } from '../ui/icones.js';
 import { criarMapa } from '../ui/mapa.js';
@@ -28,7 +28,9 @@ import personagens from '../dados/personagens.json';
 import rotulos from '../dados/rotulos.json';
 import dicas from '../dados/dicas_socorro.json';
 import tutorialPassos from '../dados/tutorial.json';
-import dia1 from '../dados/chamadas/dia_1.json';
+import escritorio from '../dados/escritorio.json';
+import { chamadasDoDia } from '../dados/chamadas.js';
+import { registrarDia, novaPartida } from '../sistemas/partida.js';
 
 /** Maior passo de tempo por quadro (evita saltos se o navegador travar). */
 const PASSO_MAXIMO = 0.25;
@@ -36,7 +38,10 @@ const PASSO_MAXIMO = 0.25;
 /** @param {HTMLElement} container */
 export function telaJogo(container) {
   /** @type {import('../sistemas/expediente.js').Expediente} */
-  let exp = criarExpediente({ chamadas: dia1, orgaos });
+  const dia = estado.dia;
+  const chamadasHoje = chamadasDoDia(dia);
+  let exp = criarExpediente({ chamadas: chamadasHoje, orgaos, semente: estado.semente + dia, adaptativo: true });
+  const salaDoDia = escritorio[String(dia)];
   /** @type {{ resolvida: any } | null} */
   let ultimo = null;
   let encerrado = false;
@@ -57,7 +62,13 @@ export function telaJogo(container) {
 
   const barra = el('header', { class: 'barra-superior' }, [
     el('span', { class: 'relogio-caixa' }, [el('span', { 'aria-hidden': 'true', texto: '🕗' }), relogio]),
-    el('span', { class: 'etiqueta', texto: `Dia ${estado.dia} de 5` }),
+    el('span', { class: 'etiqueta', texto: `Dia ${dia} de 5` }),
+    salaDoDia
+      ? el('span', { class: 'etiqueta escritorio', title: 'Situação do escritório da central' }, [
+          el('span', { 'aria-hidden': 'true', texto: `${salaDoDia.icone} ` }),
+          salaDoDia.texto
+        ])
+      : null,
     indicadorPausa,
     el('div', { class: 'medidor-colapso' }, [el('span', { class: 'rotulo-pequeno', texto: 'Colapso' }), barraColapso, textoColapso]),
     listaFrota,
@@ -403,6 +414,9 @@ export function telaJogo(container) {
         if (exp.ativa) chamada = true;
       } else if (e.tipo === 'colapso_mudou') {
         colapso = true;
+      } else if (e.tipo === 'ritmo_mudou') {
+        if (e.motivo === 'errando') dar('ritmo_lento');
+        else if (e.motivo === 'acertando' && e.de >= 1) dar('ritmo_rapido');
       } else if (e.tipo === 'colapsou') {
         encerrar('colapso');
       } else if (e.tipo === 'dia_terminou') {
@@ -419,10 +433,15 @@ export function telaJogo(container) {
     if (encerrado) return;
     encerrado = true;
     cancelAnimationFrame(rafId);
-    const dados = { resumo: resumoDoDia(exp), hora: horaDoJogo(exp.tempo), dia: estado.dia };
-    if (motivo === 'expediente') salvar('concluiu_dia_1', true);
+    const dados = { resumo: resumoDoDia(exp), hora: horaDoJogo(exp.tempo), dia };
     raiz.classList.add(motivo === 'colapso' ? 'encerrando-colapso' : 'encerrando');
-    window.setTimeout(() => irPara(motivo === 'colapso' ? 'demitido' : 'fim_dia', dados), 1200);
+    if (motivo === 'expediente') {
+      salvar('concluiu_dia_1', true);
+      atualizarEstado({ partida: registrarDia(estado.partida ?? novaPartida(dia), dia, exp) });
+      window.setTimeout(() => irPara('jornal', { dia, turno: 'noite', fim: dados }), 1200);
+    } else {
+      window.setTimeout(() => irPara('demitido', dados), 1200);
+    }
   }
 
   function tocar() {
@@ -461,7 +480,7 @@ export function telaJogo(container) {
     if (cmd.comando === 'colapso') aplicar(definirColapso(exp, cmd.valor));
     else if (cmd.comando === 'terminar') aplicar(terminarAgora(exp));
     else if (cmd.comando === 'disparar') {
-      const c = dia1.find((x) => x.id === cmd.chamadaId);
+      const c = chamadasHoje.find((x) => x.id === cmd.chamadaId);
       if (c) aplicar(dispararChamada(exp, c));
     }
   });
