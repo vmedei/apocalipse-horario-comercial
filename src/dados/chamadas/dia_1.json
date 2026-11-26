@@ -1,0 +1,245 @@
+[
+  {
+    "id": "d1_arlindo_gato",
+    "hora": "08:20",
+    "personagem": "seu_arlindo",
+    "bairro": "centro",
+    "titulo_fila": "Gato na árvore",
+    "icone": "gato",
+    "emocao": "calmo",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 1,
+    "tempo_limite": 90,
+    "fala_inicial": "Bom dia, minha filha... o Bolinha subiu na mangueira e não desce de jeito nenhum.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Rua das Acácias, 40, no Centro."
+      },
+      {
+        "id": "risco",
+        "texto": "Alguém tentou subir?",
+        "resposta": "Eu ia pegar a escada, mas a minha filha não deixou."
+      }
+    ],
+    "feedback_acerto": "Gato resgatado! Seu Arlindo agradece com um bolo de fubá.",
+    "feedback_erro": "Resgate de animal em altura é com os Bombeiros (193).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_juninho_jacare",
+    "hora": "08:45",
+    "personagem": "juninho",
+    "bairro": "centro",
+    "titulo_fila": "Animal em casa",
+    "icone": "telefone",
+    "emocao": "risonho",
+    "climatica": false,
+    "evento": null,
+    "trote": true,
+    "orgao_correto": null,
+    "gravidade": 1,
+    "tempo_limite": 60,
+    "fala_inicial": "Socorro! Tem um JACARÉ no meu banheiro! (risadas ao fundo)",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Na minha casa, ué! (mais risadas)"
+      },
+      {
+        "id": "adulto",
+        "texto": "Tem um adulto aí?",
+        "resposta": "...tchau!"
+      }
+    ],
+    "feedback_acerto": "Trote identificado. A linha ficou livre para quem precisa.",
+    "feedback_erro": "Risadas, endereço vago e criança fugindo da pergunta: sinais de trote.",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_ze_vaca",
+    "hora": "09:30",
+    "personagem": "seu_ze",
+    "bairro": "serra_seca",
+    "titulo_fila": "Animal na pista",
+    "icone": "vaca",
+    "emocao": "calmo",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 90,
+    "fala_inicial": "A Mimosa fugiu da cerca e tá parada no meio da estrada da Serra. Já quase bateram nela.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "No quilômetro 8 da estrada da Serra Seca."
+      },
+      {
+        "id": "acidente",
+        "texto": "Houve acidente?",
+        "resposta": "Ainda não, graças a Deus."
+      }
+    ],
+    "feedback_acerto": "A Polícia sinalizou a pista e Seu Zé levou a Mimosa de volta.",
+    "feedback_erro": "Animal na pista é risco de trânsito: Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_morro_som",
+    "hora": "10:15",
+    "personagem": "vizinha_morro",
+    "bairro": "morro",
+    "titulo_fila": "Som alto",
+    "icone": "som",
+    "emocao": "irritada",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 120,
+    "fala_inicial": "O vizinho tá com o som no último desde as seis da manhã. Já pedi, ele me xingou.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Beco 3 do Morro da Vista, casa azul."
+      },
+      {
+        "id": "violencia",
+        "texto": "Houve agressão?",
+        "resposta": "Só xingamento, mas o clima tá feio."
+      }
+    ],
+    "feedback_acerto": "A Polícia conversou com o vizinho. O som baixou.",
+    "feedback_erro": "Perturbação e ameaça entre vizinhos é com a Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_kelly_furto",
+    "hora": "11:40",
+    "personagem": "kelly",
+    "bairro": "orla",
+    "titulo_fila": "Furto no quiosque",
+    "icone": "bolsa",
+    "emocao": "irritada",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "190",
+    "gravidade": 1,
+    "tempo_limite": 90,
+    "fala_inicial": "Levaram a caixinha do troco do meu quiosque! O cara correu pela areia.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Quiosque 12, Praia do Sossego."
+      },
+      {
+        "id": "feridos",
+        "texto": "Alguém se machucou?",
+        "resposta": "Não, só o meu prejuízo."
+      }
+    ],
+    "feedback_acerto": "A Polícia registrou a ocorrência e fez uma ronda na orla.",
+    "feedback_erro": "Furto é com a Polícia (190).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_parque_trilheiro",
+    "hora": "13:10",
+    "personagem": "turista",
+    "bairro": "parque",
+    "titulo_fila": "Pessoa perdida",
+    "icone": "mapa",
+    "emocao": "nervoso",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "193",
+    "gravidade": 2,
+    "tempo_limite": 75,
+    "fala_inicial": "Me perdi na trilha do Parque Estadual e a bateria do celular tá acabando.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "O que você vê ao redor?",
+        "resposta": "Uma cachoeira pequena e uma placa quebrada."
+      },
+      {
+        "id": "feridos",
+        "texto": "Está ferido?",
+        "resposta": "Torci o pé, mas consigo andar devagar."
+      }
+    ],
+    "feedback_acerto": "Os Bombeiros encontraram o trilheiro perto da cachoeira.",
+    "feedback_erro": "Busca e resgate em mata é com os Bombeiros (193).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_centro_queda",
+    "hora": "15:00",
+    "personagem": "transeunte",
+    "bairro": "centro",
+    "titulo_fila": "Pessoa caída",
+    "icone": "saude",
+    "emocao": "nervoso",
+    "climatica": false,
+    "evento": null,
+    "trote": false,
+    "orgao_correto": "192",
+    "gravidade": 2,
+    "tempo_limite": 60,
+    "fala_inicial": "Um senhor escorregou na calçada e bateu a cabeça. Tá consciente, mas sangrando.",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Onde é?",
+        "resposta": "Em frente à farmácia da Praça Central."
+      },
+      {
+        "id": "consciente",
+        "texto": "Ele está consciente?",
+        "resposta": "Tá, mas meio confuso."
+      }
+    ],
+    "feedback_acerto": "O SAMU atendeu o senhor na praça e o levou para avaliação.",
+    "feedback_erro": "Pessoa ferida precisa de atendimento médico: SAMU (192).",
+    "mitigada_por": null
+  },
+  {
+    "id": "d1_juninho_disco",
+    "hora": "16:30",
+    "personagem": "juninho",
+    "bairro": "centro",
+    "titulo_fila": "Objeto no céu",
+    "icone": "telefone",
+    "emocao": "risonho",
+    "climatica": false,
+    "evento": null,
+    "trote": true,
+    "orgao_correto": null,
+    "gravidade": 1,
+    "tempo_limite": 60,
+    "fala_inicial": "Moço, tem um disco voador pousando na escola! Manda o exército! (risada abafada)",
+    "perguntas": [
+      {
+        "id": "onde",
+        "texto": "Qual escola?",
+        "resposta": "A... a escola do... ah, esquece."
+      }
+    ],
+    "feedback_acerto": "Trote identificado de novo. A Dona Socorro anota o número do Juninho.",
+    "feedback_erro": "Mesmo número, mesma risada: é o Juninho de novo.",
+    "mitigada_por": null
+  }
+]

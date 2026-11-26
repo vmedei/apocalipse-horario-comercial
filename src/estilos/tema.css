@@ -1,0 +1,40 @@
+/* Variáveis de tema. Por enquanto, tons de cinza dos wireframes.
+   Cada dia (classe dia-N no <body>) poderá mudar estas variáveis no Marco 3. */
+
+:root {
+  --cor-fundo: #f6f6f4;
+  --cor-superficie: #ffffff;
+  --cor-superficie-suave: #eeeeec;
+  --cor-texto: #222222;
+  --cor-texto-suave: #5f5f5f;
+  --cor-borda: #2b2b2b;
+  --cor-borda-suave: #a3a3a3;
+  --cor-destaque: #1f5fa8;
+  --cor-perigo: #b3261e;
+  --cor-perigo-fundo: #fdecea;
+  --cor-foco: #1f5fa8;
+
+  --fonte: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --fonte-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  --tamanho-texto: 1rem;
+
+  --raio: 10px;
+  --espaco: 1rem;
+  --largura-maxima: 72rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cor-fundo: #18181a;
+    --cor-superficie: #232326;
+    --cor-superficie-suave: #2d2d31;
+    --cor-texto: #f1f1ef;
+    --cor-texto-suave: #b7b7b2;
+    --cor-borda: #e6e6e2;
+    --cor-borda-suave: #6c6c6a;
+    --cor-destaque: #7fb2f0;
+    --cor-perigo: #ff8a80;
+    --cor-perigo-fundo: #3a1714;
+    --cor-foco: #7fb2f0;
+  }
+}

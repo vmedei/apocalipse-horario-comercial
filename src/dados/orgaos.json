@@ -1,0 +1,26 @@
+[
+  {
+    "id": "190",
+    "nome": "Polícia",
+    "veiculo": "viatura",
+    "frota_inicial": 3
+  },
+  {
+    "id": "192",
+    "nome": "SAMU",
+    "veiculo": "ambulância",
+    "frota_inicial": 2
+  },
+  {
+    "id": "193",
+    "nome": "Bombeiros",
+    "veiculo": "caminhão",
+    "frota_inicial": 2
+  },
+  {
+    "id": "199",
+    "nome": "Defesa Civil",
+    "veiculo": "equipe",
+    "frota_inicial": 1
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "dia": 1,
+    "turno": "manha",
+    "manchetes": [
+      "Festa junina do Centro bate recorde de público",
+      "Prefeitura promete tapar buraco da Av. Beira-Rio"
+    ],
+    "nota": "Calor acima da média para a época."
+  },
+  {
+    "dia": 3,
+    "turno": "noite",
+    "condicao": "colapso_alto",
+    "manchetes": [
+      "Central de emergência não dá conta das chamadas durante temporal"
+    ]
+  },
+  {
+    "dia": 3,
+    "turno": "noite",
+    "condicao": "padrao",
+    "manchetes": [
+      "Chuva de um mês cai em seis horas; Defesa Civil evacua parte do Morro da Vista"
+    ]
+  }
+]

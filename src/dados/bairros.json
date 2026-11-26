@@ -1,0 +1,43 @@
+[
+  {
+    "id": "orla",
+    "nome": "Orla (Praia do Sossego)",
+    "riscos": [
+      "ressaca",
+      "erosao",
+      "insolacao"
+    ]
+  },
+  {
+    "id": "morro",
+    "nome": "Morro da Vista",
+    "riscos": [
+      "deslizamento"
+    ]
+  },
+  {
+    "id": "centro",
+    "nome": "Centro e Beira-Rio",
+    "riscos": [
+      "alagamento",
+      "enchente",
+      "ilha_calor"
+    ]
+  },
+  {
+    "id": "serra_seca",
+    "nome": "Serra Seca",
+    "riscos": [
+      "seca",
+      "queimada"
+    ]
+  },
+  {
+    "id": "parque",
+    "nome": "Parque Estadual",
+    "riscos": [
+      "incendio_florestal",
+      "fumaca"
+    ]
+  }
+]

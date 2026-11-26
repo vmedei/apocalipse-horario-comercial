@@ -1,0 +1,225 @@
+/* ---------- Componentes comuns ---------- */
+
+.etiqueta {
+  display: inline-block;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.botao-secundario {
+  background: var(--cor-superficie);
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+}
+
+.nota {
+  color: var(--cor-texto-suave);
+  font-style: italic;
+}
+
+/* ---------- Menu inicial ---------- */
+
+.tela-menu {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 34rem;
+  margin: 1rem auto 0;
+}
+
+.tela-menu .logo {
+  background: var(--cor-superficie);
+  border: 3px solid var(--cor-borda);
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+}
+
+.tela-menu .sobretitulo {
+  margin: 0 0 0.5rem;
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+}
+
+.tela-menu h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.menu-botoes {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.linha-botoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.botao-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.4rem;
+  padding: 0.5rem 1.1rem;
+  background: var(--cor-superficie);
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.botao-menu .icone {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+.botao-menu .etiqueta {
+  margin-left: auto;
+  font-weight: 400;
+}
+
+.botao-menu.principal {
+  min-height: 4.2rem;
+  font-size: 1.35rem;
+  border-width: 3px;
+}
+
+.botao-menu:not(:disabled):hover {
+  background: var(--cor-superficie-suave);
+}
+
+.botao-menu:disabled {
+  color: var(--cor-texto-suave);
+  border-color: var(--cor-borda-suave);
+}
+
+.barra-menu {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -0.75rem;
+}
+
+.botao-ajuda {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 2px solid var(--cor-borda);
+  background: var(--cor-superficie);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.aviso {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  border: 2px solid var(--cor-borda-suave);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  font-size: 0.9rem;
+}
+
+.aviso .icone {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+@media (max-width: 30rem) {
+  .linha-botoes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Jogo (provisório) ---------- */
+
+.barra-superior {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+.barra-superior .relogio {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.barra-superior .botao-secundario {
+  margin-left: auto;
+}
+
+.grade-orgaos {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.85rem;
+}
+
+.cartao-orgao {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+.cartao-orgao .numero {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.cartao-orgao .nome {
+  font-weight: 700;
+}
+
+.cartao-orgao .detalhe {
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+.lista-bairros {
+  padding-left: 1.2rem;
+}
+
+.lista-bairros li {
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- Telas de texto ---------- */
+
+.tela-texto {
+  max-width: 42rem;
+  margin: 0 auto;
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "id": "viatura_190",
+    "tipo": "responder",
+    "nome": "+1 viatura (190)",
+    "custo": 60,
+    "libera_dia": 1,
+    "efeito": {
+      "frota": {
+        "190": 1
+      }
+    }
+  },
+  {
+    "id": "arborizacao_centro",
+    "tipo": "adaptar",
+    "nome": "Arborização no Centro",
+    "custo": 100,
+    "libera_dia": 2,
+    "efeito": {
+      "bairro": "centro",
+      "eventos": [
+        "ilha_calor",
+        "insolacao"
+      ],
+      "reducao": 0.5,
+      "atraso_dias": 1
+    }
+  },
+  {
+    "id": "drenagem_beira_rio",
+    "tipo": "adaptar",
+    "nome": "Drenagem na Beira-Rio",
+    "custo": 150,
+    "libera_dia": 3,
+    "efeito": {
+      "bairro": "centro",
+      "eventos": [
+        "alagamento",
+        "enchente"
+      ],
+      "reducao": 0.6,
+      "atraso_dias": 1
+    }
+  },
+  {
+    "id": "alerta_sms_morro",
+    "tipo": "adaptar",
+    "nome": "Alerta por SMS no Morro",
+    "custo": 70,
+    "libera_dia": 3,
+    "efeito": {
+      "bairro": "morro",
+      "eventos": [
+        "deslizamento"
+      ],
+      "reducao_gravidade": 1,
+      "atraso_dias": 0
+    }
+  }
+]
