@@ -30,6 +30,17 @@ export const BALANCO = Object.freeze({
     fimDoDia: -30
   }),
 
+  // Triagem (perguntas e endereço)
+  triagem: Object.freeze({
+    pontosEncaminhamento: 50,
+    pontosEndereco: Object.freeze({ confirmado: 20, aproximado: 10, nenhum: 0 }),
+    pontosEssenciais: 30,
+    penalidadeIrrelevante: 10,
+    // Sem endereço confirmado, o veículo demora mais e a ocorrência piora.
+    fatorMissao: Object.freeze({ confirmado: 1, aproximado: 1.3, nenhum: 1.6 }),
+    colapsoPorGravidade: Object.freeze({ confirmado: 0, aproximado: 2, nenhum: 4 })
+  }),
+
   // Estrelas no fim do Modo Expediente
   estrelas: Object.freeze({
     duasAcertoMinimo: 0.7,

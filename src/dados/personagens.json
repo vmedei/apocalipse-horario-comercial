@@ -1,23 +1,28 @@
 {
   "seu_arlindo": {
     "nome": "Seu Arlindo",
-    "descricao": "aposentado do Centro"
+    "descricao": "aposentado do Centro",
+    "apelido": "Arlindo"
   },
   "juninho": {
     "nome": "Juninho",
-    "descricao": "menino de 10 anos"
+    "descricao": "menino de 10 anos",
+    "apelido": "Juninho"
   },
   "seu_ze": {
     "nome": "Seu Zé",
-    "descricao": "agricultor da Serra Seca"
+    "descricao": "agricultor da Serra Seca",
+    "apelido": "Zé"
   },
   "kelly": {
     "nome": "Kelly",
-    "descricao": "dona de quiosque na orla"
+    "descricao": "dona de quiosque na orla",
+    "apelido": "Kelly"
   },
   "vizinha_morro": {
     "nome": "Dona Cida",
-    "descricao": "moradora do Morro da Vista"
+    "descricao": "moradora do Morro da Vista",
+    "apelido": "Cida"
   },
   "turista": {
     "nome": "Turista",

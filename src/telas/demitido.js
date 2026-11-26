@@ -38,6 +38,8 @@ export function resumoEmLista(r) {
     ...item('Chamadas atendidas', String(r.atendidas)),
     ...item('Encaminhamentos certos', `${r.acertos} de ${r.atendidas} (${r.acertoPct}%)`),
     ...item('Trotes identificados', String(r.trotesIdentificados)),
+    ...(r.triagemMedia !== undefined ? item('Nota média da triagem', `${r.triagemMedia}/100`) : []),
+    ...(r.enderecoPct !== undefined ? item('Endereços confirmados', `${r.enderecoPct}%`) : []),
     ...item('Ficaram sem atendimento', String(r.naoAtendidas)),
     ...item('Espera média na fila', textoDuracao(r.esperaMedia)),
     ...item('Colapso máximo', `${Math.round(r.colapsoMax)}%`)

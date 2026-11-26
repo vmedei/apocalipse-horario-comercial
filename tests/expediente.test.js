@@ -65,6 +65,17 @@ describe('trajeto do veículo', () => {
   });
 });
 
+// Faz as perguntas que um bom atendente faria: endereço, confirmação e essenciais.
+function triar(exp) {
+  for (let volta = 0; volta < 2; volta++) {
+    for (const p of exp.ativa?.chamada.perguntas ?? []) {
+      if (p.tipo === 'util' || p.tipo === 'irrelevante') continue;
+      ({ exp } = perguntar(exp, p.id));
+    }
+  }
+  return exp;
+}
+
 describe('expediente', () => {
   it('as chamadas chegam na hora marcada', () => {
     let { exp, eventos } = rodar(novo(), 9);
@@ -89,6 +100,7 @@ describe('expediente', () => {
   it('despachar ocupa um veículo até a missão acabar', () => {
     let { exp } = rodar(novo(), 11);
     ({ exp } = atender(exp, 'd1_arlindo_gato'));
+    exp = triar(exp);
     expect(livres(exp, '193')).toBe(2);
     ({ exp } = despachar(exp, '193'));
     expect(livres(exp, '193')).toBe(1);
@@ -124,6 +136,7 @@ describe('expediente', () => {
       if (!exp.ativa && exp.fila.length) {
         const item = exp.fila[0];
         ({ exp } = atender(exp, item.chamada.id));
+        exp = triar(exp);
         const escolha = item.chamada.trote ? 'trote' : item.chamada.orgao_correto;
         ({ exp } = despachar(exp, escolha));
       }
@@ -167,7 +180,10 @@ describe('dificuldade adaptativa', () => {
     let mudou = false;
     for (let t = 0; t < 200 && !exp.fim; t += 0.5) {
       ({ exp } = avancar(exp, 0.5));
-      if (!exp.ativa && exp.fila.length) ({ exp } = atender(exp, exp.fila[0].chamada.id));
+      if (!exp.ativa && exp.fila.length) {
+        ({ exp } = atender(exp, exp.fila[0].chamada.id));
+        exp = triar(exp);
+      }
       if (exp.ativa) {
         const c = exp.ativa.chamada;
         const r = despachar(exp, c.trote ? 'trote' : c.orgao_correto);

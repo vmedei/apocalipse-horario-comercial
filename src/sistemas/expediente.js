@@ -11,6 +11,7 @@ import { resolverDespacho } from './despacho.js';
 import { aplicarColapso, colapsou } from './colapso.js';
 import { avaliarRitmo, reescalonar } from './dificuldade.js';
 import { criarAleatorio } from './aleatorio.js';
+import { perguntasDisponiveis, estadoEndereco, efeitoEndereco, pontuarTriagem } from './triagem.js';
 
 /**
  * @typedef {Object} Chamada
@@ -42,6 +43,8 @@ import { criarAleatorio } from './aleatorio.js';
  * @property {number} emLinha   segundos atendendo
  * @property {string[]} perguntas
  * @property {number} hora      segundo real em que foi resolvida
+ * @property {ReturnType<typeof pontuarTriagem>} triagem
+ * @property {number} deltaEndereco  Colapso extra por despachar sem endereço confirmado
  */
 
 /**
@@ -193,7 +196,7 @@ export function atender(exp, chamadaId) {
 export function perguntar(exp, perguntaId) {
   const ativa = exp.ativa;
   if (!ativa || ativa.perguntas.includes(perguntaId)) return { exp, eventos: [] };
-  const pergunta = ativa.chamada.perguntas.find((p) => p.id === perguntaId);
+  const pergunta = perguntasDisponiveis(ativa.chamada, ativa.perguntas).find((p) => p.id === perguntaId);
   if (!pergunta) return { exp, eventos: [] };
   return {
     exp: { ...exp, ativa: { ...ativa, perguntas: [...ativa.perguntas, perguntaId] } },
@@ -218,7 +221,11 @@ export function despachar(exp, escolha) {
   if (escolha !== 'trote' && livres(exp, escolha) === 0) return { exp, eventos: [], erro: 'sem_veiculo' };
 
   const resultado = resolverDespacho(ativa.chamada, escolha);
-  const colapso = aplicarColapso(exp.colapso, resultado.deltaColapso);
+  const endereco = estadoEndereco(ativa.chamada, ativa.perguntas);
+  const efeito = efeitoEndereco(endereco);
+  // Sem endereço confirmado, a ocorrência piora enquanto o veículo procura o local.
+  const deltaEndereco = escolha === 'trote' ? 0 : efeito.colapsoPorGravidade * (ativa.chamada.gravidade ?? 1);
+  const colapso = aplicarColapso(exp.colapso, resultado.deltaColapso + deltaEndereco);
 
   /** @type {Evento[]} */
   const eventos = [];
@@ -228,7 +235,8 @@ export function despachar(exp, escolha) {
       orgao: escolha,
       bairro: ativa.chamada.bairro,
       inicio: exp.tempo,
-      fim: exp.tempo + BALANCO.tempoMissaoSegundos
+      fim: exp.tempo + BALANCO.tempoMissaoSegundos * efeito.fatorMissao,
+      endereco
     };
     missoes = [...missoes, missao];
     eventos.push({ tipo: 'veiculo_partiu', missao });
@@ -242,10 +250,12 @@ export function despachar(exp, escolha) {
     esperou: ativa.atendidaEm - ativa.chegouEm,
     emLinha: exp.tempo - ativa.atendidaEm,
     perguntas: ativa.perguntas,
-    hora: exp.tempo
+    hora: exp.tempo,
+    triagem: pontuarTriagem(ativa.chamada, ativa.perguntas, resultado),
+    deltaEndereco
   };
   eventos.push({ tipo: 'chamada_resolvida', resolvida });
-  eventos.push({ tipo: 'colapso_mudou', delta: resultado.deltaColapso, motivo: 'despacho' });
+  eventos.push({ tipo: 'colapso_mudou', delta: resultado.deltaColapso + deltaEndereco, motivo: 'despacho' });
 
   /** @type {Expediente} */
   let novo = {
@@ -281,6 +291,9 @@ export function resumoDoDia(exp) {
   const atendidas = exp.resolvidas.length;
   const acertos = exp.resolvidas.filter((r) => r.resultado.acertou).length;
   const esperaMedia = atendidas ? exp.resolvidas.reduce((s, r) => s + r.esperou, 0) / atendidas : 0;
+  const triagemMedia = atendidas ? Math.round(exp.resolvidas.reduce((s, r) => s + (r.triagem?.total ?? 0), 0) / atendidas) : 0;
+  const enderecosConfirmados = exp.resolvidas.filter((r) => !r.chamada.trote && r.triagem?.estadoEndereco === 'confirmado').length;
+  const reais = exp.resolvidas.filter((r) => !r.chamada.trote).length;
   return {
     atendidas,
     acertos,
@@ -289,7 +302,9 @@ export function resumoDoDia(exp) {
     esperaMedia,
     colapsoFinal: exp.colapso,
     colapsoMax: exp.colapsoMax,
-    trotesIdentificados: exp.resolvidas.filter((r) => r.chamada.trote && r.escolha === 'trote').length
+    trotesIdentificados: exp.resolvidas.filter((r) => r.chamada.trote && r.escolha === 'trote').length,
+    triagemMedia,
+    enderecoPct: reais ? Math.round((enderecosConfirmados / reais) * 100) : 0
   };
 }
 

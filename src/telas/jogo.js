@@ -31,6 +31,7 @@ import tutorialPassos from '../dados/tutorial.json';
 import escritorio from '../dados/escritorio.json';
 import { chamadasDoDia } from '../dados/chamadas.js';
 import { registrarDia, novaPartida } from '../sistemas/partida.js';
+import { perguntasDisponiveis, estadoEndereco } from '../sistemas/triagem.js';
 
 /** Maior passo de tempo por quadro (evita saltos se o navegador travar). */
 const PASSO_MAXIMO = 0.25;
@@ -52,6 +53,16 @@ export function telaJogo(container) {
 
   const nomeBairro = (id) => bairros.find((b) => b.id === id)?.nome ?? id;
   const pessoaDe = (chamada) => personagens[chamada.personagem] ?? { nome: 'Pessoa', descricao: '' };
+  /**
+   * Quem está na linha, do ponto de vista da central: a partir do dia 2 os moradores
+   * conhecidos só aparecem pelo nome depois de se apresentarem na ligação.
+   */
+  const pessoaNaLinha = (chamada, feitas) => {
+    const p = pessoaDe(chamada);
+    if (dia === 1 || !p.apelido) return { ...p, conhecida: true };
+    const ouvido = [chamada.fala_inicial, ...chamada.perguntas.filter((x) => feitas.includes(x.id)).map((x) => x.resposta)].join(' ');
+    return ouvido.includes(p.apelido) ? { ...p, conhecida: true } : { nome: rotulos.pessoa_desconhecida, descricao: '', conhecida: false };
+  };
 
   // ---------- Barra superior ----------
   const relogio = el('span', { class: 'relogio', role: 'timer', 'aria-live': 'off' }, ['08:00']);
@@ -259,45 +270,48 @@ export function telaJogo(container) {
     }
 
     const c = ativa.chamada;
-    const pessoa = pessoaDe(c);
+    const pessoa = pessoaNaLinha(c, ativa.perguntas);
+    const quem = pessoa.conhecida ? pessoa.nome : rotulos.quem_liga;
     const transcricao = el('ol', { class: 'transcricao', 'aria-live': 'polite', 'aria-label': 'Transcrição da ligação' }, [
-      fala(pessoa.nome, `“${c.fala_inicial}”`, 'pessoa'),
+      fala(quem, `“${c.fala_inicial}”`, 'pessoa'),
       ...ativa.perguntas.flatMap((id) => {
         const p = c.perguntas.find((x) => x.id === id);
-        return p ? [fala('Você', p.texto, 'atendente'), fala(pessoa.nome, `“${p.resposta}”`, 'pessoa')] : [];
+        return p ? [fala('Você', p.texto, 'atendente'), fala(quem, `“${p.resposta}”`, 'pessoa')] : [];
       })
     ]);
 
     const perguntas = el(
       'div',
       { class: 'perguntas' },
-      c.perguntas.map((p) => {
+      perguntasDisponiveis(c, ativa.perguntas).map((p) => {
         const feita = ativa.perguntas.includes(p.id);
+        const texto = `${feita ? '✓ ' : ''}${p.texto}${estado.gabarito ? ` [${p.tipo ?? '?'}]` : ''}`;
         return el('button', {
           type: 'button',
           class: feita ? 'chip feito' : 'chip',
           disabled: feita,
-          texto: feita ? `✓ ${p.texto}` : p.texto,
+          texto,
           aoClicar: () => aplicar(perguntar(exp, p.id))
         });
       })
     );
 
+    const endereco = estadoEndereco(c, ativa.perguntas);
+    const respondidas = c.perguntas.filter((p) => ativa.perguntas.includes(p.id));
+
     const ficha = el(
       'dl',
       { class: 'ficha' },
       [
-        ['Bairro', nomeBairro(c.bairro), false],
-        ...c.perguntas.map((p) => {
-          const feita = ativa.perguntas.includes(p.id);
-          return [rotulos.campos_ficha[p.id] ?? p.texto, feita ? p.resposta : '? (pergunte)', !feita];
-        })
-      ].flatMap(([rotulo, valor, pendente]) => [el('dt', { texto: rotulo }), el('dd', { class: pendente ? 'suave' : null, texto: valor })])
+        ['Bairro', nomeBairro(c.bairro), null],
+        ['Endereço', rotulos.estado_endereco[endereco], `endereco-${endereco}`],
+        ...respondidas.map((p) => [rotulos.campos_ficha[p.id] ?? p.texto, p.resposta, null])
+      ].flatMap(([rotulo, valor, classe]) => [el('dt', { texto: rotulo }), el('dd', { class: classe, texto: valor })])
     );
 
     painelChamada.replaceChildren(
       el('div', { class: 'cabecalho-chamada' }, [
-        el('span', { class: 'retrato', 'aria-hidden': 'true', texto: iniciais(pessoa.nome) }),
+        el('span', { class: 'retrato', 'aria-hidden': 'true', texto: pessoa.conhecida ? iniciais(pessoa.nome) : '?' }),
         el('div', {}, [
           el('p', { class: 'nome-pessoa' }, [el('strong', { texto: pessoa.nome }), el('span', { class: 'suave', texto: ` · ${nomeBairro(c.bairro)}` })]),
           el('p', { class: 'murmurio suave' }, [
@@ -345,7 +359,9 @@ export function telaJogo(container) {
   }
 
   function feedbackDe(r) {
-    const sinal = r.resultado.deltaColapso > 0 ? `+${r.resultado.deltaColapso}` : String(r.resultado.deltaColapso);
+    const delta = r.resultado.deltaColapso + (r.deltaEndereco ?? 0);
+    const sinal = delta > 0 ? `+${delta}` : String(delta);
+    const t = r.triagem;
     return el('div', { class: r.resultado.acertou ? 'feedback acerto' : 'feedback erro', role: 'alert' }, [
       el('p', { class: 'titulo-feedback' }, [
         el('span', { class: 'icone-feedback', 'aria-hidden': 'true', texto: r.resultado.acertou ? '✔' : '✖' }),
@@ -353,6 +369,19 @@ export function telaJogo(container) {
       ]),
       el('p', { class: 'suave', texto: `${r.chamada.titulo_fila} · ${pessoaDe(r.chamada).nome}` }),
       el('p', { texto: r.resultado.motivo }),
+      t
+        ? el('p', { class: 'nota-triagem' }, [
+            el('strong', { texto: `Triagem: ${t.total}/100` }),
+            r.chamada.trote ? '' : ` · endereço ${rotulos.estado_endereco[t.estadoEndereco]}`
+          ])
+        : null,
+      t?.faltaram.length ? el('p', { class: 'suave', texto: `Faltou perguntar: ${t.faltaram.join(' · ')}` }) : null,
+      t?.desnecessarias.length
+        ? el('p', { class: 'suave', texto: `Perguntas desnecessárias (−${t.penalidade}): ${t.desnecessarias.join(' · ')}` })
+        : null,
+      r.deltaEndereco > 0
+        ? el('p', { class: 'suave', texto: `Sem endereço confirmado, o veículo vai procurar o local: chega mais tarde e a ocorrência piora (+${r.deltaEndereco} no Colapso).` })
+        : null,
       el('p', { class: 'suave', texto: `Medidor de Colapso: ${sinal}` })
     ]);
   }

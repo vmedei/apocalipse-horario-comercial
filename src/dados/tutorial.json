@@ -30,7 +30,12 @@
     {
       "alvo": ".perguntas",
       "aba": "chamada",
-      "texto": "Se faltar informação, pergunte. A resposta vai para a ficha da ocorrência."
+      "texto": "Pergunte o que importa: primeiro o endereço, depois o que decide quem mandar. Sem endereço confirmado o veículo demora para achar o local. E pergunta à toa gasta tempo e tira pontos."
+    },
+    {
+      "alvo": ".ficha",
+      "aba": "chamada",
+      "texto": "Na ficha fica o que você já sabe. Se o endereço aparecer como aproximado, peça uma referência antes de despachar."
     },
     {
       "alvo": ".grade-despacho",

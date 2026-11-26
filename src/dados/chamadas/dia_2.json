@@ -4,7 +4,7 @@
     "hora": "08:10",
     "personagem": "kelly",
     "bairro": "orla",
-    "titulo_fila": "Briga no quiosque",
+    "titulo_fila": "Confusão no quiosque",
     "icone": "som",
     "emocao": "irritada",
     "climatica": false,
@@ -13,20 +13,34 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 100,
-    "fala_inicial": "Kelly do quiosque 12 de novo! Dois turistas estão se empurrando por causa da última cadeira na sombra.",
+    "fala_inicial": "Kelly do quiosque 12. Tá uma confusão aqui na frente: gente gritando e um homem caído na areia.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Quiosque 12, Praia do Sossego."
       },
       {
+        "id": "caido",
+        "tipo": "essencial",
+        "texto": "O homem caído está machucado?",
+        "resposta": "Não, ele tropeçou na briga. Já levantou e quer bater no outro."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
         "id": "violencia",
-        "texto": "Alguém se machucou?",
-        "resposta": "Ainda não, mas um já pegou a garrafa."
+        "tipo": "essencial",
+        "texto": "Alguém está armado ou ameaçando?",
+        "resposta": "Um deles pegou uma garrafa e tá ameaçando."
       }
     ],
-    "feedback_acerto": "A Polícia separou a briga. A cadeira ficou com uma senhora que nem estava na confusão.",
+    "feedback_acerto": "A Polícia separou a briga antes que a garrafa voasse.",
     "feedback_erro": "Briga e ameaça entre pessoas é com a Polícia (190).",
     "mitigada_por": null
   },
@@ -35,7 +49,7 @@
     "hora": "09:00",
     "personagem": "turista",
     "bairro": "orla",
-    "titulo_fila": "Desmaio na areia",
+    "titulo_fila": "Homem na areia",
     "icone": "calor",
     "emocao": "nervoso",
     "climatica": true,
@@ -44,17 +58,31 @@
     "orgao_correto": "192",
     "gravidade": 2,
     "tempo_limite": 70,
-    "fala_inicial": "Socorro! Um homem desmaiou aqui na areia. Ele estava deitado no sol desde cedo, sem beber nada.",
+    "fala_inicial": "Moço, tem um homem deitado na areia que não responde direito. Faz horas que ele tá ali.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Na Praia do Sossego, perto do posto de guarda-vidas."
       },
       {
         "id": "consciente",
+        "tipo": "essencial",
         "texto": "Ele está respirando?",
-        "resposta": "Tá, mas não acorda direito e tá muito quente."
+        "resposta": "Tá, mas fraco, e a pele dele tá pelando de quente."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
+        "id": "agua",
+        "tipo": "essencial",
+        "texto": "Ele saiu do mar agora?",
+        "resposta": "Não, nem entrou na água. Ficou no sol o dia todo, sem beber nada."
       }
     ],
     "feedback_acerto": "O SAMU atendeu o turista: insolação. Foi hidratado e levado para observação.",
@@ -66,30 +94,44 @@
     "hora": "09:55",
     "personagem": "juninho",
     "bairro": "centro",
-    "titulo_fila": "Pessoa derretendo",
-    "icone": "telefone",
-    "emocao": "risonho",
+    "titulo_fila": "Homem caído",
+    "icone": "saude",
+    "emocao": "nervoso",
     "climatica": false,
     "evento": null,
     "trote": true,
     "orgao_correto": null,
     "gravidade": 1,
     "tempo_limite": 60,
-    "fala_inicial": "Moço, a minha vó DERRETEU de calor! Virou uma poça de sorvete no sofá! (risadas ao fundo)",
+    "fala_inicial": "Moço... tem um homem caído na frente da minha casa e ele não se mexe.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
-        "resposta": "Na casa da minha vó, ué. (risada)"
+        "resposta": "Na rua da... da padaria. Perto da casa da minha vó."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Eu... eu sou da quarta série."
+      },
+      {
+        "id": "respira",
+        "tipo": "essencial",
+        "texto": "Ele está respirando?",
+        "resposta": "Tá... tá roncando! (risada abafada) Ele tá dormindo no banco da praça!"
       },
       {
         "id": "adulto",
-        "texto": "Tem algum adulto aí?",
-        "resposta": "Tem não... quer dizer, tem. Tchau!"
+        "tipo": "essencial",
+        "texto": "Tem algum adulto com você?",
+        "resposta": "(cochicho ao fundo: \"desliga, desliga!\") ...tchau!"
       }
     ],
-    "feedback_acerto": "Trote identificado. O número do Juninho já está ficando famoso na central.",
-    "feedback_erro": "Gente não derrete, risadas ao fundo e o mesmo número de ontem: era o Juninho de novo.",
+    "feedback_acerto": "Trote identificado. O \"homem caído\" estava roncando no banco da praça.",
+    "feedback_erro": "O \"homem caído\" estava roncando no banco da praça, e o cochicho de \"desliga!\" entregou: era o Juninho de novo.",
     "mitigada_por": null
   },
   {
@@ -106,17 +148,25 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 100,
-    "fala_inicial": "Um carro fechou a minha moto no cruzamento da Avenida Beira-Rio. Ninguém se machucou, mas o cara quer ir embora.",
+    "fala_inicial": "Bateram na minha moto no cruzamento da Beira-Rio, e o outro motorista quer ir embora.",
     "perguntas": [
       {
+        "id": "onde",
+        "tipo": "endereco",
+        "texto": "Onde é?",
+        "resposta": "Cruzamento da Beira-Rio com a Rua das Acácias."
+      },
+      {
         "id": "feridos",
+        "tipo": "essencial",
         "texto": "Tem alguém ferido?",
         "resposta": "Não, foi só o susto e o retrovisor."
       },
       {
-        "id": "onde",
-        "texto": "Onde é?",
-        "resposta": "Cruzamento da Beira-Rio com a Rua das Acácias."
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
       }
     ],
     "feedback_acerto": "A Polícia registrou o acidente e organizou o trânsito.",
@@ -128,7 +178,7 @@
     "hora": "11:35",
     "personagem": "vizinha_morro",
     "bairro": "morro",
-    "titulo_fila": "Idosa passando mal",
+    "titulo_fila": "Vizinha estranha",
     "icone": "calor",
     "emocao": "nervosa",
     "climatica": true,
@@ -137,17 +187,37 @@
     "orgao_correto": "192",
     "gravidade": 2,
     "tempo_limite": 65,
-    "fala_inicial": "Dona Cida, do Morro. A minha vizinha, Dona Lurdes, tá tonta, vomitou e diz que o coração tá disparado. A casa dela é um forno.",
+    "fala_inicial": "Dona Cida, do Morro. A minha vizinha, Dona Lurdes, tá estranha. Não fala coisa com coisa.",
     "perguntas": [
       {
+        "id": "onde",
+        "tipo": "endereco",
+        "texto": "Onde é?",
+        "resposta": "Beco 7, a casa do lado da minha, a do portão verde."
+      },
+      {
+        "id": "casa",
+        "tipo": "essencial",
+        "texto": "Como está a casa dela?",
+        "resposta": "Um forno! Ela não abre a janela e hoje tá 40 graus."
+      },
+      {
+        "id": "consciente",
+        "tipo": "essencial",
+        "texto": "Ela está consciente?",
+        "resposta": "Tá, mas confusa. Vomitou e diz que o coração tá disparado."
+      },
+      {
         "id": "idade",
+        "tipo": "util",
         "texto": "Quantos anos ela tem?",
         "resposta": "Oitenta e dois."
       },
       {
-        "id": "consciente",
-        "texto": "Ela está consciente?",
-        "resposta": "Tá, mas meio confusa."
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
       }
     ],
     "feedback_acerto": "O SAMU levou Dona Lurdes. Idosos sofrem mais com o calor extremo.",
@@ -159,7 +229,7 @@
     "hora": "12:25",
     "personagem": "transeunte",
     "bairro": "centro",
-    "titulo_fila": "Cachorro preso no carro",
+    "titulo_fila": "Cachorro no carro",
     "icone": "cachorro",
     "emocao": "nervoso",
     "climatica": true,
@@ -168,17 +238,31 @@
     "orgao_correto": "193",
     "gravidade": 2,
     "tempo_limite": 70,
-    "fala_inicial": "Tem um cachorro preso num carro fechado no estacionamento do mercado. Ele tá ofegante, e o carro tá no sol.",
+    "fala_inicial": "Tem um cachorro dentro de um carro no estacionamento do mercado. Tá juntando gente em volta.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Estacionamento do Mercado Central."
       },
       {
+        "id": "estado",
+        "tipo": "essencial",
+        "texto": "Como o cachorro está?",
+        "resposta": "Ofegante, babando, quase deitado. O carro tá fechado no sol."
+      },
+      {
         "id": "dono",
+        "tipo": "util",
         "texto": "Acharam o dono?",
         "resposta": "Já chamaram no alto-falante e nada."
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
       }
     ],
     "feedback_acerto": "Os Bombeiros abriram o carro. O cachorro foi resfriado e passa bem.",
@@ -190,7 +274,7 @@
     "hora": "13:20",
     "personagem": "seu_ze",
     "bairro": "serra_seca",
-    "titulo_fila": "Bois na estrada",
+    "titulo_fila": "Bicho na estrada",
     "icone": "vaca",
     "emocao": "calmo",
     "climatica": false,
@@ -199,17 +283,31 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 110,
-    "fala_inicial": "Seu Zé de novo. A cerca do vizinho caiu e tem três bois andando na estrada da Serra.",
+    "fala_inicial": "Seu Zé de novo. Tem bicho solto na estrada da Serra.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Quilômetro 6 da estrada da Serra Seca."
       },
       {
         "id": "acidente",
-        "texto": "Houve acidente?",
-        "resposta": "Não, mas os carros passam rápido."
+        "tipo": "essencial",
+        "texto": "Houve acidente? Alguém ferido?",
+        "resposta": "Não, mas os carros passam rápido e quase bateram."
+      },
+      {
+        "id": "bicho",
+        "tipo": "util",
+        "texto": "Que bicho?",
+        "resposta": "Três bois do vizinho. A cerca caiu."
+      },
+      {
+        "id": "vacina",
+        "tipo": "irrelevante",
+        "texto": "O animal é vacinado?",
+        "resposta": "É... acho que é. Mas e aí, vão mandar alguém?"
       }
     ],
     "feedback_acerto": "A Polícia sinalizou a pista até os bois voltarem para o pasto.",
@@ -221,7 +319,7 @@
     "hora": "14:10",
     "personagem": "comerciante",
     "bairro": "centro",
-    "titulo_fila": "Gente presa no elevador",
+    "titulo_fila": "Gritos no elevador",
     "icone": "luz",
     "emocao": "nervoso",
     "climatica": true,
@@ -230,15 +328,29 @@
     "orgao_correto": "193",
     "gravidade": 2,
     "tempo_limite": 70,
-    "fala_inicial": "Faltou luz no prédio comercial e tem quatro pessoas presas no elevador. Lá dentro tá um calor absurdo.",
+    "fala_inicial": "Faltou luz no prédio e tem gente gritando dentro do elevador!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Edifício Ameno, Rua do Comércio, 200."
       },
       {
+        "id": "presos",
+        "tipo": "essencial",
+        "texto": "Quantas pessoas estão presas?",
+        "resposta": "Quatro. Lá dentro tá um forno."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "feridos",
+        "tipo": "util",
         "texto": "Alguém passando mal?",
         "resposta": "Uma moça disse que tá ficando sem ar."
       }
@@ -252,7 +364,7 @@
     "hora": "15:00",
     "personagem": "transeunte",
     "bairro": "centro",
-    "titulo_fila": "Celular roubado",
+    "titulo_fila": "Celular arrancado",
     "icone": "bolsa",
     "emocao": "irritado",
     "climatica": false,
@@ -261,17 +373,25 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 100,
-    "fala_inicial": "Arrancaram meu celular da mão na Praça Central e o cara correu para a rua de trás.",
+    "fala_inicial": "Arrancaram o meu celular da mão e o cara correu!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Praça Central, perto da fonte."
       },
       {
         "id": "feridos",
-        "texto": "Tem alguém ferido?",
-        "resposta": "Não, só o susto."
+        "tipo": "essencial",
+        "texto": "Você se machucou?",
+        "resposta": "Não, só o susto. Ele correu para a rua de trás."
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
       }
     ],
     "feedback_acerto": "A Polícia fez a ronda e registrou o roubo.",
@@ -283,7 +403,7 @@
     "hora": "15:50",
     "personagem": "motorista",
     "bairro": "centro",
-    "titulo_fila": "Semáforos apagados",
+    "titulo_fila": "Caos nos cruzamentos",
     "icone": "luz",
     "emocao": "irritado",
     "climatica": true,
@@ -292,17 +412,25 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 85,
-    "fala_inicial": "Com essa falta de luz, todos os semáforos da Beira-Rio apagaram. Tá todo mundo buzinando e quase batendo.",
+    "fala_inicial": "A luz caiu e os cruzamentos da Beira-Rio viraram um caos.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Avenida Beira-Rio, do mercado até a ponte."
       },
       {
+        "id": "mora",
+        "tipo": "irrelevante",
+        "texto": "Desde quando você mora aí?",
+        "resposta": "Faz uns dez anos. Mas e a emergência?"
+      },
+      {
         "id": "feridos",
-        "texto": "Tem alguém ferido?",
-        "resposta": "Ainda não."
+        "tipo": "essencial",
+        "texto": "Tem acidente ou alguém ferido?",
+        "resposta": "Ainda não, mas tá todo mundo buzinando e quase batendo."
       }
     ],
     "feedback_acerto": "A Polícia mandou agentes para organizar o trânsito nos cruzamentos.",
@@ -314,7 +442,7 @@
     "hora": "16:45",
     "personagem": "turista",
     "bairro": "parque",
-    "titulo_fila": "Trilheira machucada",
+    "titulo_fila": "Presa na trilha",
     "icone": "mapa",
     "emocao": "nervosa",
     "climatica": false,
@@ -323,15 +451,29 @@
     "orgao_correto": "193",
     "gravidade": 2,
     "tempo_limite": 90,
-    "fala_inicial": "Torci o tornozelo na trilha da cachoeira e não consigo descer sozinha.",
+    "fala_inicial": "Tô na trilha da cachoeira e não consigo descer.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Na trilha da cachoeira, perto da ponte de madeira."
       },
       {
+        "id": "ferida",
+        "tipo": "essencial",
+        "texto": "Você está machucada?",
+        "resposta": "Torci o tornozelo. Não consigo apoiar o pé."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "agua",
+        "tipo": "util",
         "texto": "Você tem água?",
         "resposta": "Pouca. E tá muito quente aqui."
       }
@@ -345,7 +487,7 @@
     "hora": "17:35",
     "personagem": "moradora",
     "bairro": "morro",
-    "titulo_fila": "Criança engasgada",
+    "titulo_fila": "Criança tossindo",
     "icone": "saude",
     "emocao": "desesperada",
     "climatica": false,
@@ -354,21 +496,43 @@
     "orgao_correto": "192",
     "gravidade": 3,
     "tempo_limite": 50,
-    "fala_inicial": "Meu filho engoliu uma moeda e tá com dificuldade para respirar!",
+    "fala_inicial": "Meu filho colocou uma coisa na boca e tá tossindo muito!",
     "perguntas": [
       {
+        "id": "onde",
+        "tipo": "endereco",
+        "texto": "Onde é?",
+        "resposta": "No Morro, lá em cima!"
+      },
+      {
+        "id": "confirmar",
+        "tipo": "endereco_confirmar",
+        "requer": "onde",
+        "texto": "Qual a rua e o número, ou um ponto de referência?",
+        "resposta": "Beco 5 do Morro da Vista, casa amarela."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "idade",
+        "tipo": "util",
         "texto": "Quantos anos ele tem?",
         "resposta": "Três anos."
       },
       {
-        "id": "onde",
-        "texto": "Onde é?",
-        "resposta": "Beco 5 do Morro da Vista, casa amarela."
+        "id": "respira",
+        "tipo": "essencial",
+        "texto": "Ele está conseguindo respirar?",
+        "resposta": "Com dificuldade, fazendo um barulho estranho! Engoliu uma moeda!"
       }
     ],
     "feedback_acerto": "O SAMU orientou a mãe por telefone e chegou a tempo. O menino está bem.",
     "feedback_erro": "Criança engasgada é emergência médica: SAMU (192).",
-    "mitigada_por": null
+    "mitigada_por": null,
+    "endereco_vago": true
   }
 ]

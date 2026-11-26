@@ -494,6 +494,24 @@
   font-style: italic;
 }
 
+/* Estado do endereço: sempre com ícone e texto, a cor só reforça. */
+.ficha dd.endereco-nenhum {
+  color: var(--cor-perigo);
+}
+
+.ficha dd.endereco-aproximado {
+  color: var(--cor-texto);
+  font-style: italic;
+}
+
+.ficha dd.endereco-confirmado {
+  color: var(--cor-sucesso);
+}
+
+.nota-triagem {
+  margin: 0.4rem 0 0;
+}
+
 /* Sem chamada em linha */
 
 .sem-chamada {
@@ -599,6 +617,16 @@
 
 .mapa-veiculo text {
   font-size: 13px;
+}
+
+.mapa-veiculo.procurando circle {
+  stroke-dasharray: 4 3;
+}
+
+.mapa-veiculo .marca-procura {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--cor-perigo);
 }
 
 /* Tutorial */

@@ -105,9 +105,12 @@ export function criarMapa(bairros) {
       ativos.add(id);
       let g = veiculos.get(id);
       if (!g) {
-        g = s('g', { class: 'mapa-veiculo' }, [
+        // Sem endereço confirmado o veículo procura o local: marcado com "?".
+        const procurando = m.endereco && m.endereco !== 'confirmado';
+        g = s('g', { class: procurando ? 'mapa-veiculo procurando' : 'mapa-veiculo' }, [
           s('circle', { r: 13 }),
-          s('text', { y: 5, 'text-anchor': 'middle', texto: iconeOrgao(m.orgao) })
+          s('text', { y: 5, 'text-anchor': 'middle', texto: iconeOrgao(m.orgao) }),
+          procurando ? s('text', { class: 'marca-procura', x: 12, y: -8, 'text-anchor': 'middle', texto: '?' }) : null
         ]);
         veiculos.set(id, g);
         camadaVeiculos.append(g);

@@ -82,6 +82,45 @@ describe('conteúdo das chamadas', () => {
     expect(real[0].personagem).toBe('juninho');
   });
 
+  it('as perguntas seguem as regras da triagem', () => {
+    const TIPOS = ['endereco', 'endereco_confirmar', 'essencial', 'util', 'irrelevante'];
+    DIAS.forEach((dia, i) => {
+      for (const c of dia) {
+        const onde = `chamada ${c.id}`;
+        const ids = c.perguntas.map((p) => p.id);
+        expect(new Set(ids).size, onde).toBe(ids.length);
+        for (const p of c.perguntas) {
+          expect(TIPOS, `${onde} · ${p.id}`).toContain(p.tipo);
+          if (p.requer) expect(ids, `${onde} · ${p.id}`).toContain(p.requer);
+          expect(p.texto.length, `${onde} · ${p.id}`).toBeGreaterThan(3);
+          expect(p.resposta.length, `${onde} · ${p.id}`).toBeGreaterThan(2);
+        }
+        const tipos = c.perguntas.map((p) => p.tipo);
+        if (!c.trote) expect(tipos.filter((t) => t === 'endereco'), onde).toHaveLength(1);
+        if (c.endereco_vago) {
+          const confirmar = c.perguntas.filter((p) => p.tipo === 'endereco_confirmar');
+          expect(confirmar, onde).toHaveLength(1);
+          expect(c.perguntas.find((p) => p.id === confirmar[0].requer)?.tipo, onde).toBe('endereco');
+        }
+        expect(tipos.filter((t) => t === 'essencial').length, onde).toBeGreaterThan(0);
+        if (i >= 1) expect(tipos, onde).toContain('irrelevante');
+      }
+    });
+  });
+
+  it('a partir do dia 2, a fala inicial não entrega o órgão', () => {
+    const entrega = /bombeir|políci|polici|samu|ambulânc|defesa civil|viatura|trote/i;
+    for (const c of DIAS.slice(1).flat()) {
+      expect(c.fala_inicial, `chamada ${c.id}`).not.toMatch(entrega);
+    }
+  });
+
+  it('endereços vagos aparecem mais nos últimos dias', () => {
+    const vagos = DIAS.map((dia) => dia.filter((c) => c.endereco_vago).length);
+    expect(vagos[0]).toBe(0);
+    expect(vagos[4]).toBeGreaterThan(vagos[1]);
+  });
+
   it('os moradores recorrentes ligam por algo banal e depois por algo climático', () => {
     for (const p of ['seu_arlindo', 'kelly', 'seu_ze']) {
       const ligacoes = todas.filter((c) => c.personagem === p);

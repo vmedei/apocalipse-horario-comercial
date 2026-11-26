@@ -4,7 +4,7 @@
     "hora": "08:10",
     "personagem": "seu_ze",
     "bairro": "serra_seca",
-    "titulo_fila": "Poço seco",
+    "titulo_fila": "Situação no sítio",
     "icone": "calor",
     "emocao": "calmo",
     "climatica": true,
@@ -13,17 +13,37 @@
     "orgao_correto": "199",
     "gravidade": 2,
     "tempo_limite": 80,
-    "fala_inicial": "Seu Zé aqui. O poço secou de vez. Faz três dias que a família toda tá sem água, e não chove na Serra há dois meses.",
+    "fala_inicial": "Seu Zé aqui. A situação no sítio tá ficando feia.",
     "perguntas": [
       {
-        "id": "pessoas",
-        "texto": "Quantas pessoas estão sem água?",
-        "resposta": "Eu, a patroa, três netos e a vizinhança toda."
-      },
-      {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Sítio Boa Esperança, Serra Seca."
+      },
+      {
+        "id": "saude",
+        "tipo": "essencial",
+        "texto": "Alguém está passando mal?",
+        "resposta": "Ainda não. Mas tem três crianças pequenas aqui."
+      },
+      {
+        "id": "plano",
+        "tipo": "irrelevante",
+        "texto": "Tem plano de saúde?",
+        "resposta": "Tem não... precisa?"
+      },
+      {
+        "id": "o_que",
+        "tipo": "essencial",
+        "texto": "O que está acontecendo?",
+        "resposta": "O poço secou de vez. Faz três dias que a família toda tá sem água."
+      },
+      {
+        "id": "remedio_casa",
+        "tipo": "irrelevante",
+        "texto": "Já deu algum chá para ajudar?",
+        "resposta": "Chá?! Não deu tempo de nada!"
       }
     ],
     "feedback_acerto": "A Defesa Civil incluiu o sítio na rota do caminhão-pipa.",
@@ -35,7 +55,7 @@
     "hora": "08:40",
     "personagem": "motorista",
     "bairro": "serra_seca",
-    "titulo_fila": "Fogo no mato",
+    "titulo_fila": "Fumaça na estrada",
     "icone": "fogo",
     "emocao": "nervoso",
     "climatica": true,
@@ -44,17 +64,37 @@
     "orgao_correto": "193",
     "gravidade": 2,
     "tempo_limite": 65,
-    "fala_inicial": "Tem fogo no mato seco na beira da estrada da Serra. O vento tá levando para o lado das plantações.",
+    "fala_inicial": "Tem muita fumaça na beira da estrada da Serra.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Quilômetro 4 da estrada da Serra Seca."
       },
       {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "casas",
+        "tipo": "util",
         "texto": "Tem casas perto?",
         "resposta": "Umas três, lá no fundo."
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Você vê fogo?",
+        "resposta": "Vejo! O mato seco tá pegando fogo e o vento leva para as plantações."
       }
     ],
     "feedback_acerto": "Os Bombeiros controlaram o fogo antes de chegar às plantações.",
@@ -66,30 +106,50 @@
     "hora": "09:10",
     "personagem": "juninho",
     "bairro": "centro",
-    "titulo_fila": "Sol no quintal",
-    "icone": "telefone",
-    "emocao": "risonho",
+    "titulo_fila": "Fumaça no vizinho",
+    "icone": "fumaca",
+    "emocao": "nervoso",
     "climatica": false,
     "evento": null,
     "trote": true,
     "orgao_correto": null,
     "gravidade": 1,
     "tempo_limite": 60,
-    "fala_inicial": "Moço, o SOL caiu no meu quintal! Tá tudo pegando fogo de tão quente! (risadinha)",
+    "fala_inicial": "Moço, tá saindo muita fumaça da casa do vizinho!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
-        "resposta": "No meu quintal, né! (risada)"
+        "resposta": "Na rua do lado da minha. (cochicho)"
+      },
+      {
+        "id": "mora",
+        "tipo": "irrelevante",
+        "texto": "Desde quando você mora aí?",
+        "resposta": "Desde que eu nasci, ué."
       },
       {
         "id": "adulto",
-        "texto": "Tem algum adulto aí?",
-        "resposta": "...agora não. Tchau!"
+        "tipo": "essencial",
+        "texto": "Tem algum adulto com você?",
+        "resposta": "...(risadinha) Não. Tchau!"
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Você vê fogo ou chamas?",
+        "resposta": "Fogo... é... é a churrasqueira dele! (gargalhada ao fundo)"
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Bombeiro! Igual a vocês! (gargalhada)"
       }
     ],
     "feedback_acerto": "Trote identificado. Quarto dia seguido do Juninho.",
-    "feedback_erro": "O sol não cai no quintal, e a risadinha é conhecida: era o Juninho.",
+    "feedback_erro": "A \"fumaça\" era a churrasqueira do vizinho, e a risadinha é conhecida: era o Juninho.",
     "mitigada_por": null
   },
   {
@@ -97,7 +157,7 @@
     "hora": "09:40",
     "personagem": "moradora",
     "bairro": "centro",
-    "titulo_fila": "Criança com falta de ar",
+    "titulo_fila": "Fumaça em casa",
     "icone": "fumaca",
     "emocao": "desesperada",
     "climatica": true,
@@ -106,17 +166,43 @@
     "orgao_correto": "192",
     "gravidade": 3,
     "tempo_limite": 55,
-    "fala_inicial": "A fumaça das queimadas entrou em casa e minha filha tá com crise de asma. A bombinha não tá adiantando!",
+    "fala_inicial": "A fumaça entrou em casa e minha filha não para de tossir!",
     "perguntas": [
       {
+        "id": "onde",
+        "tipo": "endereco",
+        "texto": "Onde é?",
+        "resposta": "Rua das Palmeiras, 88."
+      },
+      {
         "id": "idade",
+        "tipo": "util",
         "texto": "Quantos anos ela tem?",
         "resposta": "Seis."
       },
       {
-        "id": "onde",
-        "texto": "Onde é?",
-        "resposta": "Rua das Palmeiras, 88."
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Tem fogo na sua casa ou perto?",
+        "resposta": "Não, a fumaça vem lá do Parque."
+      },
+      {
+        "id": "respira",
+        "tipo": "essencial",
+        "texto": "Ela está conseguindo respirar?",
+        "resposta": "Com chiado, os lábios ficando roxos. A bombinha não adiantou!"
+      },
+      {
+        "id": "remedio_casa",
+        "tipo": "irrelevante",
+        "texto": "Já deu algum chá para ajudar?",
+        "resposta": "Chá?! Não deu tempo de nada!"
       }
     ],
     "feedback_acerto": "O SAMU atendeu a menina. A fumaça das queimadas piora muito as doenças respiratórias.",
@@ -128,7 +214,7 @@
     "hora": "10:10",
     "personagem": "seu_arlindo",
     "bairro": "centro",
-    "titulo_fila": "Seu Arlindo passando mal",
+    "titulo_fila": "Seu Arlindo",
     "icone": "calor",
     "emocao": "nervoso",
     "climatica": true,
@@ -137,17 +223,37 @@
     "orgao_correto": "192",
     "gravidade": 3,
     "tempo_limite": 55,
-    "fala_inicial": "Minha filha... é o Arlindo... tô com uma tontura... a casa tá muito quente e essa fumaça... não tô conseguindo levantar.",
+    "fala_inicial": "Minha filha... é o Arlindo... não tô me sentindo bem...",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Rua das Acácias, 40... a porta tá aberta."
       },
       {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "sintomas",
+        "tipo": "essencial",
+        "texto": "O que o senhor está sentindo?",
+        "resposta": "Tontura... a casa tá muito quente e essa fumaça... não consigo levantar."
+      },
+      {
         "id": "sozinho",
+        "tipo": "util",
         "texto": "O senhor está sozinho?",
         "resposta": "Só eu e o Bolinha."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
       }
     ],
     "feedback_acerto": "O SAMU chegou a tempo. Seu Arlindo está internado, mas fora de perigo.",
@@ -159,7 +265,7 @@
     "hora": "10:40",
     "personagem": "agricultora",
     "bairro": "serra_seca",
-    "titulo_fila": "Briga na fila da água",
+    "titulo_fila": "Confusão na fila",
     "icone": "som",
     "emocao": "irritada",
     "climatica": true,
@@ -168,17 +274,37 @@
     "orgao_correto": "190",
     "gravidade": 2,
     "tempo_limite": 75,
-    "fala_inicial": "Tá tendo briga na fila do caminhão-pipa! Um homem furou a fila e já empurrou duas senhoras.",
+    "fala_inicial": "Tá uma confusão na fila do caminhão-pipa!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Praça da Serra Seca, onde o caminhão para."
       },
       {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "feridos",
-        "texto": "Tem alguém ferido?",
-        "resposta": "Uma senhora caiu, mas levantou."
+        "tipo": "essencial",
+        "texto": "Alguém se machucou?",
+        "resposta": "Uma senhora caiu, mas já levantou. Tá bem."
+      },
+      {
+        "id": "o_que",
+        "tipo": "essencial",
+        "texto": "O que está acontecendo?",
+        "resposta": "Um homem furou a fila e empurrou duas senhoras. Quer brigar com todo mundo."
       }
     ],
     "feedback_acerto": "A Polícia organizou a fila e conteve a briga.",
@@ -190,7 +316,7 @@
     "hora": "11:10",
     "personagem": "turista",
     "bairro": "parque",
-    "titulo_fila": "Trilheiros cercados pelo fogo",
+    "titulo_fila": "Fumaça na trilha",
     "icone": "fogo",
     "emocao": "desesperado",
     "climatica": true,
@@ -199,29 +325,57 @@
     "orgao_correto": "193",
     "gravidade": 3,
     "tempo_limite": 50,
-    "fala_inicial": "O fogo pegou a mata e a gente tá cercado na trilha! Somos cinco, tem fumaça para todo lado!",
+    "fala_inicial": "A gente tá na trilha do mirante e tem fumaça para todo lado!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
+        "resposta": "No Parque, na trilha!"
+      },
+      {
+        "id": "confirmar",
+        "tipo": "endereco_confirmar",
+        "requer": "onde",
+        "texto": "Qual a rua e o número, ou um ponto de referência?",
         "resposta": "Trilha do mirante, perto da placa do quilômetro 3."
       },
       {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "quantos",
+        "tipo": "util",
+        "texto": "Quantas pessoas?",
+        "resposta": "Cinco."
+      },
+      {
         "id": "saida",
+        "tipo": "essencial",
         "texto": "Vocês conseguem voltar?",
         "resposta": "Não! O fogo tá dos dois lados!"
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
       }
     ],
     "feedback_acerto": "Os Bombeiros abriram caminho e retiraram os cinco trilheiros.",
     "feedback_erro": "Incêndio florestal com pessoas em risco é com os Bombeiros (193).",
-    "mitigada_por": "brigada_incendio"
+    "mitigada_por": "brigada_incendio",
+    "endereco_vago": true
   },
   {
     "id": "d4_furto_fios",
     "hora": "11:40",
     "personagem": "comerciante",
     "bairro": "centro",
-    "titulo_fila": "Furto de fios",
+    "titulo_fila": "Rua sem luz",
     "icone": "bolsa",
     "emocao": "irritado",
     "climatica": false,
@@ -230,17 +384,37 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 100,
-    "fala_inicial": "Roubaram os fios de cobre do poste aqui da frente. A rua toda ficou sem luz.",
+    "fala_inicial": "A rua toda ficou sem luz, e eu sei o motivo.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Rua do Comércio, 300."
       },
       {
         "id": "visto",
-        "texto": "Alguém viu os ladrões?",
+        "tipo": "util",
+        "texto": "Viu os ladrões?",
         "resposta": "Dois caras numa bicicleta."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "o_que",
+        "tipo": "essencial",
+        "texto": "O que aconteceu?",
+        "resposta": "Roubaram os fios de cobre do poste aqui da frente. Eu vi."
       }
     ],
     "feedback_acerto": "A Polícia registrou o furto e avisou a companhia de energia.",
@@ -252,7 +426,7 @@
     "hora": "12:10",
     "personagem": "guarda_vidas",
     "bairro": "orla",
-    "titulo_fila": "Banhista desmaiado",
+    "titulo_fila": "Banhista passando mal",
     "icone": "calor",
     "emocao": "nervoso",
     "climatica": true,
@@ -261,17 +435,37 @@
     "orgao_correto": "192",
     "gravidade": 2,
     "tempo_limite": 60,
-    "fala_inicial": "Guarda-vidas do posto 3. Um banhista desmaiou de calor. Tá 41 graus na areia.",
+    "fala_inicial": "Guarda-vidas do posto 3. Tenho um banhista passando mal.",
     "perguntas": [
       {
+        "id": "onde",
+        "tipo": "endereco",
+        "texto": "Onde é?",
+        "resposta": "Posto 3, Praia do Sossego."
+      },
+      {
         "id": "consciente",
+        "tipo": "essencial",
         "texto": "Ele está consciente?",
         "resposta": "Acordou, mas tá confuso e vomitando."
       },
       {
-        "id": "onde",
-        "texto": "Onde é?",
-        "resposta": "Posto 3, Praia do Sossego."
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "agua",
+        "tipo": "essencial",
+        "texto": "Ele se afogou?",
+        "resposta": "Não, nem entrou no mar. Ficou no sol, tá 41 graus na areia."
       }
     ],
     "feedback_acerto": "O SAMU atendeu o banhista: insolação grave.",
@@ -283,7 +477,7 @@
     "hora": "12:40",
     "personagem": "vizinha_morro",
     "bairro": "morro",
-    "titulo_fila": "Fogo perto das casas",
+    "titulo_fila": "Fumaça no terreno",
     "icone": "fogo",
     "emocao": "desesperada",
     "climatica": true,
@@ -292,17 +486,37 @@
     "orgao_correto": "193",
     "gravidade": 3,
     "tempo_limite": 55,
-    "fala_inicial": "Dona Cida! Pegou fogo no terreno baldio aqui do lado, e o capim seco tá levando as chamas para o muro das casas!",
+    "fala_inicial": "Dona Cida! Tem fumaça subindo do terreno aqui do lado!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Beco 3, o terreno ao lado da minha casa."
       },
       {
         "id": "pessoas",
+        "tipo": "util",
         "texto": "Tem gente em casa?",
         "resposta": "Todo mundo, e as crianças."
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Tem fogo? Está perto das casas?",
+        "resposta": "Tem! O capim seco tá levando as chamas para o muro das casas!"
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
       }
     ],
     "feedback_acerto": "Os Bombeiros apagaram o fogo antes de atingir as casas.",
@@ -314,7 +528,7 @@
     "hora": "13:05",
     "personagem": "morador",
     "bairro": "centro",
-    "titulo_fila": "Sem luz para o oxigênio",
+    "titulo_fila": "Avó passando mal",
     "icone": "luz",
     "emocao": "desesperado",
     "climatica": true,
@@ -323,22 +537,50 @@
     "orgao_correto": "192",
     "gravidade": 3,
     "tempo_limite": 55,
-    "fala_inicial": "Faltou luz com esse calor e o aparelho de oxigênio da minha avó parou! Ela tá ficando roxa!",
+    "fala_inicial": "Faltou luz aqui no prédio e a minha avó tá passando mal!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
+        "resposta": "No Centro! Perto da... da avenida!"
+      },
+      {
+        "id": "confirmar",
+        "tipo": "endereco_confirmar",
+        "requer": "onde",
+        "texto": "Qual a rua e o número, ou um ponto de referência?",
         "resposta": "Avenida Beira-Rio, 1200, apartamento 302."
       },
       {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "respira",
-        "texto": "Ela está respirando?",
-        "resposta": "Com muita dificuldade!"
+        "tipo": "essencial",
+        "texto": "O que está acontecendo com ela?",
+        "resposta": "O aparelho de oxigênio parou sem luz! Ela tá ficando roxa!"
+      },
+      {
+        "id": "aluguel",
+        "tipo": "irrelevante",
+        "texto": "A casa é própria ou alugada?",
+        "resposta": "Alugada... por que isso agora?!"
+      },
+      {
+        "id": "elevador",
+        "tipo": "util",
+        "texto": "Vocês estão presos em algum lugar?",
+        "resposta": "Não, estamos no apartamento."
       }
     ],
     "feedback_acerto": "O SAMU levou um cilindro de oxigênio e estabilizou a avó.",
     "feedback_erro": "Pessoa com dificuldade para respirar precisa do SAMU (192).",
-    "mitigada_por": "abrigos_climatizados"
+    "mitigada_por": "abrigos_climatizados",
+    "endereco_vago": true
   },
   {
     "id": "d4_fumaca_estrada",
@@ -354,29 +596,51 @@
     "orgao_correto": "193",
     "gravidade": 3,
     "tempo_limite": 55,
-    "fala_inicial": "A fumaça das queimadas cobriu a estrada e dois carros bateram de frente. Tem gente presa nas ferragens!",
+    "fala_inicial": "A fumaça cobriu a estrada e dois carros bateram!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
+        "resposta": "Na Serra, na estrada!"
+      },
+      {
+        "id": "confirmar",
+        "tipo": "endereco_confirmar",
+        "requer": "onde",
+        "texto": "Qual a rua e o número, ou um ponto de referência?",
         "resposta": "Quilômetro 12 da estrada da Serra Seca."
       },
       {
+        "id": "plano",
+        "tipo": "irrelevante",
+        "texto": "Tem plano de saúde?",
+        "resposta": "Tem não... precisa?"
+      },
+      {
         "id": "presos",
-        "texto": "Quantas pessoas presas?",
-        "resposta": "Duas, no carro vermelho."
+        "tipo": "essencial",
+        "texto": "Alguém está preso nos carros?",
+        "resposta": "Duas pessoas presas nas ferragens do carro vermelho!"
+      },
+      {
+        "id": "remedio_casa",
+        "tipo": "irrelevante",
+        "texto": "Já deu algum chá para ajudar?",
+        "resposta": "Chá?! Não deu tempo de nada!"
       }
     ],
     "feedback_acerto": "Os Bombeiros retiraram as vítimas das ferragens.",
     "feedback_erro": "Pessoas presas em ferragens precisam de resgate: Bombeiros (193).",
-    "mitigada_por": "brigada_incendio"
+    "mitigada_por": "brigada_incendio",
+    "endereco_vago": true
   },
   {
     "id": "d4_gado",
     "hora": "14:05",
     "personagem": "agricultora",
     "bairro": "serra_seca",
-    "titulo_fila": "Gado morrendo de sede",
+    "titulo_fila": "Açude seco",
     "icone": "vaca",
     "emocao": "nervosa",
     "climatica": true,
@@ -385,17 +649,31 @@
     "orgao_correto": "199",
     "gravidade": 1,
     "tempo_limite": 90,
-    "fala_inicial": "O açude secou e o gado tá caindo de sede. Já perdi quatro bezerros esta semana.",
+    "fala_inicial": "O açude secou e a situação aqui na fazenda tá desesperadora.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Fazenda Pedra Branca, Serra Seca."
       },
       {
         "id": "pessoas",
-        "texto": "As pessoas têm água?",
-        "resposta": "Só o que a gente guardou em balde."
+        "tipo": "essencial",
+        "texto": "As pessoas da fazenda estão bem?",
+        "resposta": "Estamos bem, só com a água guardada em balde. Mas o gado tá morrendo de sede."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "vacina",
+        "tipo": "irrelevante",
+        "texto": "O animal é vacinado?",
+        "resposta": "É... acho que é. Mas e aí, vão mandar alguém?"
       }
     ],
     "feedback_acerto": "A Defesa Civil incluiu a fazenda no plano de abastecimento de emergência.",
@@ -407,7 +685,7 @@
     "hora": "14:35",
     "personagem": "kelly",
     "bairro": "orla",
-    "titulo_fila": "Cliente desmaiou",
+    "titulo_fila": "Cliente caiu",
     "icone": "calor",
     "emocao": "nervosa",
     "climatica": true,
@@ -416,17 +694,37 @@
     "orgao_correto": "192",
     "gravidade": 2,
     "tempo_limite": 60,
-    "fala_inicial": "Kelly do quiosque! Uma cliente desmaiou aqui. Tava sentada no sol esperando mesa.",
+    "fala_inicial": "Kelly do quiosque! Uma cliente caiu aqui do nada!",
     "perguntas": [
       {
-        "id": "consciente",
-        "texto": "Ela está consciente?",
-        "resposta": "Voltou, mas tá pálida e tremendo."
-      },
-      {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Quiosque 12."
+      },
+      {
+        "id": "queda",
+        "tipo": "util",
+        "texto": "Ela bateu a cabeça?",
+        "resposta": "Acho que não."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "consciente",
+        "tipo": "essencial",
+        "texto": "Ela está consciente?",
+        "resposta": "Voltou, mas tá pálida e tremendo. Tava sentada no sol esperando mesa."
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
       }
     ],
     "feedback_acerto": "O SAMU atendeu a cliente no quiosque.",
@@ -438,7 +736,7 @@
     "hora": "15:05",
     "personagem": "professora",
     "bairro": "centro",
-    "titulo_fila": "Alunos passando mal",
+    "titulo_fila": "Alunos precisando de ajuda",
     "icone": "calor",
     "emocao": "nervosa",
     "climatica": true,
@@ -447,17 +745,37 @@
     "orgao_correto": "192",
     "gravidade": 2,
     "tempo_limite": 60,
-    "fala_inicial": "Professora da Escola Municipal. Três alunos estão com tontura e vômito. A sala tá 38 graus e o ventilador quebrou.",
+    "fala_inicial": "Professora da Escola Municipal. Preciso de ajuda com uns alunos.",
     "perguntas": [
       {
-        "id": "quantos",
-        "texto": "Quantos estão mal?",
-        "resposta": "Três, mas outros estão reclamando de dor de cabeça."
-      },
-      {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Escola Municipal Porto Ameno, Rua das Flores."
+      },
+      {
+        "id": "quantos",
+        "tipo": "util",
+        "texto": "Mais alguém está mal?",
+        "resposta": "Outros reclamam de dor de cabeça."
+      },
+      {
+        "id": "o_que",
+        "tipo": "essencial",
+        "texto": "O que está acontecendo com eles?",
+        "resposta": "Três estão com tontura e vômito. A sala tá 38 graus e o ventilador quebrou."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
       }
     ],
     "feedback_acerto": "O SAMU atendeu os alunos e a escola liberou as turmas mais cedo.",
@@ -469,7 +787,7 @@
     "hora": "15:35",
     "personagem": "morador",
     "bairro": "morro",
-    "titulo_fila": "Soltando balão",
+    "titulo_fila": "Rapazes no Morro",
     "icone": "fogo",
     "emocao": "irritado",
     "climatica": false,
@@ -478,17 +796,37 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 90,
-    "fala_inicial": "Uns rapazes estão soltando balão aqui no Morro, no meio dessa secura! Se isso cair no mato, pega fogo em tudo!",
+    "fala_inicial": "Tem uns rapazes aqui no Morro fazendo uma coisa perigosa!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Campinho do Morro da Vista."
       },
       {
-        "id": "quantos",
-        "texto": "Quantas pessoas?",
-        "resposta": "Uns cinco rapazes."
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "o_que",
+        "tipo": "essencial",
+        "texto": "O que eles estão fazendo?",
+        "resposta": "Soltando balão, no meio dessa secura! Se cair no mato, pega fogo em tudo."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Já tem algum fogo?",
+        "resposta": "Ainda não."
       }
     ],
     "feedback_acerto": "A Polícia apreendeu os balões. Soltar balão é crime e causa incêndios.",
@@ -500,7 +838,7 @@
     "hora": "16:05",
     "personagem": "moradora",
     "bairro": "morro",
-    "titulo_fila": "Idoso com falta de ar",
+    "titulo_fila": "Pai passando mal",
     "icone": "fumaca",
     "emocao": "nervosa",
     "climatica": true,
@@ -509,17 +847,37 @@
     "orgao_correto": "192",
     "gravidade": 2,
     "tempo_limite": 60,
-    "fala_inicial": "A fumaça do Parque desceu para o Morro e meu pai tá com falta de ar. Ele tem enfisema.",
+    "fala_inicial": "A fumaça desceu aqui para o Morro e o meu pai tá mal.",
     "perguntas": [
       {
-        "id": "idade",
-        "texto": "Quantos anos ele tem?",
-        "resposta": "Setenta e cinco."
-      },
-      {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Beco 5 do Morro da Vista."
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Tem fogo perto da casa?",
+        "resposta": "Não, a fumaça vem do Parque."
+      },
+      {
+        "id": "respira",
+        "tipo": "essencial",
+        "texto": "Como ele está respirando?",
+        "resposta": "Com muita falta de ar. Ele tem enfisema."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
       }
     ],
     "feedback_acerto": "O SAMU atendeu o idoso.",
@@ -531,7 +889,7 @@
     "hora": "16:35",
     "personagem": "agricultora",
     "bairro": "serra_seca",
-    "titulo_fila": "Cachorro no poço",
+    "titulo_fila": "Cachorro chorando",
     "icone": "cachorro",
     "emocao": "nervosa",
     "climatica": false,
@@ -540,17 +898,31 @@
     "orgao_correto": "193",
     "gravidade": 1,
     "tempo_limite": 90,
-    "fala_inicial": "Meu cachorro caiu no poço velho. Pelo menos tá seco, mas ele não consegue sair.",
+    "fala_inicial": "Meu cachorro sumiu, e eu ouço ele chorando no fundo do quintal.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Sítio Mandacaru, Serra Seca."
       },
       {
-        "id": "fundo",
-        "texto": "O poço é fundo?",
-        "resposta": "Uns seis metros."
+        "id": "onde_animal",
+        "tipo": "essencial",
+        "texto": "Onde ele está?",
+        "resposta": "Caiu no poço velho. Tá seco, mas são seis metros."
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
       }
     ],
     "feedback_acerto": "Os Bombeiros resgataram o cachorro com cordas.",
@@ -562,7 +934,7 @@
     "hora": "17:05",
     "personagem": "professora",
     "bairro": "serra_seca",
-    "titulo_fila": "Fogo perto da escola",
+    "titulo_fila": "Fumaça na escola",
     "icone": "fogo",
     "emocao": "desesperada",
     "climatica": true,
@@ -571,29 +943,57 @@
     "orgao_correto": "193",
     "gravidade": 3,
     "tempo_limite": 50,
-    "fala_inicial": "O fogo da Serra tá vindo na direção da escola rural! Tenho vinte crianças aqui!",
+    "fala_inicial": "Professora da escola rural da Serra! Tá chegando muita fumaça aqui!",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
+        "resposta": "Na Serra, na estrada!"
+      },
+      {
+        "id": "confirmar",
+        "tipo": "endereco_confirmar",
+        "requer": "onde",
+        "texto": "Qual a rua e o número, ou um ponto de referência?",
         "resposta": "Escola Rural da Serra Seca, final da estrada de terra."
       },
       {
-        "id": "distancia",
-        "texto": "A que distância está o fogo?",
-        "resposta": "Uns duzentos metros, e o vento tá a favor dele."
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
+        "id": "fogo",
+        "tipo": "essencial",
+        "texto": "Você vê o fogo? Está perto?",
+        "resposta": "Uns duzentos metros, e o vento tá trazendo para cá!"
+      },
+      {
+        "id": "criancas",
+        "tipo": "essencial",
+        "texto": "Quantas pessoas estão na escola?",
+        "resposta": "Vinte crianças!"
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
       }
     ],
     "feedback_acerto": "Os Bombeiros abriram um aceiro e as crianças foram retiradas em segurança.",
     "feedback_erro": "Incêndio ameaçando pessoas é com os Bombeiros (193).",
-    "mitigada_por": "brigada_incendio"
+    "mitigada_por": "brigada_incendio",
+    "endereco_vago": true
   },
   {
     "id": "d4_roubo",
     "hora": "17:35",
     "personagem": "transeunte",
     "bairro": "orla",
-    "titulo_fila": "Bolsa roubada",
+    "titulo_fila": "Bolsa sumiu",
     "icone": "bolsa",
     "emocao": "irritada",
     "climatica": false,
@@ -602,17 +1002,31 @@
     "orgao_correto": "190",
     "gravidade": 1,
     "tempo_limite": 100,
-    "fala_inicial": "Roubaram a minha bolsa enquanto eu estava na água.",
+    "fala_inicial": "A minha bolsa sumiu aqui na praia.",
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Praia do Sossego, perto do posto 2."
       },
       {
         "id": "visto",
-        "texto": "Viu quem levou?",
-        "resposta": "Um rapaz de boné vermelho."
+        "tipo": "essencial",
+        "texto": "Alguém viu o que aconteceu?",
+        "resposta": "Vi um rapaz de boné vermelho correndo com ela."
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
       }
     ],
     "feedback_acerto": "A Polícia fez a ronda na orla.",

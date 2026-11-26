@@ -17,11 +17,19 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Rua das Acácias, 40, no Centro."
       },
       {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Como assim? Isso importa agora?"
+      },
+      {
         "id": "risco",
+        "tipo": "essencial",
         "texto": "Alguém tentou subir?",
         "resposta": "Eu ia pegar a escada, mas a minha filha não deixou."
       }
@@ -48,13 +56,21 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Na minha casa, ué! (mais risadas)"
       },
       {
         "id": "adulto",
+        "tipo": "essencial",
         "texto": "Tem um adulto aí?",
         "resposta": "...tchau!"
+      },
+      {
+        "id": "profissao",
+        "tipo": "irrelevante",
+        "texto": "Qual é a sua profissão?",
+        "resposta": "Profissão? (risadinha) Eu sou... domador de jacaré!"
       }
     ],
     "feedback_acerto": "Trote identificado. A linha ficou livre para quem precisa.",
@@ -79,13 +95,21 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "No quilômetro 8 da estrada da Serra Seca."
       },
       {
         "id": "acidente",
+        "tipo": "essencial",
         "texto": "Houve acidente?",
         "resposta": "Ainda não, graças a Deus."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
       }
     ],
     "feedback_acerto": "A Polícia sinalizou a pista e Seu Zé levou a Mimosa de volta.",
@@ -110,11 +134,19 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Beco 3 do Morro da Vista, casa azul."
       },
       {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
+      },
+      {
         "id": "violencia",
+        "tipo": "essencial",
         "texto": "Houve agressão?",
         "resposta": "Só xingamento, mas o clima tá feio."
       }
@@ -141,13 +173,21 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Quiosque 12, Praia do Sossego."
       },
       {
         "id": "feridos",
+        "tipo": "essencial",
         "texto": "Alguém se machucou?",
         "resposta": "Não, só o meu prejuízo."
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Celular. Por quê?"
       }
     ],
     "feedback_acerto": "A Polícia registrou a ocorrência e fez uma ronda na orla.",
@@ -172,13 +212,21 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "O que você vê ao redor?",
         "resposta": "Uma cachoeira pequena e uma placa quebrada."
       },
       {
         "id": "feridos",
+        "tipo": "essencial",
         "texto": "Está ferido?",
         "resposta": "Torci o pé, mas consigo andar devagar."
+      },
+      {
+        "id": "primeira",
+        "tipo": "irrelevante",
+        "texto": "É a primeira vez que liga para a central?",
+        "resposta": "É... e espero que seja a última."
       }
     ],
     "feedback_acerto": "Os Bombeiros encontraram o trilheiro perto da cachoeira.",
@@ -203,13 +251,21 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Onde é?",
         "resposta": "Em frente à farmácia da Praça Central."
       },
       {
         "id": "consciente",
+        "tipo": "essencial",
         "texto": "Ele está consciente?",
         "resposta": "Tá, mas meio confuso."
+      },
+      {
+        "id": "plano",
+        "tipo": "irrelevante",
+        "texto": "Tem plano de saúde?",
+        "resposta": "Tem não... precisa?"
       }
     ],
     "feedback_acerto": "O SAMU atendeu o senhor na praça e o levou para avaliação.",
@@ -234,8 +290,21 @@
     "perguntas": [
       {
         "id": "onde",
+        "tipo": "endereco",
         "texto": "Qual escola?",
         "resposta": "A... a escola do... ah, esquece."
+      },
+      {
+        "id": "adulto",
+        "tipo": "essencial",
+        "texto": "Tem algum adulto com você?",
+        "resposta": "(risadinha) Não... tchau!"
+      },
+      {
+        "id": "celular",
+        "tipo": "irrelevante",
+        "texto": "Está ligando de celular ou de telefone fixo?",
+        "resposta": "Do telefone da cozinha! (risada)"
       }
     ],
     "feedback_acerto": "Trote identificado de novo. A Dona Socorro anota o número do Juninho.",

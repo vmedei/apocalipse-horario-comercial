@@ -7,6 +7,7 @@
  * @property {string} bairro
  * @property {number} inicio  segundo real em que saiu
  * @property {number} fim     segundo real em que volta a ficar livre
+ * @property {string} [endereco]  estado do endereço no despacho ('nenhum' | 'aproximado' | 'confirmado')
  */
 
 /**

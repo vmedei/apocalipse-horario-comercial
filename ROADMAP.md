@@ -282,9 +282,12 @@ O Vite importa JSON diretamente: `import orgaos from './dados/orgaos.json'`.
   "gravidade": 2,
   "tempo_limite": 60,
   "fala_inicial": "A maré tá subindo muito, a água já chegou no quiosque!",
+  "endereco_vago": true,
   "perguntas": [
-    { "id": "onde",    "texto": "Onde é?",            "resposta": "Quiosque 12, na Praia do Sossego." },
-    { "id": "feridos", "texto": "Tem alguém ferido?", "resposta": "Não, mas tem gente lá dentro salvando as coisas." }
+    { "id": "onde",      "tipo": "endereco",           "texto": "Onde é?",                        "resposta": "Na praia, perto dos quiosques!" },
+    { "id": "numero",    "tipo": "endereco_confirmar", "requer": "onde", "texto": "Qual o número ou um ponto de referência?", "resposta": "Quiosque 12, em frente ao posto 2." },
+    { "id": "pessoas",   "tipo": "essencial",          "texto": "Tem alguém em perigo?",          "resposta": "Eu e o Tiago, presos no deque!" },
+    { "id": "aluguel",   "tipo": "irrelevante",        "texto": "O quiosque é seu ou alugado?",   "resposta": "É meu... por que isso importa agora?!" }
   ],
   "feedback_acerto": "Bombeiros retiraram todos do quiosque a tempo.",
   "feedback_erro": "Ressaca com pessoas em risco é com os Bombeiros (193).",
@@ -297,6 +300,9 @@ Campos:
 - `tempo_limite` são segundos reais antes de a chamada "estourar".
 - `trote: true` exige `orgao_correto: null`.
 - `mitigada_por` é o id de um investimento que reduz ou elimina esta chamada.
+- `endereco_vago: true` faz a resposta de `endereco` ser aproximada; só a pergunta `endereco_confirmar` confirma.
+- Tipos de pergunta: `endereco` (onde é), `endereco_confirmar` (número ou referência), `essencial` (revela o órgão, a gravidade ou o trote), `util` (ajuda, mas não decide) e `irrelevante` (não ajuda e custa pontos).
+- `requer` esconde a pergunta até outra ser feita.
 
 ### 6.4 `investimentos.json`
 ```json
@@ -370,6 +376,23 @@ Todos os números ficam em `src/config/balanco.js` e são **valores de partida p
 | Medidor chega a 100 | colapso: o jogador é "demitido" e pode repetir o dia |
 
 **Efeito da adaptação:** ao montar as chamadas de um dia, cada chamada com `mitigada_por` cujo investimento esteja ativo é removida com probabilidade `reducao`, ou tem a gravidade reduzida em `reducao_gravidade`. Cada remoção conta como **ocorrência evitada** e aparece no relatório. Os sorteios usam `aleatorio.js` com semente, para que a mesma semente gere sempre a mesma partida.
+
+### 7.1 Triagem (Marco 3.5)
+
+| Parte da nota (0 a 100) | Pontos |
+|---|---|
+| Encaminhamento correto (órgão certo, ou trote identificado) | 50 |
+| Endereço confirmado · aproximado · não perguntado | 20 · 10 · 0 |
+| Perguntas essenciais feitas (proporcional) | até 30 |
+| Cada pergunta irrelevante | −10 |
+
+Em trotes, a parte do endereço vale para quem fez ao menos uma pergunta essencial antes de encerrar.
+
+| Endereço ao despachar | Tempo do veículo | Colapso extra |
+|---|---|---|
+| Confirmado | normal | 0 |
+| Aproximado | ×1,3 | +2 × gravidade |
+| Não perguntado | ×1,6 | +4 × gravidade |
 
 **Estrelas (fim do Modo Expediente):**
 - ★: completou os 5 dias.
@@ -540,8 +563,25 @@ Cada marco termina em algo **jogável no link publicado**. Marque as caixas conf
 
 **Pronto quando:** dá para jogar os cinco dias em sequência e sentir a fila crescer e as chamadas climáticas dominarem.
 
+### Marco 3.5 · Triagem: perguntas, endereço e chamadas ambíguas
+O jogador precisa **investigar** antes de despachar: as falas iniciais ficam menos óbvias a cada dia, e as pistas decisivas aparecem nas respostas.
+
+- [x] Cada pergunta tem um `tipo`, escondido do jogador até o feedback (seção 7.1): `endereco`, `endereco_confirmar`, `essencial`, `util` ou `irrelevante`.
+- [x] Perguntas que só aparecem depois de outra (campo `requer`), por exemplo "Qual o número ou um ponto de referência?" depois de "Onde é?".
+- [x] Endereço com três estados na ficha: **não perguntado**, **aproximado** (resposta vaga, falta confirmar) e **confirmado**. Despachar sem endereço confirmado deixa o veículo mais lento e a ocorrência piora (mais Colapso).
+- [x] Nota de triagem de 0 a 100 por chamada (encaminhamento + endereço + perguntas essenciais − perguntas desnecessárias), mostrada no feedback com o que faltou perguntar.
+- [x] Nota média da triagem no resumo do dia (vira um indicador do relatório no Marco 4).
+- [x] Reescrita do tom: dia 1 continua didático; a partir do dia 2, a fala inicial não entrega o órgão, e a pista decisiva fica numa resposta. Trotes ficam sutis (contradições, risadas ao fundo, endereço que não fecha) e só são identificáveis perguntando.
+- [x] A partir do dia 2, moradores conhecidos aparecem como "Número não identificado" até se apresentarem na ligação (o Juninho nunca se apresenta).
+- [x] Toda chamada tem pelo menos uma pergunta desnecessária plausível (por exemplo, "A casa é própria ou alugada?"), que custa tempo e pontos.
+- [x] Testes: pontuação, efeitos do endereço e validação do conteúdo (toda chamada real tem pergunta de endereço; toda chamada tem ao menos uma pergunta essencial).
+
+**Como testar:** atenda uma chamada do dia 3 sem perguntar nada e despache. O feedback deve mostrar a nota baixa, "endereço não confirmado" e o veículo demorando mais no mapa. Depois, atenda outra perguntando o endereço, confirmando o número e fazendo as perguntas essenciais, e compare a nota. Use `?debug` com **Gabarito**: ele mostra também o tipo de cada pergunta.
+
+**Pronto quando:** dá para errar o órgão de uma chamada do dia 4 por não ter perguntado, e o feedback explica qual pergunta teria revelado a resposta.
+
 ### Marco 4 · Relatório do dia e jornal
-- [ ] `relatorio.js`: os quatro indicadores (acerto, tempo médio, atendidas, % do orçamento em adaptação), sempre comparados ao dia anterior.
+- [ ] `relatorio.js`: os indicadores (acerto, nota média da triagem, tempo médio, atendidas, % do orçamento em adaptação), sempre comparados ao dia anterior.
 - [ ] `grafico.js`: gráfico de linha em SVG com o acerto por dia.
 - [ ] Comentário da Dona Socorro escolhido pelo pior indicador do dia.
 - [ ] `jornal.js`: manchetes da manhã e da noite escolhidas pela condição (seção 6.5). A vinheta fica mais séria a cada dia (mudança de cor e de texto).
