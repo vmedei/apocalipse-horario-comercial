@@ -1,0 +1,10 @@
+{
+  "seu_arlindo": { "nome": "Seu Arlindo", "descricao": "aposentado do Centro" },
+  "juninho": { "nome": "Juninho", "descricao": "menino de 10 anos" },
+  "seu_ze": { "nome": "Seu Zé", "descricao": "agricultor da Serra Seca" },
+  "kelly": { "nome": "Kelly", "descricao": "dona de quiosque na orla" },
+  "vizinha_morro": { "nome": "Dona Cida", "descricao": "moradora do Morro da Vista" },
+  "turista": { "nome": "Turista", "descricao": "visitante do Parque" },
+  "transeunte": { "nome": "Transeunte", "descricao": "alguém na rua" },
+  "dona_socorro": { "nome": "Dona Socorro", "descricao": "supervisora da central" }
+}

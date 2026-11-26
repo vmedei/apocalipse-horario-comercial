@@ -51,8 +51,8 @@
 
 .painel-debug {
   position: fixed;
-  top: 0.75rem;
-  right: 0.75rem;
+  left: 0.75rem;
+  bottom: 0.75rem;
   z-index: 900;
   width: min(17rem, calc(100vw - 1.5rem));
   border: 2px dashed var(--cor-destaque);
@@ -60,6 +60,15 @@
   background: var(--cor-superficie);
   font-size: 0.85rem;
   box-shadow: 0 4px 16px rgb(0 0 0 / 0.15);
+}
+
+.painel-debug:not([open]) {
+  width: auto;
+}
+
+.painel-debug[open] {
+  max-height: calc(100vh - 1.5rem);
+  overflow-y: auto;
 }
 
 .painel-debug summary {
@@ -105,6 +114,13 @@
   border: 1.5px solid var(--cor-borda);
   border-radius: 6px;
   background: var(--cor-superficie);
+}
+
+.debug-linha select {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  padding: 0.2rem;
 }
 
 .debug-linha button[aria-pressed='true'] {

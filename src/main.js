@@ -8,6 +8,7 @@ import './debug/erros.js';
 import './estilos/tema.css';
 import './estilos/base.css';
 import './estilos/telas.css';
+import './estilos/jogo.css';
 import './estilos/debug.css';
 
 import { registrarTela, irPara } from './roteador.js';

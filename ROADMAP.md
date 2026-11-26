@@ -482,7 +482,7 @@ Estas ferramentas são criadas aos poucos, a partir do Marco 0, e tornam os test
 Cada marco termina em algo **jogável no link publicado**. Marque as caixas conforme avança.
 
 ### Marco 0 · Repositório publicando sozinho
-- [ ] Configuração inicial no GitHub (seção 3.1), feita por você.
+- [x] Configuração inicial no GitHub (seção 3.1), feita por você.
 - [x] Projeto Vite sem framework, com `vite.config.js` usando `base: './'`.
 - [x] Estrutura de pastas da seção 5, `CLAUDE.md` (seção 3.4), este `ROADMAP.md` e um `README.md` curto com o link do jogo.
 - [x] Fluxo `.github/workflows/deploy.yml` (seção 3.3).
@@ -498,12 +498,12 @@ Cada marco termina em algo **jogável no link publicado**. Marque as caixas conf
 **Pronto quando:** o fluxo do GitHub Actions termina com ✓ verde, o jogo abre no link sem erros e troca de tela.
 
 ### Marco 1 · Uma chamada do começo ao fim
-- [ ] Layout da tela de jogo (seção 9): barra superior, fila, chamada ativa e mapa (ainda um retângulo).
-- [ ] Carregar **uma** chamada fixa (o gato do Seu Arlindo) e mostrá-la na chamada ativa: personagem, bairro, fala inicial e indicação de murmúrio com emoção.
-- [ ] Botões de pergunta: ao clicar, a resposta entra na transcrição e preenche a **ficha da ocorrência**.
-- [ ] Botões **190 · 192 · 193 · 199** e **Encerrar como trote**.
-- [ ] `despacho.js`: `resolverDespacho(chamada, escolha)` devolve `{ acertou, motivo, deltaColapso }`.
-- [ ] Mensagem de feedback (acerto ou erro, com motivo), sempre com **ícone + texto**, nunca só cor.
+- [x] Layout da tela de jogo (seção 9): barra superior, fila, chamada ativa e mapa (ainda um retângulo).
+- [x] Carregar **uma** chamada fixa (o gato do Seu Arlindo) e mostrá-la na chamada ativa: personagem, bairro, fala inicial e indicação de murmúrio com emoção.
+- [x] Botões de pergunta: ao clicar, a resposta entra na transcrição e preenche a **ficha da ocorrência**.
+- [x] Botões **190 · 192 · 193 · 199** e **Encerrar como trote**.
+- [x] `despacho.js`: `resolverDespacho(chamada, escolha)` devolve `{ acertou, motivo, deltaColapso }`.
+- [x] Mensagem de feedback (acerto ou erro, com motivo), sempre com **ícone + texto**, nunca só cor.
 
 **Como testar:** atenda o gato, escolha 192 e leia a explicação do erro. Recarregue a página, escolha 193 e veja a mensagem de acerto. Teste as perguntas e confira a ficha sendo preenchida.
 

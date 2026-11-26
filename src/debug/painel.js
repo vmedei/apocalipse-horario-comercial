@@ -7,6 +7,7 @@ import { estado, parametros, atualizarEstado, apagarSalvos } from '../estado.js'
 import { textoVersao } from '../versao.js';
 import { ouvir } from '../eventos.js';
 import { irPara } from '../roteador.js';
+import dia1 from '../dados/chamadas/dia_1.json';
 
 export function instalarPainelDebug() {
   if (!parametros.debug) return;
@@ -34,6 +35,14 @@ export function instalarPainelDebug() {
     })
   );
 
+  const seletorChamada = /** @type {HTMLSelectElement} */ (
+    el(
+      'select',
+      { 'aria-label': 'Chamada de teste' },
+      dia1.map((c) => el('option', { value: c.id, texto: `${c.hora} · ${c.titulo_fila}${c.trote ? ' (trote)' : ''}` }))
+    )
+  );
+
   const corpo = el('div', { class: 'debug-corpo' }, [
     info,
     el('p', { class: 'debug-rotulo', texto: 'Velocidade do relógio' }),
@@ -42,6 +51,15 @@ export function instalarPainelDebug() {
     el('div', { class: 'debug-linha' }, [
       el('button', { type: 'button', texto: 'Menu', aoClicar: () => irPara('menu') }),
       el('button', { type: 'button', texto: 'Jogo', aoClicar: () => irPara('jogo') })
+    ]),
+    el('p', { class: 'debug-rotulo', texto: 'Atender chamada do dia 1' }),
+    el('div', { class: 'debug-linha' }, [
+      seletorChamada,
+      el('button', {
+        type: 'button',
+        texto: 'Atender',
+        aoClicar: () => irPara('jogo', { chamadaId: seletorChamada.value })
+      })
     ]),
     el('p', { class: 'debug-rotulo', texto: 'Testes' }),
     el('div', { class: 'debug-linha' }, [
@@ -65,7 +83,7 @@ export function instalarPainelDebug() {
     ])
   ]);
 
-  const painel = el('details', { class: 'painel-debug', open: true }, [
+  const painel = el('details', { class: 'painel-debug' }, [
     el('summary', { texto: '🛠 Depuração' }),
     corpo
   ]);

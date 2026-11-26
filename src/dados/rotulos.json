@@ -1,0 +1,23 @@
+{
+  "emocoes": {
+    "calmo": "tom calmo",
+    "calma": "tom calmo",
+    "risonho": "rindo",
+    "risonha": "rindo",
+    "irritado": "tom irritado",
+    "irritada": "tom irritado",
+    "nervoso": "tom nervoso",
+    "nervosa": "tom nervoso",
+    "desesperado": "tom desesperado",
+    "desesperada": "tom desesperado"
+  },
+  "campos_ficha": {
+    "onde": "Local",
+    "feridos": "Feridos",
+    "risco": "Risco",
+    "acidente": "Acidente",
+    "violencia": "Agressão",
+    "consciente": "Consciência",
+    "adulto": "Adulto presente"
+  }
+}
