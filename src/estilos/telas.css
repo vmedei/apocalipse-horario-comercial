@@ -18,6 +18,27 @@
   font-weight: 600;
 }
 
+.botao-principal {
+  background: var(--cor-borda);
+  color: var(--cor-fundo);
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 0.55rem 1.1rem;
+  font-weight: 700;
+}
+
+.botao-principal:hover {
+  filter: brightness(1.15);
+}
+
+.botao-link {
+  border: 0;
+  background: none;
+  padding: 0.3rem 0;
+  text-decoration: underline;
+  color: var(--cor-texto-suave);
+}
+
 .nota {
   color: var(--cor-texto-suave);
   font-style: italic;
@@ -159,4 +180,104 @@
 .tela-texto {
   max-width: 42rem;
   margin: 0 auto;
+}
+
+/* ---------- Resultado do dia (fim do expediente / demitido) ---------- */
+
+.tela-resultado {
+  position: relative;
+  max-width: 36rem;
+  margin: 1.5rem auto 0;
+  padding: 1.5rem 1.75rem;
+  border: 3px solid var(--cor-borda);
+  border-radius: 14px;
+  background: var(--cor-superficie);
+}
+
+.tela-resultado h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+}
+
+.tela-resultado .sobretitulo {
+  margin: 0;
+  color: var(--cor-texto-suave);
+}
+
+.destaque-texto {
+  font-size: 1.1rem;
+}
+
+.resumo-dia {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.35rem 1rem;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--cor-borda-suave);
+  border-radius: var(--raio);
+}
+
+.resumo-dia dt {
+  color: var(--cor-texto-suave);
+}
+
+.resumo-dia dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.acoes-resultado {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.carimbo {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  margin: 0;
+  padding: 0.2rem 0.7rem;
+  border: 4px solid var(--cor-perigo);
+  border-radius: 8px;
+  color: var(--cor-perigo);
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  transform: rotate(8deg);
+  animation: carimbar 0.35s ease-out;
+}
+
+@keyframes carimbar {
+  from { transform: rotate(8deg) scale(2.2); opacity: 0; }
+  to { transform: rotate(8deg) scale(1); opacity: 1; }
+}
+
+.demitido {
+  border-color: var(--cor-perigo);
+}
+
+.fala-socorro {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--cor-borda-suave);
+  border-radius: var(--raio);
+}
+
+.fala-socorro p {
+  margin: 0;
+}
+
+@media (max-width: 30rem) {
+  .carimbo {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
 }

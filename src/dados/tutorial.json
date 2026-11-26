@@ -1,0 +1,46 @@
+{
+  "inicio": [
+    {
+      "alvo": ".barra-superior",
+      "aba": "chamada",
+      "texto": "Bem-vindo à central, meu filho. Aqui em cima tem o relógio do expediente, das 8h às 18h, e o Medidor de Colapso. Se ele chegar a 100%, você está demitido."
+    },
+    {
+      "alvo": ".frota",
+      "aba": "chamada",
+      "texto": "Estes são os veículos livres de cada órgão. Cada despacho ocupa um veículo por um tempo. Acabou o veículo, acabou o despacho."
+    },
+    {
+      "alvo": ".fila",
+      "aba": "fila",
+      "texto": "As ligações chegam nesta fila. Quanto mais esperam, pior: passou do limite, aparece um ⚠ e o Colapso começa a subir."
+    },
+    {
+      "alvo": ".mapa",
+      "aba": "mapa",
+      "texto": "No mapa você vê onde estão as ocorrências e os veículos indo e voltando. Pronto? O telefone vai tocar."
+    }
+  ],
+  "primeira_chamada": [
+    {
+      "alvo": ".transcricao",
+      "aba": "chamada",
+      "texto": "Leia com calma o que a pessoa diz. O tom do murmúrio também dá pista."
+    },
+    {
+      "alvo": ".perguntas",
+      "aba": "chamada",
+      "texto": "Se faltar informação, pergunte. A resposta vai para a ficha da ocorrência."
+    },
+    {
+      "alvo": ".grade-despacho",
+      "aba": "chamada",
+      "texto": "Aí você decide para quem mandar: Polícia (190), SAMU (192), Bombeiros (193) ou Defesa Civil (199)."
+    },
+    {
+      "alvo": ".botao-trote",
+      "aba": "chamada",
+      "texto": "E se for brincadeira, encerre como trote. Assim a linha fica livre e nenhum veículo sai à toa."
+    }
+  ]
+}

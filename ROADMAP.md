@@ -510,15 +510,15 @@ Cada marco termina em algo **jogável no link publicado**. Marque as caixas conf
 **Pronto quando:** dá para atender a chamada, errar, entender o motivo e acertar na tentativa seguinte.
 
 ### Marco 2 · Um dia completo (dia 1)
-- [ ] `relogio.js`: 8:00 → 18:00 em 300 s, com pausa automática quando a aba fica escondida.
-- [ ] `fila.js`: chamadas entram na fila no horário `hora`, com tempo de espera visível e alerta ⚠ ao passar do limite.
-- [ ] `frota.js`: veículos por órgão, contador `disponíveis/total` na barra. Sem veículo livre, o botão fica desabilitado com o texto "sem veículo".
-- [ ] Mapa em SVG com os 5 bairros (formas simples e nomes), marcador piscando no bairro da chamada e ícone do veículo indo e voltando.
-- [ ] `colapso.js` com as regras da seção 7 e a barra na interface. Ao chegar a 100, a tela **"Você foi demitido!"** oferece "Repetir o dia".
-- [ ] Conteúdo completo de `dia_1.json` (Apêndice A), com as chamadas banais dos personagens recorrentes e os trotes do Juninho.
-- [ ] **Tutorial da Dona Socorro** no dia 1: balões que apresentam uma área da tela por vez (fila → chamada → perguntas → despacho → trote → mapa), com botão "Pular tutorial".
-- [ ] Painel de depuração: velocidade do relógio, colapso em 90 e gabarito.
-- [ ] Primeiros testes automáticos: `despacho.js` e `colapso.js`.
+- [x] `relogio.js`: 8:00 → 18:00 em 300 s, com pausa automática quando a aba fica escondida.
+- [x] `fila.js`: chamadas entram na fila no horário `hora`, com tempo de espera visível e alerta ⚠ ao passar do limite.
+- [x] `frota.js`: veículos por órgão, contador `disponíveis/total` na barra. Sem veículo livre, o botão fica desabilitado com o texto "sem veículo".
+- [x] Mapa em SVG com os 5 bairros (formas simples e nomes), marcador piscando no bairro da chamada e ícone do veículo indo e voltando.
+- [x] `colapso.js` com as regras da seção 7 e a barra na interface. Ao chegar a 100, a tela **"Você foi demitido!"** oferece "Repetir o dia".
+- [x] Conteúdo completo de `dia_1.json` (Apêndice A), com as chamadas banais dos personagens recorrentes e os trotes do Juninho.
+- [x] **Tutorial da Dona Socorro** no dia 1: balões que apresentam uma área da tela por vez (fila → chamada → perguntas → despacho → trote → mapa), com botão "Pular tutorial".
+- [x] Painel de depuração: velocidade do relógio, colapso em 90 e gabarito.
+- [x] Primeiros testes automáticos: `despacho.js` e `colapso.js`.
 
 **Como testar:** jogue o dia 1 inteiro em velocidade normal pelo menos uma vez. Depois use `?debug&vel=10` para repetir rápido. Coloque o colapso em 90 e deixe uma chamada estourar para ver a demissão. Troque de aba por 10 s e confira se o relógio parou.
 

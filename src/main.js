@@ -15,6 +15,8 @@ import { registrarTela, irPara } from './roteador.js';
 import { telaMenu } from './telas/menu.js';
 import { telaJogo } from './telas/jogo.js';
 import { telaSobre } from './telas/sobre.js';
+import { telaDemitido } from './telas/demitido.js';
+import { telaFimDia } from './telas/fim_dia.js';
 import { instalarPainelDebug } from './debug/painel.js';
 import { estado, parametros } from './estado.js';
 import { textoVersao } from './versao.js';
@@ -22,6 +24,8 @@ import { textoVersao } from './versao.js';
 registrarTela('menu', telaMenu);
 registrarTela('jogo', telaJogo);
 registrarTela('sobre', telaSobre);
+registrarTela('demitido', telaDemitido);
+registrarTela('fim_dia', telaFimDia);
 
 document.body.className = `dia-${estado.dia}`;
 

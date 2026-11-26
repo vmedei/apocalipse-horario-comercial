@@ -11,7 +11,8 @@ export const estado = {
   tela: 'menu',
   dia: parametros.dia ?? 1,
   semente: parametros.seed ?? sementeAleatoria(),
-  velocidade: parametros.vel
+  velocidade: parametros.vel,
+  gabarito: false
 };
 
 /**

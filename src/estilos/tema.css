@@ -16,6 +16,14 @@
   --cor-sucesso-fundo: #e6f4ea;
   --cor-foco: #1f5fa8;
 
+  --mapa-mata: #dfe9dc;
+  --mapa-seca: #efe6d3;
+  --mapa-morro: #e4e1dc;
+  --mapa-cidade: #e8e8e6;
+  --mapa-areia: #f3ecd9;
+  --mapa-agua: #d7e5ef;
+  --mapa-agua-linha: #9fbfd6;
+
   --fonte: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --fonte-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   --tamanho-texto: 1rem;
@@ -40,5 +48,13 @@
     --cor-sucesso: #7fd393;
     --cor-sucesso-fundo: #15301d;
     --cor-foco: #7fb2f0;
+
+    --mapa-mata: #26332a;
+    --mapa-seca: #3a3326;
+    --mapa-morro: #33312d;
+    --mapa-cidade: #2c2c2f;
+    --mapa-areia: #3b3628;
+    --mapa-agua: #1f2f3b;
+    --mapa-agua-linha: #3f6481;
   }
 }

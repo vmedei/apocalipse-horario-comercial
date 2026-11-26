@@ -37,8 +37,9 @@ export function telaMenu(container) {
         botao(
           'Hora Extra',
           '⏱',
-          concluiuDia1 ? { aoClicar: () => irPara('jogo', { modo: 'hora_extra' }) } : { disabled: true },
-          concluiuDia1 ? null : el('span', { class: 'etiqueta', texto: '🔒 libera após o dia 1' })
+          // O modo em si chega no Marco 7; até lá fica desabilitado.
+          { disabled: true },
+          el('span', { class: 'etiqueta', texto: concluiuDia1 ? 'em breve' : '🔒 libera após o dia 1' })
         ),
         el('div', { class: 'linha-botoes' }, [
           botao('Acessibilidade', 'Aa', { disabled: true }, el('span', { class: 'etiqueta', texto: 'em breve' })),

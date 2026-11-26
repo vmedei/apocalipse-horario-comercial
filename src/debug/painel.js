@@ -5,7 +5,7 @@
 import { el } from '../ui/dom.js';
 import { estado, parametros, atualizarEstado, apagarSalvos } from '../estado.js';
 import { textoVersao } from '../versao.js';
-import { ouvir } from '../eventos.js';
+import { ouvir, emitir } from '../eventos.js';
 import { irPara } from '../roteador.js';
 import dia1 from '../dados/chamadas/dia_1.json';
 
@@ -43,6 +43,13 @@ export function instalarPainelDebug() {
     )
   );
 
+  const botaoGabarito = el('button', {
+    type: 'button',
+    texto: 'Gabarito',
+    'aria-pressed': String(estado.gabarito),
+    aoClicar: () => atualizarEstado({ gabarito: !estado.gabarito })
+  });
+
   const corpo = el('div', { class: 'debug-corpo' }, [
     info,
     el('p', { class: 'debug-rotulo', texto: 'Velocidade do relógio' }),
@@ -52,13 +59,22 @@ export function instalarPainelDebug() {
       el('button', { type: 'button', texto: 'Menu', aoClicar: () => irPara('menu') }),
       el('button', { type: 'button', texto: 'Jogo', aoClicar: () => irPara('jogo') })
     ]),
-    el('p', { class: 'debug-rotulo', texto: 'Atender chamada do dia 1' }),
+    el('p', { class: 'debug-rotulo', texto: 'Expediente' }),
+    el('div', { class: 'debug-linha' }, [
+      botaoGabarito,
+      el('button', { type: 'button', texto: 'Terminar o dia agora', aoClicar: () => emitir('debug', { comando: 'terminar' }) })
+    ]),
+    el('div', { class: 'debug-linha' }, [
+      el('button', { type: 'button', texto: 'Colapso 0%', aoClicar: () => emitir('debug', { comando: 'colapso', valor: 0 }) }),
+      el('button', { type: 'button', texto: 'Colapso 90%', aoClicar: () => emitir('debug', { comando: 'colapso', valor: 90 }) })
+    ]),
+    el('p', { class: 'debug-rotulo', texto: 'Colocar chamada na fila agora' }),
     el('div', { class: 'debug-linha' }, [
       seletorChamada,
       el('button', {
         type: 'button',
-        texto: 'Atender',
-        aoClicar: () => irPara('jogo', { chamadaId: seletorChamada.value })
+        texto: 'Disparar',
+        aoClicar: () => emitir('debug', { comando: 'disparar', chamadaId: seletorChamada.value })
       })
     ]),
     el('p', { class: 'debug-rotulo', texto: 'Testes' }),
@@ -92,6 +108,7 @@ export function instalarPainelDebug() {
   atualizarInfo();
   ouvir('estado_mudou', () => {
     atualizarInfo();
+    botaoGabarito.setAttribute('aria-pressed', String(estado.gabarito));
     botoesVelocidade.forEach((b, i) =>
       b.setAttribute('aria-pressed', String([1, 4, 10].at(i) === estado.velocidade))
     );

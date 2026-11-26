@@ -1,7 +1,10 @@
 {
+  "erro_orgao_190": "Crime, briga, ameaça ou risco no trânsito é com a Polícia, o 190.",
+  "erro_orgao_192": "Gente ferida ou passando mal é com o SAMU, o 192. Não perde tempo.",
   "erro_orgao_193": "Fogo, resgate e gente presa é com os Bombeiros. Anota aí, meu filho.",
   "erro_orgao_199": "Encosta encharcada ou risco de desabar é com a Defesa Civil, o 199.",
   "trote_despachado": "Jacaré no banheiro? Olha o histórico antes de mandar viatura.",
   "real_como_trote": "Escuta o fundo da ligação. Voz assustada e barulho de água não é brincadeira.",
-  "fila_estourando": "Prioriza quem tem gente em risco. Gato pode esperar um pouco."
+  "fila_estourando": "Tem gente esperando demais na fila! Atende quem está com ⚠ primeiro.",
+  "sem_veiculo": "Esse órgão está sem veículo livre agora. Atende outra e volta depois, ou espera um pouco."
 }

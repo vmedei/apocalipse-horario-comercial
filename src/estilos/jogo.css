@@ -48,6 +48,35 @@
   background: var(--cor-superficie);
 }
 
+.relogio-caixa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 1.3rem;
+}
+
+.relogio-caixa.tocando {
+  animation: tocar 0.5s ease-in-out 2;
+}
+
+@keyframes tocar {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-6deg); }
+  75% { transform: rotate(6deg); }
+}
+
+.etiqueta.pausa {
+  border-style: dashed;
+}
+
+.barra-superior.colapso-alto {
+  border-color: var(--cor-perigo);
+}
+
+.barra-superior.colapso-alto .valor-colapso::after {
+  content: ' ⚠';
+}
+
 .relogio {
   font-size: 1.5rem;
   font-weight: 800;
@@ -58,7 +87,9 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-width: 13rem;
+  min-width: 11rem;
+  flex: 1 1 11rem;
+  max-width: 17rem;
 }
 
 .medidor-colapso progress {
@@ -142,6 +173,10 @@
 }
 
 .cartao-chamada {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
   display: flex;
   gap: 0.6rem;
   align-items: center;
@@ -151,8 +186,43 @@
   background: var(--cor-superficie);
 }
 
-.cartao-chamada.ativo {
-  border: 3px solid var(--cor-borda);
+.cartao-chamada:not(:disabled) {
+  border-color: var(--cor-borda);
+}
+
+.cartao-chamada:not(:disabled):hover {
+  background: var(--cor-superficie-suave);
+}
+
+.cartao-chamada:disabled {
+  cursor: default;
+}
+
+.cartao-chamada.estourou {
+  border: 3px dashed var(--cor-perigo);
+  background: var(--cor-perigo-fundo);
+}
+
+.espera {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--cor-texto-suave);
+}
+
+.cartao-chamada.estourou .espera {
+  color: var(--cor-perigo);
+  font-weight: 700;
+}
+
+.gabarito {
+  display: inline-block;
+  margin-top: 0.2rem;
+  padding: 0 0.4rem;
+  border: 1px dashed var(--cor-destaque);
+  border-radius: 4px;
+  color: var(--cor-destaque);
+  font-family: var(--fonte-mono);
+  font-size: 0.75rem;
 }
 
 .icone-cartao {
@@ -321,6 +391,16 @@
   font-size: 0.75rem;
 }
 
+.botao-orgao .livres-orgao {
+  font-size: 0.7rem;
+  color: var(--cor-texto-suave);
+}
+
+.etiqueta.esgotado {
+  border-style: dashed;
+  color: var(--cor-texto-suave);
+}
+
 .botao-orgao:not(:disabled):hover,
 .botao-trote:not(:disabled):hover {
   background: var(--cor-superficie-suave);
@@ -414,32 +494,174 @@
   font-style: italic;
 }
 
-/* Mapa provisório */
+/* Sem chamada em linha */
 
-.mapa-area {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  border: 2px dashed var(--cor-borda-suave);
+.sem-chamada {
+  display: grid;
+  justify-items: start;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+}
+
+.sem-chamada p {
+  margin: 0;
+}
+
+/* Mapa */
+
+.mapa-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--cor-borda-suave);
   border-radius: var(--raio);
   background: var(--cor-superficie);
+  font-family: var(--fonte);
 }
 
-.bairro {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  padding: 0.2rem 0.6rem;
-  border: 1.5px solid var(--cor-borda-suave);
-  border-radius: 999px;
-  background: var(--cor-superficie);
-  color: var(--cor-texto-suave);
-  font-size: 0.8rem;
-  white-space: nowrap;
+.mapa-bairro {
+  stroke: var(--cor-borda-suave);
+  stroke-width: 1.5;
 }
 
-.bairro.ativo {
-  border: 3px solid var(--cor-borda);
-  color: var(--cor-texto);
+.mapa-bairro.parque { fill: var(--mapa-mata); }
+.mapa-bairro.serra_seca { fill: var(--mapa-seca); }
+.mapa-bairro.morro { fill: var(--mapa-morro); }
+.mapa-bairro.centro { fill: var(--mapa-cidade); }
+.mapa-bairro.orla { fill: var(--mapa-areia); }
+
+.mapa-mar { fill: var(--mapa-agua); }
+
+.mapa-onda,
+.mapa-rio {
+  fill: none;
+  stroke: var(--mapa-agua-linha);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+.mapa-onda {
+  stroke-width: 2;
+}
+
+.mapa-nome {
+  fill: var(--cor-texto);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.mapa-central rect {
+  fill: var(--cor-superficie);
+  stroke: var(--cor-borda);
+  stroke-width: 2;
+}
+
+.mapa-central text {
+  fill: var(--cor-texto);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.mapa-ocorrencia circle {
+  fill: var(--cor-superficie);
+  stroke: var(--cor-borda);
+  stroke-width: 2.5;
+}
+
+.mapa-ocorrencia text {
+  fill: var(--cor-texto);
+  font-size: 12px;
   font-weight: 800;
+}
+
+.mapa-ocorrencia.estourou circle {
+  fill: var(--cor-perigo-fundo);
+  stroke: var(--cor-perigo);
+  stroke-dasharray: 4 3;
+}
+
+.mapa-ocorrencia.estourou text {
+  fill: var(--cor-perigo);
+}
+
+.mapa-em-linha {
+  fill: none;
+  stroke: var(--cor-destaque);
+  stroke-width: 3;
+  stroke-dasharray: 6 4;
+}
+
+.mapa-veiculo circle {
+  fill: var(--cor-superficie);
+  stroke: var(--cor-borda);
+  stroke-width: 2;
+}
+
+.mapa-veiculo text {
+  font-size: 13px;
+}
+
+/* Tutorial */
+
+.tutorial {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 60;
+  width: min(30rem, calc(100vw - 2rem));
+  transform: translateX(-50%);
+  padding: 0.9rem 1rem;
+  border: 3px solid var(--cor-destaque);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.25);
+}
+
+.tutorial[hidden] {
+  display: none;
+}
+
+.tutorial-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tutorial-contador {
+  margin-left: auto;
+  font-size: 0.8rem;
+}
+
+.tutorial-texto {
+  margin: 0.6rem 0 0.8rem;
+}
+
+.tutorial-acoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.destaque-tutorial {
+  position: relative;
+  z-index: 55;
+  outline: 4px solid var(--cor-destaque);
+  outline-offset: 4px;
+  border-radius: var(--raio);
+  box-shadow: 0 0 0 9999px rgb(0 0 0 / 0.35);
+}
+
+/* Fim do expediente */
+
+.tela-jogo.encerrando-colapso .barra-superior {
+  animation: tremer 0.4s linear 3;
+}
+
+@keyframes tremer {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
 }
 
 /* Balão da Dona Socorro */
@@ -469,6 +691,15 @@
   margin: 0;
 }
 
+.botao-fechar {
+  flex: none;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.1rem 0.3rem;
+}
+
 /* ---------- Telas médias: mapa vai para baixo ---------- */
 
 @media (max-width: 70rem) {
@@ -480,8 +711,8 @@
     grid-column: 1 / -1;
   }
 
-  .mapa-area {
-    aspect-ratio: 16 / 7;
+  .mapa-svg {
+    max-height: 26rem;
   }
 }
 
@@ -524,10 +755,6 @@
   .corpo[data-aba='chamada'] > .chamada-ativa,
   .corpo[data-aba='mapa'] > .mapa {
     display: block;
-  }
-
-  .mapa-area {
-    aspect-ratio: 4 / 5;
   }
 
   .transcricao {
