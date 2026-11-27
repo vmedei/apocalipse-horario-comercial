@@ -14,25 +14,14 @@
     "gravidade": 1,
     "tempo_limite": 90,
     "fala_inicial": "Bom dia, minha filha... o Bolinha subiu na mangueira e não desce de jeito nenhum.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua das Acácias, 40, no Centro."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "risco",
-        "tipo": "essencial",
-        "texto": "Alguém tentou subir?",
-        "resposta": "Eu ia pegar a escada, mas a minha filha não deixou."
-      }
+    "respostas": {
+      "onde": "Rua das Acácias, 40, no Centro.",
+      "feridos": "Ninguém, minha filha. Eu ia pegar a escada, mas a minha filha não deixou.",
+      "animal": "O Bolinha, meu gato! Tá lá no galho mais alto, miando.",
+      "primeira": "Primeira vez, minha filha. Nunca precisei."
+    },
+    "essenciais": [
+      "animal"
     ],
     "feedback_acerto": "Gato resgatado! Seu Arlindo agradece com um bolo de fubá.",
     "feedback_erro": "Resgate de animal em altura é com os Bombeiros (193).",
@@ -53,25 +42,14 @@
     "gravidade": 1,
     "tempo_limite": 60,
     "fala_inicial": "Socorro! Tem um JACARÉ no meu banheiro! (risadas ao fundo)",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Na minha casa, ué! (mais risadas)"
-      },
-      {
-        "id": "adulto",
-        "tipo": "essencial",
-        "texto": "Tem um adulto aí?",
-        "resposta": "...tchau!"
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Profissão? (risadinha) Eu sou... domador de jacaré!"
-      }
+    "respostas": {
+      "onde": "Na minha casa, ué! (mais risadas)",
+      "o_que": "O jacaré tá... tá tomando banho! (gargalhada)",
+      "animal": "Um jacaré! Deste tamanho! (risadas)",
+      "adulto": "...tchau!"
+    },
+    "essenciais": [
+      "adulto"
     ],
     "feedback_acerto": "Trote identificado. A linha ficou livre para quem precisa.",
     "feedback_erro": "Risadas, endereço vago e criança fugindo da pergunta: sinais de trote.",
@@ -92,25 +70,14 @@
     "gravidade": 1,
     "tempo_limite": 90,
     "fala_inicial": "A Mimosa fugiu da cerca e tá parada no meio da estrada da Serra. Já quase bateram nela.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "No quilômetro 8 da estrada da Serra Seca."
-      },
-      {
-        "id": "acidente",
-        "tipo": "essencial",
-        "texto": "Houve acidente?",
-        "resposta": "Ainda não, graças a Deus."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "No quilômetro 8 da estrada da Serra Seca.",
+      "feridos": "Ainda não, graças a Deus. Mas quase bateram nela.",
+      "animal": "A Mimosa, minha vaca. Tá parada bem no meio da pista."
+    },
+    "essenciais": [
+      "animal",
+      "feridos"
     ],
     "feedback_acerto": "A Polícia sinalizou a pista e Seu Zé levou a Mimosa de volta.",
     "feedback_erro": "Animal na pista é risco de trânsito: Polícia (190).",
@@ -131,25 +98,13 @@
     "gravidade": 1,
     "tempo_limite": 120,
     "fala_inicial": "O vizinho tá com o som no último desde as seis da manhã. Já pedi, ele me xingou.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Beco 3 do Morro da Vista, casa azul."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "violencia",
-        "tipo": "essencial",
-        "texto": "Houve agressão?",
-        "resposta": "Só xingamento, mas o clima tá feio."
-      }
+    "respostas": {
+      "onde": "Beco 3 do Morro da Vista, casa azul.",
+      "o_que": "Som alto desde as seis. Pedi para baixar e ele me xingou.",
+      "violencia": "Só xingamento, mas o clima tá feio."
+    },
+    "essenciais": [
+      "violencia"
     ],
     "feedback_acerto": "A Polícia conversou com o vizinho. O som baixou.",
     "feedback_erro": "Perturbação e ameaça entre vizinhos é com a Polícia (190).",
@@ -170,25 +125,13 @@
     "gravidade": 1,
     "tempo_limite": 90,
     "fala_inicial": "Levaram a caixinha do troco do meu quiosque! O cara correu pela areia.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Quiosque 12, Praia do Sossego."
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém se machucou?",
-        "resposta": "Não, só o meu prejuízo."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "Quiosque 12, Praia do Sossego.",
+      "feridos": "Não, só o meu prejuízo.",
+      "violencia": "O cara correu pela areia com a caixinha debaixo do braço."
+    },
+    "essenciais": [
+      "violencia"
     ],
     "feedback_acerto": "A Polícia registrou a ocorrência e fez uma ronda na orla.",
     "feedback_erro": "Furto é com a Polícia (190).",
@@ -209,25 +152,14 @@
     "gravidade": 2,
     "tempo_limite": 75,
     "fala_inicial": "Me perdi na trilha do Parque Estadual e a bateria do celular tá acabando.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "O que você vê ao redor?",
-        "resposta": "Uma cachoeira pequena e uma placa quebrada."
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Está ferido?",
-        "resposta": "Torci o pé, mas consigo andar devagar."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Uma cachoeira pequena e uma placa quebrada.",
+      "o_que": "Me perdi. Não acho a trilha de volta e a bateria tá em 5%.",
+      "feridos": "Torci o pé, mas consigo andar devagar.",
+      "quantos": "Só eu."
+    },
+    "essenciais": [
+      "feridos"
     ],
     "feedback_acerto": "Os Bombeiros encontraram o trilheiro perto da cachoeira.",
     "feedback_erro": "Busca e resgate em mata é com os Bombeiros (193).",
@@ -248,25 +180,14 @@
     "gravidade": 2,
     "tempo_limite": 60,
     "fala_inicial": "Um senhor escorregou na calçada e bateu a cabeça. Tá consciente, mas sangrando.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Em frente à farmácia da Praça Central."
-      },
-      {
-        "id": "consciente",
-        "tipo": "essencial",
-        "texto": "Ele está consciente?",
-        "resposta": "Tá, mas meio confuso."
-      },
-      {
-        "id": "plano",
-        "tipo": "irrelevante",
-        "texto": "Tem plano de saúde?",
-        "resposta": "Tem não... precisa?"
-      }
+    "respostas": {
+      "onde": "Em frente à farmácia da Praça Central.",
+      "feridos": "Bateu a cabeça na calçada. Tá sangrando um pouco.",
+      "respira": "Tá acordado, mas meio confuso."
+    },
+    "essenciais": [
+      "respira",
+      "feridos"
     ],
     "feedback_acerto": "O SAMU atendeu o senhor na praça e o levou para avaliação.",
     "feedback_erro": "Pessoa ferida precisa de atendimento médico: SAMU (192).",
@@ -287,25 +208,13 @@
     "gravidade": 1,
     "tempo_limite": 60,
     "fala_inicial": "Moço, tem um disco voador pousando na escola! Manda o exército! (risada abafada)",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Qual escola?",
-        "resposta": "A... a escola do... ah, esquece."
-      },
-      {
-        "id": "adulto",
-        "tipo": "essencial",
-        "texto": "Tem algum adulto com você?",
-        "resposta": "(risadinha) Não... tchau!"
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Do telefone da cozinha! (risada)"
-      }
+    "respostas": {
+      "onde": "A... a escola do... ah, esquece.",
+      "o_que": "O disco tá... tá soltando fumaça colorida! (risada abafada)",
+      "adulto": "(risadinha) Não... tchau!"
+    },
+    "essenciais": [
+      "adulto"
     ],
     "feedback_acerto": "Trote identificado de novo. A Dona Socorro anota o número do Juninho.",
     "feedback_erro": "Mesmo número, mesma risada: é o Juninho de novo.",

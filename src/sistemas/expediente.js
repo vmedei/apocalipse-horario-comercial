@@ -11,7 +11,7 @@ import { resolverDespacho } from './despacho.js';
 import { aplicarColapso, colapsou } from './colapso.js';
 import { avaliarRitmo, reescalonar } from './dificuldade.js';
 import { criarAleatorio } from './aleatorio.js';
-import { perguntasDisponiveis, estadoEndereco, efeitoEndereco, pontuarTriagem } from './triagem.js';
+import { perguntasDisponiveis, respostaPara, estadoEndereco, efeitoEndereco, pontuarTriagem } from './triagem.js';
 
 /**
  * @typedef {Object} Chamada
@@ -22,7 +22,11 @@ import { perguntasDisponiveis, estadoEndereco, efeitoEndereco, pontuarTriagem } 
  * @property {string|null} orgao_correto
  * @property {number} gravidade
  * @property {number} tempo_limite
- * @property {{id: string, texto: string, resposta: string}[]} perguntas
+ * @property {Record<string, string>} respostas  respostas às perguntas do catálogo
+ * @property {string[]} essenciais
+ * @property {string[]} [uteis]
+ * @property {boolean} [endereco_vago]
+ * @property {string} [personagem]
  * @property {string} feedback_acerto
  * @property {string} feedback_erro
  */
@@ -53,7 +57,8 @@ import { perguntasDisponiveis, estadoEndereco, efeitoEndereco, pontuarTriagem } 
  * @property {number} duracao
  * @property {(Chamada & {chegaEm: number})[]} pendentes
  * @property {ItemFila[]} fila
- * @property {(ItemFila & {atendidaEm: number, perguntas: string[]}) | null} ativa
+ * @property {(ItemFila & {atendidaEm: number, perguntas: string[], respondeEm: number}) | null} ativa
+ *   `respondeEm`: quando a pessoa termina de responder a última pergunta
  * @property {Resolvida[]} resolvidas
  * @property {ItemFila[]} naoAtendidas
  * @property {import('./frota.js').Missao[]} missoes
@@ -139,10 +144,15 @@ export function avancar(exp, dt) {
     return cobrados === item.cobrados ? item : { ...item, cobrados };
   });
 
+  // 4. Resposta da última pergunta chegou
+  if (exp.ativa && exp.ativa.respondeEm > exp.tempo && exp.ativa.respondeEm <= tempo) {
+    eventos.push({ tipo: 'resposta_chegou', chamada: exp.ativa.chamada });
+  }
+
   /** @type {Expediente} */
   let novo = { ...exp, tempo, pendentes, fila, missoes, colapso, colapsoMax: Math.max(exp.colapsoMax, colapso) };
 
-  // 4. Fim do dia
+  // 5. Fim do dia
   if (colapsou(colapso)) {
     novo = encerrar(novo, 'colapso');
     eventos.push({ tipo: 'colapsou' });
@@ -182,26 +192,35 @@ export function atender(exp, chamadaId) {
     exp: {
       ...exp,
       fila: exp.fila.filter((i) => i !== item),
-      ativa: { ...item, atendidaEm: exp.tempo, perguntas: [] }
+      ativa: { ...item, atendidaEm: exp.tempo, perguntas: [], respondeEm: exp.tempo }
     },
     eventos: [{ tipo: 'chamada_atendida', chamada: item.chamada }]
   };
 }
 
 /**
- * Faz uma pergunta na chamada em linha.
+ * Faz uma pergunta do catálogo na chamada em linha. A pessoa leva um tempo para responder,
+ * e só dá para fazer a próxima pergunta depois da resposta.
  * @param {Expediente} exp
  * @param {string} perguntaId
+ * @returns {{ exp: Expediente, eventos: Evento[], erro?: 'aguardando_resposta' }}
  */
 export function perguntar(exp, perguntaId) {
   const ativa = exp.ativa;
   if (!ativa || ativa.perguntas.includes(perguntaId)) return { exp, eventos: [] };
-  const pergunta = perguntasDisponiveis(ativa.chamada, ativa.perguntas).find((p) => p.id === perguntaId);
+  if (respondendo(exp)) return { exp, eventos: [], erro: 'aguardando_resposta' };
+  const pergunta = perguntasDisponiveis(ativa.perguntas).find((p) => p.id === perguntaId);
   if (!pergunta) return { exp, eventos: [] };
+  const respondeEm = exp.tempo + BALANCO.triagem.segundosResposta;
   return {
-    exp: { ...exp, ativa: { ...ativa, perguntas: [...ativa.perguntas, perguntaId] } },
-    eventos: [{ tipo: 'pergunta_feita', pergunta }]
+    exp: { ...exp, ativa: { ...ativa, perguntas: [...ativa.perguntas, perguntaId], respondeEm } },
+    eventos: [{ tipo: 'pergunta_feita', pergunta, resposta: respostaPara(ativa.chamada, perguntaId) }]
   };
+}
+
+/** Se a pessoa em linha ainda está respondendo a última pergunta. */
+export function respondendo(exp) {
+  return Boolean(exp.ativa && exp.tempo < exp.ativa.respondeEm);
 }
 
 /** Veículos livres de um órgão agora. */

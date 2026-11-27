@@ -30,7 +30,7 @@
     {
       "alvo": ".perguntas",
       "aba": "chamada",
-      "texto": "Pergunte o que importa: primeiro o endereço, depois o que decide quem mandar. Sem endereço confirmado o veículo demora para achar o local. E pergunta à toa gasta tempo e tira pontos."
+      "texto": "Estas são as perguntas da central, as mesmas para toda ligação. Cada resposta leva um tempinho, então escolha: primeiro o endereço, depois o que ajuda a decidir quem mandar. Pergunta à toa gasta tempo e tira pontos."
     },
     {
       "alvo": ".ficha",

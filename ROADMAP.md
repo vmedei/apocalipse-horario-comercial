@@ -283,12 +283,13 @@ O Vite importa JSON diretamente: `import orgaos from './dados/orgaos.json'`.
   "tempo_limite": 60,
   "fala_inicial": "A maré tá subindo muito, a água já chegou no quiosque!",
   "endereco_vago": true,
-  "perguntas": [
-    { "id": "onde",      "tipo": "endereco",           "texto": "Onde é?",                        "resposta": "Na praia, perto dos quiosques!" },
-    { "id": "numero",    "tipo": "endereco_confirmar", "requer": "onde", "texto": "Qual o número ou um ponto de referência?", "resposta": "Quiosque 12, em frente ao posto 2." },
-    { "id": "pessoas",   "tipo": "essencial",          "texto": "Tem alguém em perigo?",          "resposta": "Eu e o Tiago, presos no deque!" },
-    { "id": "aluguel",   "tipo": "irrelevante",        "texto": "O quiosque é seu ou alugado?",   "resposta": "É meu... por que isso importa agora?!" }
-  ],
+  "respostas": {
+    "onde": "Na praia, perto dos quiosques!",
+    "confirmar": "Quiosque 12, em frente ao posto 2.",
+    "presos": "Eu e o Tiago, presos no deque!",
+    "agua": "O mar subiu tudo, tá batendo no deque!"
+  },
+  "essenciais": ["presos"],
   "feedback_acerto": "Bombeiros retiraram todos do quiosque a tempo.",
   "feedback_erro": "Ressaca com pessoas em risco é com os Bombeiros (193).",
   "mitigada_por": "barreira_orla"
@@ -300,9 +301,24 @@ Campos:
 - `tempo_limite` são segundos reais antes de a chamada "estourar".
 - `trote: true` exige `orgao_correto: null`.
 - `mitigada_por` é o id de um investimento que reduz ou elimina esta chamada.
-- `endereco_vago: true` faz a resposta de `endereco` ser aproximada; só a pergunta `endereco_confirmar` confirma.
-- Tipos de pergunta: `endereco` (onde é), `endereco_confirmar` (número ou referência), `essencial` (revela o órgão, a gravidade ou o trote), `util` (ajuda, mas não decide) e `irrelevante` (não ajuda e custa pontos).
-- `requer` esconde a pergunta até outra ser feita.
+- As perguntas não ficam na chamada: vêm do **catálogo** `perguntas.json` (seção 6.3.1), igual para toda ligação. A chamada só diz como responde (`respostas`, por id do catálogo) e quais perguntas são `essenciais` para ela (revelam o órgão, a gravidade ou o trote). `uteis` é opcional, para uma pergunta de cadastro que nesta chamada ajuda.
+- Toda chamada responde `onde`. `endereco_vago: true` faz essa resposta ser aproximada e exige uma resposta para `confirmar`.
+- Pergunta do catálogo sem resposta na chamada recebe a resposta do personagem (`respostas`, ou `respostas_trote` em trotes, em `personagens.json`) ou uma resposta padrão do catálogo. Por isso, a chamada precisa responder toda pergunta cujo padrão contradiria a cena (por exemplo, `agua` numa enchente).
+
+### 6.3.1 Catálogo de perguntas (`perguntas.json`)
+```json
+{
+  "grupos": [{ "id": "local", "nome": "Local" }, { "id": "situacao", "nome": "Situação" }, { "id": "riscos", "nome": "Riscos" }, { "id": "quem_liga", "nome": "Quem liga" }],
+  "perguntas": [
+    { "id": "onde",      "grupo": "local", "texto": "Onde é a ocorrência?", "curto": "Onde é?", "rotulo": "Local", "padrao": ["Aqui, moço! Manda alguém!"] },
+    { "id": "confirmar", "grupo": "local", "requer": "onde", "texto": "Pode confirmar a rua e o número, ou um ponto de referência?", "curto": "Confirmar endereço", "rotulo": "Referência", "padrao": ["É isso mesmo que eu falei."] },
+    { "id": "plano",     "grupo": "situacao", "irrelevante": true, "texto": "Tem plano de saúde?", "curto": "Plano de saúde?", "rotulo": "Plano de saúde", "padrao": ["Plano? Tem não... precisa?"] }
+  ]
+}
+```
+- São 20 perguntas em 4 grupos: local, situação (o que acontece, feridos, consciência, presos, quantas pessoas), riscos (fogo, água, estrutura, fios, agressor, animal) e quem liga (adulto, nome). Cada grupo mistura perguntas de cadastro que parecem úteis mas não ajudam (`irrelevante: true`): imóvel próprio, plano de saúde, celular ou fixo, profissão, já ligou antes.
+- `curto` é o texto do botão; `texto` aparece na transcrição; `rotulo` é o campo na ficha; `requer` esconde a pergunta até outra ser feita.
+- Tipo de cada pergunta numa chamada: `endereco` (onde), `endereco_confirmar` (confirmar, se o endereço é vago), `essencial`, `util` (a chamada responde, mas não decide), `neutra` (a chamada não responde: só gasta tempo) ou `irrelevante` (cadastro: gasta tempo e tira pontos).
 
 ### 6.4 `investimentos.json`
 ```json
@@ -386,7 +402,7 @@ Todos os números ficam em `src/config/balanco.js` e são **valores de partida p
 | Perguntas essenciais feitas (proporcional) | até 30 |
 | Cada pergunta irrelevante | −10 |
 
-Em trotes, a parte do endereço vale para quem fez ao menos uma pergunta essencial antes de encerrar.
+Em trotes, a parte do endereço vale para quem fez ao menos uma pergunta essencial antes de encerrar. Perguntas neutras não mudam a nota, mas cada resposta leva 2 s de jogo (`BALANCO.triagem.segundosResposta`), e só dá para fazer a próxima pergunta depois da resposta.
 
 | Endereço ao despachar | Tempo do veículo | Colapso extra |
 |---|---|---|
@@ -566,15 +582,16 @@ Cada marco termina em algo **jogável no link publicado**. Marque as caixas conf
 ### Marco 3.5 · Triagem: perguntas, endereço e chamadas ambíguas
 O jogador precisa **investigar** antes de despachar: as falas iniciais ficam menos óbvias a cada dia, e as pistas decisivas aparecem nas respostas.
 
-- [x] Cada pergunta tem um `tipo`, escondido do jogador até o feedback (seção 7.1): `endereco`, `endereco_confirmar`, `essencial`, `util` ou `irrelevante`.
-- [x] Perguntas que só aparecem depois de outra (campo `requer`), por exemplo "Qual o número ou um ponto de referência?" depois de "Onde é?".
+- [x] Catálogo único de perguntas (`perguntas.json`, seção 6.3.1), agrupado em Local, Situação, Riscos e Quem liga; cada chamada só define as respostas e as perguntas essenciais. O tipo de cada pergunta (`endereco`, `endereco_confirmar`, `essencial`, `util`, `neutra` ou `irrelevante`) fica escondido até o feedback.
+- [x] Cada resposta leva um tempo para chegar ("respondendo…"); perguntar tudo custa tempo de fila.
+- [x] Perguntas que só aparecem depois de outra (campo `requer`): "Confirmar endereço" depois de "Onde é?".
 - [x] Endereço com três estados na ficha: **não perguntado**, **aproximado** (resposta vaga, falta confirmar) e **confirmado**. Despachar sem endereço confirmado deixa o veículo mais lento e a ocorrência piora (mais Colapso).
 - [x] Nota de triagem de 0 a 100 por chamada (encaminhamento + endereço + perguntas essenciais − perguntas desnecessárias), mostrada no feedback com o que faltou perguntar.
 - [x] Nota média da triagem no resumo do dia (vira um indicador do relatório no Marco 4).
 - [x] Reescrita do tom: dia 1 continua didático; a partir do dia 2, a fala inicial não entrega o órgão, e a pista decisiva fica numa resposta. Trotes ficam sutis (contradições, risadas ao fundo, endereço que não fecha) e só são identificáveis perguntando.
 - [x] A partir do dia 2, moradores conhecidos aparecem como "Número não identificado" até se apresentarem na ligação (o Juninho nunca se apresenta).
-- [x] Toda chamada tem pelo menos uma pergunta desnecessária plausível (por exemplo, "A casa é própria ou alugada?"), que custa tempo e pontos.
-- [x] Testes: pontuação, efeitos do endereço e validação do conteúdo (toda chamada real tem pergunta de endereço; toda chamada tem ao menos uma pergunta essencial).
+- [x] Perguntas de cadastro plausíveis no catálogo ("O imóvel é próprio ou alugado?", "Tem plano de saúde?"), que custam tempo e pontos — exceto quando revelam um trote.
+- [x] Testes: pontuação, efeitos do endereço, tempo de resposta e validação do conteúdo (toda chamada responde `onde`; endereço vago tem `confirmar`; essenciais respondidas e do catálogo).
 
 **Como testar:** atenda uma chamada do dia 3 sem perguntar nada e despache. O feedback deve mostrar a nota baixa, "endereço não confirmado" e o veículo demorando mais no mapa. Depois, atenda outra perguntando o endereço, confirmando o número e fazendo as perguntas essenciais, e compare a nota. Use `?debug` com **Gabarito**: ele mostra também o tipo de cada pergunta.
 

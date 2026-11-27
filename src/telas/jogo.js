@@ -15,6 +15,7 @@ import {
   avancar,
   atender,
   perguntar,
+  respondendo,
   despachar,
   livres,
   resumoDoDia,
@@ -31,7 +32,7 @@ import tutorialPassos from '../dados/tutorial.json';
 import escritorio from '../dados/escritorio.json';
 import { chamadasDoDia } from '../dados/chamadas.js';
 import { registrarDia, novaPartida } from '../sistemas/partida.js';
-import { perguntasDisponiveis, estadoEndereco } from '../sistemas/triagem.js';
+import { GRUPOS, perguntasDisponiveis, perguntaDoCatalogo, respostaPara, tipoDaPergunta, estadoEndereco } from '../sistemas/triagem.js';
 
 /** Maior passo de tempo por quadro (evita saltos se o navegador travar). */
 const PASSO_MAXIMO = 0.25;
@@ -60,7 +61,7 @@ export function telaJogo(container) {
   const pessoaNaLinha = (chamada, feitas) => {
     const p = pessoaDe(chamada);
     if (dia === 1 || !p.apelido) return { ...p, conhecida: true };
-    const ouvido = [chamada.fala_inicial, ...chamada.perguntas.filter((x) => feitas.includes(x.id)).map((x) => x.resposta)].join(' ');
+    const ouvido = [chamada.fala_inicial, ...feitas.map((id) => respostaPara(chamada, id))].join(' ');
     return ouvido.includes(p.apelido) ? { ...p, conhecida: true } : { nome: rotulos.pessoa_desconhecida, descricao: '', conhecida: false };
   };
 
@@ -270,34 +271,52 @@ export function telaJogo(container) {
     }
 
     const c = ativa.chamada;
-    const pessoa = pessoaNaLinha(c, ativa.perguntas);
+    const aguardando = respondendo(exp);
+    // A última pergunta só conta como ouvida quando a resposta chega.
+    const ouvidas = aguardando ? ativa.perguntas.slice(0, -1) : ativa.perguntas;
+    const pessoa = pessoaNaLinha(c, ouvidas);
     const quem = pessoa.conhecida ? pessoa.nome : rotulos.quem_liga;
     const transcricao = el('ol', { class: 'transcricao', 'aria-live': 'polite', 'aria-label': 'Transcrição da ligação' }, [
       fala(quem, `“${c.fala_inicial}”`, 'pessoa'),
-      ...ativa.perguntas.flatMap((id) => {
-        const p = c.perguntas.find((x) => x.id === id);
-        return p ? [fala('Você', p.texto, 'atendente'), fala(quem, `“${p.resposta}”`, 'pessoa')] : [];
+      ...ativa.perguntas.flatMap((id, i) => {
+        const p = perguntaDoCatalogo(id);
+        if (!p) return [];
+        const esperando = aguardando && i === ativa.perguntas.length - 1;
+        return [
+          fala('Você', p.texto, 'atendente'),
+          esperando ? fala(quem, rotulos.respondendo, 'pessoa digitando') : fala(quem, `“${respostaPara(c, id)}”`, 'pessoa')
+        ];
       })
     ]);
 
+    const disponiveis = perguntasDisponiveis(ativa.perguntas);
     const perguntas = el(
       'div',
       { class: 'perguntas' },
-      perguntasDisponiveis(c, ativa.perguntas).map((p) => {
-        const feita = ativa.perguntas.includes(p.id);
-        const texto = `${feita ? '✓ ' : ''}${p.texto}${estado.gabarito ? ` [${p.tipo ?? '?'}]` : ''}`;
-        return el('button', {
-          type: 'button',
-          class: feita ? 'chip feito' : 'chip',
-          disabled: feita,
-          texto,
-          aoClicar: () => aplicar(perguntar(exp, p.id))
-        });
-      })
+      GRUPOS.map((g) =>
+        el('div', { class: 'grupo-perguntas', role: 'group', 'aria-label': g.nome }, [
+          el('span', { class: 'rotulo-grupo', texto: g.nome }),
+          ...disponiveis
+            .filter((p) => p.grupo === g.id)
+            .map((p) => {
+              const feita = ativa.perguntas.includes(p.id);
+              const texto = `${feita ? '✓ ' : ''}${p.curto}${estado.gabarito ? ` [${tipoDaPergunta(c, p.id)}]` : ''}`;
+              return el('button', {
+                type: 'button',
+                class: feita ? 'chip feito' : 'chip',
+                'data-pergunta': p.id,
+                title: p.texto,
+                'aria-label': `${p.texto}${feita ? ' (já perguntado)' : ''}`,
+                disabled: feita || aguardando,
+                texto,
+                aoClicar: () => aplicar(perguntar(exp, p.id))
+              });
+            })
+        ])
+      )
     );
 
-    const endereco = estadoEndereco(c, ativa.perguntas);
-    const respondidas = c.perguntas.filter((p) => ativa.perguntas.includes(p.id));
+    const endereco = estadoEndereco(c, ouvidas);
 
     const ficha = el(
       'dl',
@@ -305,7 +324,7 @@ export function telaJogo(container) {
       [
         ['Bairro', nomeBairro(c.bairro), null],
         ['Endereço', rotulos.estado_endereco[endereco], `endereco-${endereco}`],
-        ...respondidas.map((p) => [rotulos.campos_ficha[p.id] ?? p.texto, p.resposta, null])
+        ...ouvidas.map((id) => [perguntaDoCatalogo(id)?.rotulo ?? id, respostaPara(c, id), null])
       ].flatMap(([rotulo, valor, classe]) => [el('dt', { texto: rotulo }), el('dd', { class: classe, texto: valor })])
     );
 
@@ -427,7 +446,7 @@ export function telaJogo(container) {
           estourouAlguma = true;
           dar('fila_estourando');
         }
-      } else if (e.tipo === 'chamada_atendida' || e.tipo === 'pergunta_feita') {
+      } else if (e.tipo === 'chamada_atendida' || e.tipo === 'pergunta_feita' || e.tipo === 'resposta_chegou') {
         fila = true;
         chamada = true;
       } else if (e.tipo === 'chamada_resolvida') {

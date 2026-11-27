@@ -8,6 +8,7 @@ import eventos from '../src/dados/eventos.json';
 import rotulos from '../src/dados/rotulos.json';
 import jornais from '../src/dados/jornais.json';
 import escritorio from '../src/dados/escritorio.json';
+import catalogo from '../src/dados/perguntas.json';
 
 // Adaptações previstas para o Marco 5 (investimentos).
 const ADAPTACOES = [
@@ -50,7 +51,6 @@ describe('conteúdo das chamadas', () => {
       expect(c.gravidade, onde).toBeGreaterThanOrEqual(1);
       expect(c.gravidade, onde).toBeLessThanOrEqual(3);
       expect(c.tempo_limite, onde).toBeGreaterThanOrEqual(40);
-      expect(c.perguntas.length, onde).toBeGreaterThan(0);
       expect(c.fala_inicial.length, onde).toBeGreaterThan(10);
       expect(c.feedback_acerto.length, onde).toBeGreaterThan(5);
       expect(c.feedback_erro.length, onde).toBeGreaterThan(5);
@@ -82,30 +82,35 @@ describe('conteúdo das chamadas', () => {
     expect(real[0].personagem).toBe('juninho');
   });
 
-  it('as perguntas seguem as regras da triagem', () => {
-    const TIPOS = ['endereco', 'endereco_confirmar', 'essencial', 'util', 'irrelevante'];
-    DIAS.forEach((dia, i) => {
-      for (const c of dia) {
-        const onde = `chamada ${c.id}`;
-        const ids = c.perguntas.map((p) => p.id);
-        expect(new Set(ids).size, onde).toBe(ids.length);
-        for (const p of c.perguntas) {
-          expect(TIPOS, `${onde} · ${p.id}`).toContain(p.tipo);
-          if (p.requer) expect(ids, `${onde} · ${p.id}`).toContain(p.requer);
-          expect(p.texto.length, `${onde} · ${p.id}`).toBeGreaterThan(3);
-          expect(p.resposta.length, `${onde} · ${p.id}`).toBeGreaterThan(2);
-        }
-        const tipos = c.perguntas.map((p) => p.tipo);
-        if (!c.trote) expect(tipos.filter((t) => t === 'endereco'), onde).toHaveLength(1);
-        if (c.endereco_vago) {
-          const confirmar = c.perguntas.filter((p) => p.tipo === 'endereco_confirmar');
-          expect(confirmar, onde).toHaveLength(1);
-          expect(c.perguntas.find((p) => p.id === confirmar[0].requer)?.tipo, onde).toBe('endereco');
-        }
-        expect(tipos.filter((t) => t === 'essencial').length, onde).toBeGreaterThan(0);
-        if (i >= 1) expect(tipos, onde).toContain('irrelevante');
+  it('as respostas seguem o catálogo de perguntas', () => {
+    const ids = catalogo.perguntas.map((p) => p.id);
+    const irrelevantes = catalogo.perguntas.filter((p) => p.irrelevante).map((p) => p.id);
+    for (const c of todas) {
+      const onde = `chamada ${c.id}`;
+      expect(c.perguntas, onde).toBeUndefined();
+      for (const [id, resposta] of Object.entries(c.respostas)) {
+        expect(ids, `${onde} · ${id}`).toContain(id);
+        expect(resposta.length, `${onde} · ${id}`).toBeGreaterThan(2);
       }
-    });
+      // Toda chamada diz onde é; endereço vago tem confirmação, e só ele.
+      expect(c.respostas.onde, onde).toBeTruthy();
+      expect(Boolean(c.respostas.confirmar), onde).toBe(Boolean(c.endereco_vago));
+      // Essenciais: pelo menos uma, sempre respondida pela própria chamada, nunca endereço.
+      expect(c.essenciais.length, onde).toBeGreaterThan(0);
+      for (const id of [...c.essenciais, ...(c.uteis ?? [])]) {
+        expect(c.respostas[id], `${onde} · ${id}`).toBeTruthy();
+        expect(['onde', 'confirmar'], `${onde} · ${id}`).not.toContain(id);
+      }
+      // Pergunta de cadastro só é essencial em trote (é ali que o trote se entrega).
+      if (!c.trote) for (const id of c.essenciais) expect(irrelevantes, `${onde} · ${id}`).not.toContain(id);
+    }
+  });
+
+  it('personagens só respondem perguntas do catálogo', () => {
+    const ids = catalogo.perguntas.map((p) => p.id);
+    for (const [nome, p] of Object.entries(personagens)) {
+      for (const id of Object.keys({ ...p.respostas, ...p.respostas_trote })) expect(ids, `${nome} · ${id}`).toContain(id);
+    }
   });
 
   it('a partir do dia 2, a fala inicial não entrega o órgão', () => {

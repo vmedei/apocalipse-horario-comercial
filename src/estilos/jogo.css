@@ -342,12 +342,6 @@
   font-weight: 600;
 }
 
-.perguntas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
 .chip {
   padding: 0.35rem 0.8rem;
   border: 1.5px solid var(--cor-borda);
@@ -835,4 +829,44 @@ body.dia-5:not(.sem-piscar) .tela-jogo::after {
 @keyframes luz-piscando {
   0%, 93%, 95%, 97%, 100% { opacity: 0; }
   94%, 96% { opacity: 0.18; }
+}
+
+/* Catálogo de perguntas, agrupado */
+.perguntas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 0.9rem;
+}
+
+@media (max-width: 30rem) {
+  .perguntas {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grupo-perguntas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: 0.3rem;
+}
+
+.grupo-perguntas .chip {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.82rem;
+}
+
+.rotulo-grupo {
+  flex-basis: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cor-texto-suave);
+}
+
+.fala.digitando .texto-fala {
+  font-style: italic;
+  opacity: 0.75;
 }

@@ -2,27 +2,60 @@
   "seu_arlindo": {
     "nome": "Seu Arlindo",
     "descricao": "aposentado do Centro",
-    "apelido": "Arlindo"
+    "apelido": "Arlindo",
+    "respostas": {
+      "nome": "Arlindo, minha filha. Arlindo Souza.",
+      "profissao": "Sou aposentado, minha filha. Fui carteiro."
+    }
   },
   "juninho": {
     "nome": "Juninho",
     "descricao": "menino de 10 anos",
-    "apelido": "Juninho"
+    "apelido": "Juninho",
+    "respostas_trote": {
+      "nome": "É... (risadinha) ...Batman!",
+      "o_que": "É sério, moço! (risada abafada)",
+      "feridos": "Ferido? Ééé... (risada abafada)",
+      "respira": "Tá... acho que tá! (risadinha)",
+      "presos": "Preso? (cochicho ao fundo) ...tá!",
+      "quantos": "Um monte! Mil! (risadas)",
+      "agua": "Água? Só a da piscina! (gargalhada)",
+      "fogo": "Fogo? (risadinha) ...tem, tem sim!",
+      "violencia": "Tem um monstro! (risada)",
+      "confirmar": "É... é na rua... (cochicho: \"fala qualquer uma!\") ...da Alegria!",
+      "plano": "Plano? (risadinha) Meu plano é... tchau!",
+      "aluguel": "Sei lá, pergunta pra minha mãe!",
+      "celular": "Do telefone da cozinha! (risada)",
+      "profissao": "Profissão? (risadinha) Sou... astronauta!",
+      "primeira": "Primeira? (risadas) Não!"
+    }
   },
   "seu_ze": {
     "nome": "Seu Zé",
     "descricao": "agricultor da Serra Seca",
-    "apelido": "Zé"
+    "apelido": "Zé",
+    "respostas": {
+      "nome": "Zé, do sítio. Seu Zé.",
+      "profissao": "Agricultor, a vida toda."
+    }
   },
   "kelly": {
     "nome": "Kelly",
     "descricao": "dona de quiosque na orla",
-    "apelido": "Kelly"
+    "apelido": "Kelly",
+    "respostas": {
+      "nome": "Kelly, do quiosque 12!",
+      "profissao": "Tenho um quiosque na praia, ué."
+    }
   },
   "vizinha_morro": {
     "nome": "Dona Cida",
     "descricao": "moradora do Morro da Vista",
-    "apelido": "Cida"
+    "apelido": "Cida",
+    "respostas": {
+      "nome": "Cida. Dona Cida, do Morro.",
+      "profissao": "Costureira, meu filho."
+    }
   },
   "turista": {
     "nome": "Turista",
@@ -70,6 +103,16 @@
   },
   "gaiato": {
     "nome": "Rapaz",
-    "descricao": "alguém se achando engraçado"
+    "descricao": "alguém se achando engraçado",
+    "respostas_trote": {
+      "o_que": "Tá boiando, mano! Boiando! (risadas)",
+      "feridos": "Ferido só o orgulho do Batman! (risadas)",
+      "quantos": "Eu e a galera! (gritaria ao fundo)",
+      "confirmar": "Rua das Flores, mil e quinhentos... ou dois mil, sei lá! (risadas)",
+      "adulto": "Sou de maior, sou! (risadas)",
+      "profissao": "Influenciador! (gargalhada)",
+      "celular": "Celular do meu brother! (risadas)",
+      "primeira": "Primeira? Primeira hoje! (risadas)"
+    }
   }
 }

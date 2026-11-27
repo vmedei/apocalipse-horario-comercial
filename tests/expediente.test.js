@@ -65,13 +65,16 @@ describe('trajeto do veículo', () => {
   });
 });
 
-// Faz as perguntas que um bom atendente faria: endereço, confirmação e essenciais.
+// Faz as perguntas que um bom atendente faria (endereço, confirmação e essenciais),
+// esperando cada resposta chegar.
 function triar(exp) {
-  for (let volta = 0; volta < 2; volta++) {
-    for (const p of exp.ativa?.chamada.perguntas ?? []) {
-      if (p.tipo === 'util' || p.tipo === 'irrelevante') continue;
-      ({ exp } = perguntar(exp, p.id));
-    }
+  const c = exp.ativa?.chamada;
+  if (!c) return exp;
+  const ids = ['onde', ...(c.endereco_vago ? ['confirmar'] : []), ...c.essenciais];
+  for (const id of ids) {
+    if (!exp.ativa) break;
+    ({ exp } = perguntar(exp, id));
+    ({ exp } = rodar(exp, BALANCO.triagem.segundosResposta));
   }
   return exp;
 }
@@ -95,6 +98,14 @@ describe('expediente', () => {
     ({ exp } = perguntar(exp, 'onde'));
     ({ exp } = perguntar(exp, 'onde'));
     expect(exp.ativa?.perguntas).toEqual(['onde']);
+    // A próxima pergunta só depois da resposta chegar.
+    expect(perguntar(exp, 'animal').erro).toBe('aguardando_resposta');
+    const r = rodar(exp, BALANCO.triagem.segundosResposta);
+    expect(r.eventos.some((e) => e.tipo === 'resposta_chegou')).toBe(true);
+    ({ exp } = perguntar(r.exp, 'animal'));
+    expect(exp.ativa?.perguntas).toEqual(['onde', 'animal']);
+    // "confirmar" só aparece depois de "onde"; perguntas fora do catálogo são ignoradas.
+    expect(perguntar(exp, 'inexistente').exp).toBe(exp);
   });
 
   it('despachar ocupa um veículo até a missão acabar', () => {

@@ -14,37 +14,13 @@
     "gravidade": 2,
     "tempo_limite": 60,
     "fala_inicial": "Uma senhora caiu dentro do ônibus lotado!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Ponto da Praça Central."
-      },
-      {
-        "id": "consciente",
-        "tipo": "essencial",
-        "texto": "Ela está consciente?",
-        "resposta": "Acordou, mas tá muito fraca e suando frio. Tá abafado demais aqui."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      },
-      {
-        "id": "presa",
-        "tipo": "util",
-        "texto": "Ela está presa em algum lugar?",
-        "resposta": "Não, a gente deitou ela no banco."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Ponto da Praça Central.",
+      "respira": "Acordou, mas tá muito fraca e suando frio. Tá abafado demais aqui.",
+      "presos": "Não, a gente deitou ela no banco."
+    },
+    "essenciais": [
+      "respira"
     ],
     "feedback_acerto": "O SAMU atendeu a passageira.",
     "feedback_erro": "Desmaio por calor é com o SAMU (192).",
@@ -65,38 +41,14 @@
     "gravidade": 3,
     "tempo_limite": 50,
     "fala_inicial": "É a Kelly! O mar levou o quiosque!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Na praia, perto dos quiosques!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Quiosque 12... ou o que sobrou dele."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "presos",
-        "tipo": "essencial",
-        "texto": "Tem alguém em perigo?",
-        "resposta": "Eu e o Tiago! A escada foi embora e a gente tá preso no deque com as ondas batendo!"
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Na praia, perto dos quiosques!",
+      "confirmar": "Quiosque 12... ou o que sobrou dele.",
+      "presos": "Eu e o Tiago! A escada foi embora e a gente tá preso no deque com as ondas batendo!",
+      "agua": "O mar subiu tudo, tá batendo no deque!"
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros resgataram Kelly e Tiago. O quiosque não teve a mesma sorte.",
     "feedback_erro": "Pessoas presas pela ressaca precisam de resgate: Bombeiros (193).",
@@ -118,31 +70,16 @@
     "gravidade": 2,
     "tempo_limite": 70,
     "fala_inicial": "O mar tá chegando nos prédios da orla!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Avenida da Orla, prédio 40."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      },
-      {
-        "id": "pessoas",
-        "tipo": "essencial",
-        "texto": "Alguém está ferido ou preso?",
-        "resposta": "Não. Mas abriu um buraco embaixo do muro do meu prédio, e tem doze famílias aqui."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Avenida da Orla, prédio 40.",
+      "feridos": "Ninguém, por enquanto.",
+      "quantos": "Doze famílias no prédio.",
+      "agua": "O mar tá comendo a areia, chegando no muro.",
+      "terra": "Abriu um buraco embaixo do muro do meu prédio."
+    },
+    "essenciais": [
+      "terra",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil interditou o prédio e retirou os moradores por precaução.",
     "feedback_erro": "Erosão ameaçando construções é com a Defesa Civil (199).",
@@ -163,37 +100,15 @@
     "gravidade": 1,
     "tempo_limite": 60,
     "fala_inicial": "Alô, central? Tem um carro boiando aqui na Rua das Flores!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua das Flores... número... mil e quinhentos!"
-      },
-      {
-        "id": "mora",
-        "tipo": "irrelevante",
-        "texto": "Desde quando você mora aí?",
-        "resposta": "Faz uns dez anos. Mas e a emergência?"
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      },
-      {
-        "id": "nome",
-        "tipo": "essencial",
-        "texto": "Qual o seu nome, para retorno?",
-        "resposta": "Ih... é... (risadas) desliga, desliga!"
-      },
-      {
-        "id": "dentro",
-        "tipo": "essencial",
-        "texto": "Tem alguém dentro do carro?",
-        "resposta": "Tem... o Batman! (risadas de vários amigos ao fundo)"
-      }
+    "respostas": {
+      "onde": "Rua das Flores... número... mil e quinhentos!",
+      "presos": "Tem... o Batman! (risadas de vários amigos ao fundo)",
+      "agua": "Até... até o joelho do Batman! (risada)",
+      "nome": "Ih... é... (risadas) desliga, desliga!"
+    },
+    "essenciais": [
+      "presos",
+      "nome"
     ],
     "feedback_acerto": "Trote identificado. Trote para a emergência é crime, e tira a vez de quem precisa.",
     "feedback_erro": "Um \"carro boiando\" com o Batman dentro, um número de rua que não existe e risadas ao fundo: era trote.",
@@ -214,31 +129,13 @@
     "gravidade": 3,
     "tempo_limite": 50,
     "fala_inicial": "Uma árvore caiu em cima de um carro!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua das Palmeiras, perto da escola."
-      },
-      {
-        "id": "dentro",
-        "tipo": "essencial",
-        "texto": "Tem alguém dentro do carro?",
-        "resposta": "O motorista! Ele responde, mas tá preso com o teto amassado."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      }
+    "respostas": {
+      "onde": "Rua das Palmeiras, perto da escola.",
+      "feridos": "Ele diz que tá com dor no ombro.",
+      "presos": "O motorista! Ele responde, mas tá preso com o teto amassado."
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros cortaram a árvore e retiraram o motorista.",
     "feedback_erro": "Pessoa presa precisa de resgate: Bombeiros (193).",
@@ -259,31 +156,14 @@
     "gravidade": 2,
     "tempo_limite": 60,
     "fala_inicial": "A água entrou na loja!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Loja Tudo Barato, Rua do Comércio."
-      },
-      {
-        "id": "pessoas",
-        "tipo": "essencial",
-        "texto": "Tem gente lá dentro?",
-        "resposta": "Eu e duas funcionárias, em cima do balcão. A água tá no peito e subindo."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "Loja Tudo Barato, Rua do Comércio.",
+      "presos": "Eu e duas funcionárias, em cima do balcão.",
+      "agua": "A água tá no peito e subindo!"
+    },
+    "essenciais": [
+      "presos",
+      "agua"
     ],
     "feedback_acerto": "Os Bombeiros retiraram os três de barco.",
     "feedback_erro": "Pessoas ilhadas precisam de resgate: Bombeiros (193).",
@@ -304,44 +184,16 @@
     "gravidade": 3,
     "tempo_limite": 50,
     "fala_inicial": "Abriu uma fenda no chão do Beco 7!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "No Morro, lá em cima!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Beco 7, parte alta do Morro."
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém ficou soterrado ou ferido?",
-        "resposta": "Ainda não! As casas estalam, a gente quer sair."
-      },
-      {
-        "id": "familias",
-        "tipo": "util",
-        "texto": "Quantas famílias?",
-        "resposta": "Umas quinze."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      },
-      {
-        "id": "mora",
-        "tipo": "irrelevante",
-        "texto": "Desde quando você mora aí?",
-        "resposta": "Faz uns dez anos. Mas e a emergência?"
-      }
+    "respostas": {
+      "onde": "No Morro, lá em cima!",
+      "confirmar": "Beco 7, parte alta do Morro.",
+      "feridos": "Ainda não! A gente quer sair.",
+      "quantos": "Umas quinze famílias.",
+      "terra": "Abriu uma fenda no chão, e as casas estão estalando!"
+    },
+    "essenciais": [
+      "terra",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil evacuou o Beco 7 para o abrigo da escola. Uma hora depois, a encosta desceu.",
     "feedback_erro": "Fenda no chão e casas estalando: evacuação preventiva com a Defesa Civil (199).",
@@ -363,38 +215,15 @@
     "gravidade": 3,
     "tempo_limite": 45,
     "fala_inicial": "É a Cida! Ouvi um estrondo aqui do lado!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "No Morro, lá em cima!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Beco 3, ao lado da minha casa."
-      },
-      {
-        "id": "mora",
-        "tipo": "irrelevante",
-        "texto": "Desde quando você mora aí?",
-        "resposta": "Faz uns dez anos. Mas e a emergência?"
-      },
-      {
-        "id": "aluguel",
-        "tipo": "irrelevante",
-        "texto": "A casa é própria ou alugada?",
-        "resposta": "Alugada... por que isso agora?!"
-      },
-      {
-        "id": "o_que",
-        "tipo": "essencial",
-        "texto": "O que aconteceu?",
-        "resposta": "A casa do lado desabou com a terra! Tem gente gritando lá embaixo!"
-      }
+    "respostas": {
+      "onde": "No Morro, lá em cima!",
+      "confirmar": "Beco 3, ao lado da minha casa.",
+      "presos": "Tem gente gritando lá embaixo dos escombros!",
+      "terra": "A casa do lado desabou com a terra!"
+    },
+    "essenciais": [
+      "terra",
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros retiraram a família dos escombros.",
     "feedback_erro": "Desabamento com pessoas presas é resgate: Bombeiros (193).",
@@ -416,38 +245,14 @@
     "gravidade": 3,
     "tempo_limite": 50,
     "fala_inicial": "O rio transbordou de vez!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "No Centro! Perto da... da avenida!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Rua do Rio, do número 1 ao 60."
-      },
-      {
-        "id": "pessoas",
-        "tipo": "essencial",
-        "texto": "Tem gente em perigo?",
-        "resposta": "Família inteira em cima dos telhados! Mais de vinte pessoas!"
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "No Centro! Perto da... da avenida!",
+      "confirmar": "Rua do Rio, do número 1 ao 60.",
+      "presos": "Família inteira em cima dos telhados! Mais de vinte pessoas!",
+      "agua": "O rio tá passando por cima das casas!"
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros fizeram o resgate de barco, telhado por telhado.",
     "feedback_erro": "Enchente com pessoas ilhadas é resgate: Bombeiros (193).",
@@ -469,37 +274,15 @@
     "gravidade": 2,
     "tempo_limite": 70,
     "fala_inicial": "Seu Zé. Dois meses sem chuva e agora caiu tudo de uma vez.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Sítio São José, depois da ponte velha da Serra."
-      },
-      {
-        "id": "mora",
-        "tipo": "irrelevante",
-        "texto": "Desde quando você mora aí?",
-        "resposta": "Faz uns dez anos. Mas e a emergência?"
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém ferido?",
-        "resposta": "Não, graças a Deus."
-      },
-      {
-        "id": "aluguel",
-        "tipo": "irrelevante",
-        "texto": "A casa é própria ou alugada?",
-        "resposta": "Alugada... por que isso agora?!"
-      },
-      {
-        "id": "o_que",
-        "tipo": "essencial",
-        "texto": "O que aconteceu?",
-        "resposta": "A enxurrada levou a ponte e o sítio ficou isolado. Umas oito famílias."
-      }
+    "respostas": {
+      "onde": "Sítio São José, depois da ponte velha da Serra.",
+      "o_que": "A enxurrada levou a ponte e o sítio ficou isolado.",
+      "feridos": "Não, graças a Deus.",
+      "quantos": "Umas oito famílias deste lado."
+    },
+    "essenciais": [
+      "o_que",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil organizou o acesso e levou mantimentos às famílias isoladas.",
     "feedback_erro": "Comunidade isolada pela enxurrada, sem feridos, é com a Defesa Civil (199).",
@@ -520,31 +303,13 @@
     "gravidade": 1,
     "tempo_limite": 75,
     "fala_inicial": "Bateram no meu carro no cruzamento sem semáforo.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Cruzamento da Beira-Rio com a Rua do Mercado."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém se feriu?",
-        "resposta": "Não."
-      },
-      {
-        "id": "seguro",
-        "tipo": "irrelevante",
-        "texto": "O carro tem seguro?",
-        "resposta": "Tem, mas isso não importa agora, né?"
-      }
+    "respostas": {
+      "onde": "Cruzamento da Beira-Rio com a Rua do Mercado.",
+      "feridos": "Não, ninguém se feriu.",
+      "violencia": "Não, o outro motorista tá calmo."
+    },
+    "essenciais": [
+      "feridos"
     ],
     "feedback_acerto": "A Polícia registrou o acidente e organizou o trânsito.",
     "feedback_erro": "Acidente sem feridos é com a Polícia (190).",
@@ -565,31 +330,14 @@
     "gravidade": 3,
     "tempo_limite": 50,
     "fala_inicial": "Tem um poste caído na rua alagada!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua das Acácias, esquina com a Rua do Rio."
-      },
-      {
-        "id": "mora",
-        "tipo": "irrelevante",
-        "texto": "Desde quando você mora aí?",
-        "resposta": "Faz uns dez anos. Mas e a emergência?"
-      },
-      {
-        "id": "fios",
-        "tipo": "essencial",
-        "texto": "Os fios estão na água?",
-        "resposta": "Estão! E tem gente querendo atravessar!"
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "Rua das Acácias, esquina com a Rua do Rio.",
+      "presos": "Ninguém preso, mas tem gente querendo atravessar!",
+      "agua": "A rua tá toda alagada.",
+      "fios": "O poste caiu e os fios estão na água!"
+    },
+    "essenciais": [
+      "fios"
     ],
     "feedback_acerto": "Os Bombeiros isolaram a área até a energia ser cortada.",
     "feedback_erro": "Fio energizado na água é risco de morte: Bombeiros (193).",
@@ -610,44 +358,22 @@
     "gravidade": 3,
     "tempo_limite": 55,
     "fala_inicial": "Moço... (soluço) ...a água tá entrando no meu quarto... a minha mãe foi buscar a minha vó e a água subiu... (barulho de água) ...eu tô com medo.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "(soluço) Na minha casa... perto do rio..."
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Rua do Rio, 12... perto da ponte. (choro)"
-      },
-      {
-        "id": "subir",
-        "tipo": "essencial",
-        "texto": "Você consegue subir em algum lugar alto?",
-        "resposta": "Tô em cima do guarda-roupa."
-      },
-      {
-        "id": "adulto",
-        "tipo": "essencial",
-        "texto": "Tem algum adulto aí?",
-        "resposta": "Não... só eu e o Pipoca, o meu cachorro."
-      },
-      {
-        "id": "serie",
-        "tipo": "irrelevante",
-        "texto": "Em que série você está?",
-        "resposta": "Na... na quarta. (soluço) Vem logo, moço..."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Do telefone de casa... a luz acabou."
-      }
+    "respostas": {
+      "onde": "(soluço) Na minha casa... perto do rio...",
+      "confirmar": "Rua do Rio, 12... perto da ponte. (choro)",
+      "feridos": "Não... só tô com frio.",
+      "presos": "Tô em cima do guarda-roupa... a água tá subindo.",
+      "agua": "Tá entrando pela janela...",
+      "animal": "O Pipoca tá aqui comigo, tremendo.",
+      "adulto": "Não... só eu e o Pipoca, o meu cachorro.",
+      "nome": "Juninho... (soluço)"
+    },
+    "essenciais": [
+      "presos",
+      "adulto"
+    ],
+    "uteis": [
+      "nome"
     ],
     "feedback_acerto": "Os Bombeiros tiraram o Juninho pela janela, em cima do guarda-roupa, abraçado com o Pipoca.",
     "feedback_erro": "Não era trote: voz assustada, barulho de água e endereço em área alagada. Era hora de mandar os Bombeiros (193).",
@@ -670,37 +396,14 @@
     "gravidade": 3,
     "tempo_limite": 55,
     "fala_inicial": "Meu marido tá passando mal e a rua tá alagada!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua das Flores, 23."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "sintomas",
-        "tipo": "essencial",
-        "texto": "O que ele está sentindo?",
-        "resposta": "Dor no peito, suando frio, o braço esquerdo formigando."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "agua",
-        "tipo": "essencial",
-        "texto": "A água está entrando na casa?",
-        "resposta": "Ainda não. A gente tá seguro, só não consegue sair de carro."
-      }
+    "respostas": {
+      "onde": "Rua das Flores, 23.",
+      "feridos": "Dor no peito, suando frio, o braço esquerdo formigando.",
+      "agua": "Na casa ainda não. A gente tá seguro, só não consegue sair de carro."
+    },
+    "essenciais": [
+      "feridos",
+      "agua"
     ],
     "feedback_acerto": "O SAMU chegou pela rua de cima e levou o paciente.",
     "feedback_erro": "Dor no peito é emergência médica: SAMU (192).",
@@ -721,31 +424,15 @@
     "gravidade": 2,
     "tempo_limite": 70,
     "fala_inicial": "Um barranco desceu na rua principal do Morro!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua principal do Morro, perto do campinho."
-      },
-      {
-        "id": "aluguel",
-        "tipo": "irrelevante",
-        "texto": "A casa é própria ou alugada?",
-        "resposta": "Alugada... por que isso agora?!"
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém ferido ou soterrado?",
-        "resposta": "Não, a rua estava vazia. Mas o resto do barranco tá rachado."
-      },
-      {
-        "id": "mora",
-        "tipo": "irrelevante",
-        "texto": "Desde quando você mora aí?",
-        "resposta": "Faz uns dez anos. Mas e a emergência?"
-      }
+    "respostas": {
+      "onde": "Rua principal do Morro, perto do campinho.",
+      "feridos": "Não, a rua estava vazia.",
+      "presos": "Ninguém.",
+      "terra": "O barranco desceu e o resto tá rachado."
+    },
+    "essenciais": [
+      "terra",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil interditou a área e evitou novas vítimas.",
     "feedback_erro": "Risco de novos deslizamentos, sem feridos, é com a Defesa Civil (199).",
@@ -766,37 +453,15 @@
     "gravidade": 1,
     "tempo_limite": 80,
     "fala_inicial": "A escola virou abrigo e a situação aqui tá difícil.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Escola Municipal Porto Ameno."
-      },
-      {
-        "id": "o_que",
-        "tipo": "essencial",
-        "texto": "Do que vocês precisam?",
-        "resposta": "Já tem cem desalojados. Faltam colchões, água e comida."
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém ferido ou passando mal?",
-        "resposta": "Não, mas tem muita criança e idoso."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Escola Municipal Porto Ameno.",
+      "o_que": "Já tem cem desalojados. Faltam colchões, água e comida.",
+      "feridos": "Ninguém ferido, mas tem muita criança e idoso.",
+      "profissao": "Sou a diretora da escola."
+    },
+    "essenciais": [
+      "o_que",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil levou colchões, água e cestas básicas.",
     "feedback_erro": "Abrigos e desalojados são coordenados pela Defesa Civil (199).",
@@ -817,31 +482,13 @@
     "gravidade": 1,
     "tempo_limite": 120,
     "fala_inicial": "Com o mundo acabando lá fora, sabe o que aconteceu? Roubaram a minha bicicleta.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Bicicletário da Praça Central."
-      },
-      {
-        "id": "agora",
-        "tipo": "essencial",
-        "texto": "O ladrão ainda está por perto?",
-        "resposta": "Não, sumiu. Só sobrou o cadeado."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Bicicletário da Praça Central.",
+      "feridos": "Só o meu orgulho.",
+      "violencia": "Não, sumiu. Só sobrou o cadeado."
+    },
+    "essenciais": [
+      "violencia"
     ],
     "feedback_acerto": "A Polícia registrou o furto. A vida segue, mesmo no apocalipse.",
     "feedback_erro": "Furto é com a Polícia (190).",
@@ -862,38 +509,14 @@
     "gravidade": 3,
     "tempo_limite": 45,
     "fala_inicial": "A enxurrada tá levando tudo na Ladeira do Mercado!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "No Centro! Perto da... da avenida!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Ladeira do Mercado."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "pessoa",
-        "tipo": "essencial",
-        "texto": "Tem alguém em perigo?",
-        "resposta": "Uma mulher! Ela se agarrou numa grade e tá escorregando!"
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "No Centro! Perto da... da avenida!",
+      "confirmar": "Ladeira do Mercado.",
+      "presos": "Uma mulher se agarrou numa grade e tá escorregando!",
+      "agua": "A enxurrada tá levando tudo ladeira abaixo!"
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros resgataram a mulher com cordas.",
     "feedback_erro": "Pessoa arrastada pela água é resgate imediato: Bombeiros (193).",
@@ -915,37 +538,14 @@
     "gravidade": 2,
     "tempo_limite": 65,
     "fala_inicial": "Estamos presos na trilha da cachoeira, no meio da chuva!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Trilha da cachoeira, depois da ponte."
-      },
-      {
-        "id": "motivo",
-        "tipo": "essencial",
-        "texto": "Por que vocês não conseguem sair?",
-        "resposta": "Um raio derrubou umas árvores e fechou a trilha. Somos seis."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "feridos",
-        "tipo": "util",
-        "texto": "Alguém ferido?",
-        "resposta": "Um rapaz cortou a perna nos galhos, mas tá andando."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      }
+    "respostas": {
+      "onde": "Trilha da cachoeira, depois da ponte.",
+      "feridos": "Um rapaz cortou a perna nos galhos, mas tá andando.",
+      "presos": "Um raio derrubou umas árvores e fechou a trilha. Somos seis.",
+      "fogo": "O raio queimou uma árvore, mas a chuva apagou."
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros abriram a trilha e trouxeram o grupo de volta.",
     "feedback_erro": "Pessoas presas na mata precisam de resgate: Bombeiros (193).",
@@ -966,37 +566,14 @@
     "gravidade": 2,
     "tempo_limite": 70,
     "fala_inicial": "Depois do temporal, o prédio comercial tá estranho.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Edifício Ameno, Rua do Comércio, 200."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém ferido ou preso?",
-        "resposta": "Não, mas tem gente trabalhando lá dentro."
-      },
-      {
-        "id": "o_que",
-        "tipo": "essencial",
-        "texto": "O que você está vendo?",
-        "resposta": "Rachaduras nas colunas e o reboco caindo."
-      }
+    "respostas": {
+      "onde": "Edifício Ameno, Rua do Comércio, 200.",
+      "feridos": "Não, mas tem gente trabalhando lá dentro.",
+      "terra": "Rachaduras nas colunas e o reboco caindo."
+    },
+    "essenciais": [
+      "terra",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil interditou o prédio para vistoria.",
     "feedback_erro": "Risco estrutural é com a Defesa Civil (199).",
@@ -1017,37 +594,14 @@
     "gravidade": 2,
     "tempo_limite": 60,
     "fala_inicial": "O meu bebê tá muito quente e molinho!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua do Rio, 70, no segundo andar."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "plano",
-        "tipo": "irrelevante",
-        "texto": "Tem plano de saúde?",
-        "resposta": "Tem não... precisa?"
-      },
-      {
-        "id": "febre",
-        "tipo": "essencial",
-        "texto": "Ele tem febre? Quanto?",
-        "resposta": "Quarenta graus! E a casa tá cheia de água suja da enchente."
-      },
-      {
-        "id": "preso",
-        "tipo": "util",
-        "texto": "Vocês estão ilhados?",
-        "resposta": "Não, estamos no segundo andar. Dá para descer pela escada de trás."
-      }
+    "respostas": {
+      "onde": "Rua do Rio, 70, no segundo andar.",
+      "feridos": "O meu bebê tá com quarenta graus de febre! E a casa tá cheia de água suja da enchente.",
+      "presos": "Não, estamos no segundo andar. Dá para descer pela escada de trás.",
+      "agua": "A enchente baixou, mas deixou lama e água suja."
+    },
+    "essenciais": [
+      "feridos"
     ],
     "feedback_acerto": "O SAMU atendeu o bebê. Doenças como a leptospirose aumentam depois das enchentes.",
     "feedback_erro": "Bebê com febre alta precisa do SAMU (192).",
@@ -1068,38 +622,14 @@
     "gravidade": 3,
     "tempo_limite": 45,
     "fala_inicial": "Uma onda passou por cima do muro da orla!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Na praia, perto dos quiosques!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Muro da orla, perto do posto 2."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "profissao",
-        "tipo": "irrelevante",
-        "texto": "Qual é a sua profissão?",
-        "resposta": "Como assim? Isso importa agora?"
-      },
-      {
-        "id": "pessoas",
-        "tipo": "essencial",
-        "texto": "Alguém foi atingido?",
-        "resposta": "Derrubou dois no mar! Eles estavam filmando em cima do muro!"
-      }
+    "respostas": {
+      "onde": "Na praia, perto dos quiosques!",
+      "confirmar": "Muro da orla, perto do posto 2.",
+      "presos": "Derrubou dois no mar! Eles estavam filmando em cima do muro!",
+      "agua": "As ondas tão passando por cima do muro!"
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros e os guarda-vidas tiraram os dois da água.",
     "feedback_erro": "Pessoas no mar em ressaca é resgate: Bombeiros (193).",
@@ -1121,37 +651,14 @@
     "gravidade": 2,
     "tempo_limite": 60,
     "fala_inicial": "Minha filha, é o Arlindo... de novo. A água tá subindo aqui no Centro.",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Rua das Acácias, 40."
-      },
-      {
-        "id": "nivel",
-        "tipo": "util",
-        "texto": "Até onde a água chegou?",
-        "resposta": "Já passou do joelho."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "sair",
-        "tipo": "essencial",
-        "texto": "O senhor consegue sair de casa?",
-        "resposta": "Não consigo descer a escada sozinho... saí do hospital ontem. Botei o Bolinha no alto do armário."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      }
+    "respostas": {
+      "onde": "Rua das Acácias, 40.",
+      "presos": "Não consigo descer a escada sozinho... saí do hospital ontem.",
+      "agua": "Já passou do joelho.",
+      "animal": "Botei o Bolinha no alto do armário."
+    },
+    "essenciais": [
+      "presos"
     ],
     "feedback_acerto": "Os Bombeiros levaram Seu Arlindo e o Bolinha para o abrigo da escola.",
     "feedback_erro": "Idoso ilhado com a água subindo precisa de resgate: Bombeiros (193).",
@@ -1172,44 +679,16 @@
     "gravidade": 3,
     "tempo_limite": 55,
     "fala_inicial": "O açude da Serra tá cheio demais!",
-    "perguntas": [
-      {
-        "id": "onde",
-        "tipo": "endereco",
-        "texto": "Onde é?",
-        "resposta": "Na Serra, na estrada!"
-      },
-      {
-        "id": "confirmar",
-        "tipo": "endereco_confirmar",
-        "requer": "onde",
-        "texto": "Qual a rua e o número, ou um ponto de referência?",
-        "resposta": "Açude Velho, Serra Seca."
-      },
-      {
-        "id": "celular",
-        "tipo": "irrelevante",
-        "texto": "Está ligando de celular ou de telefone fixo?",
-        "resposta": "Celular. Por quê?"
-      },
-      {
-        "id": "o_que",
-        "tipo": "essencial",
-        "texto": "O que está acontecendo com o açude?",
-        "resposta": "A água tá passando por cima da parede de terra! Se romper, desce em cima das casas."
-      },
-      {
-        "id": "primeira",
-        "tipo": "irrelevante",
-        "texto": "É a primeira vez que liga para a central?",
-        "resposta": "É... e espero que seja a última."
-      },
-      {
-        "id": "feridos",
-        "tipo": "essencial",
-        "texto": "Alguém já foi atingido?",
-        "resposta": "Ainda não! Tem umas trinta casas embaixo."
-      }
+    "respostas": {
+      "onde": "Na Serra, na estrada!",
+      "confirmar": "Açude Velho, Serra Seca.",
+      "feridos": "Ainda não! Tem umas trinta casas embaixo.",
+      "agua": "A água tá passando por cima da parede de terra do açude! Se romper, desce em cima das casas.",
+      "terra": "A parede do açude tá começando a escorrer lama."
+    },
+    "essenciais": [
+      "agua",
+      "feridos"
     ],
     "feedback_acerto": "A Defesa Civil acionou o alerta e retirou as famílias antes de a parede do açude ceder.",
     "feedback_erro": "Risco de rompimento exige evacuação preventiva: Defesa Civil (199).",

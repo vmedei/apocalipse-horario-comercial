@@ -1,0 +1,248 @@
+{
+  "grupos": [
+    {
+      "id": "local",
+      "nome": "Local"
+    },
+    {
+      "id": "situacao",
+      "nome": "Situação"
+    },
+    {
+      "id": "riscos",
+      "nome": "Riscos"
+    },
+    {
+      "id": "quem_liga",
+      "nome": "Quem liga"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "onde",
+      "grupo": "local",
+      "texto": "Onde é a ocorrência?",
+      "curto": "Onde é?",
+      "rotulo": "Local",
+      "padrao": [
+        "Aqui, moço! Manda alguém!"
+      ]
+    },
+    {
+      "id": "confirmar",
+      "grupo": "local",
+      "requer": "onde",
+      "texto": "Pode confirmar a rua e o número, ou um ponto de referência?",
+      "curto": "Confirmar endereço",
+      "rotulo": "Referência",
+      "padrao": [
+        "É isso mesmo que eu falei.",
+        "Isso, é aí mesmo. Já falei!"
+      ]
+    },
+    {
+      "id": "aluguel",
+      "grupo": "local",
+      "irrelevante": true,
+      "texto": "O imóvel é próprio ou alugado?",
+      "curto": "Imóvel próprio?",
+      "rotulo": "Imóvel",
+      "padrao": [
+        "Alugado... por que isso agora?!",
+        "Próprio. Mas o que isso tem a ver?"
+      ]
+    },
+    {
+      "id": "o_que",
+      "grupo": "situacao",
+      "texto": "O que está acontecendo agora?",
+      "curto": "O que está acontecendo?",
+      "rotulo": "Situação",
+      "padrao": [
+        "É isso que eu falei, moço! Manda alguém!",
+        "Já falei! Precisa de ajuda aqui!"
+      ]
+    },
+    {
+      "id": "feridos",
+      "grupo": "situacao",
+      "texto": "Tem alguém ferido ou passando mal?",
+      "curto": "Feridos?",
+      "rotulo": "Feridos",
+      "padrao": [
+        "Ferido, que eu saiba, não.",
+        "Não vi ninguém machucado."
+      ]
+    },
+    {
+      "id": "respira",
+      "grupo": "situacao",
+      "texto": "A pessoa está acordada e respirando?",
+      "curto": "Acordada e respirando?",
+      "rotulo": "Consciência",
+      "padrao": [
+        "Não tem ninguém desmaiado aqui.",
+        "Todo mundo acordado, sim."
+      ]
+    },
+    {
+      "id": "presos",
+      "grupo": "situacao",
+      "texto": "Tem alguém preso ou sem conseguir sair?",
+      "curto": "Alguém preso?",
+      "rotulo": "Presos",
+      "padrao": [
+        "Preso não, que eu saiba.",
+        "Não, ninguém preso."
+      ]
+    },
+    {
+      "id": "quantos",
+      "grupo": "situacao",
+      "texto": "Quantas pessoas estão envolvidas?",
+      "curto": "Quantas pessoas?",
+      "rotulo": "Pessoas",
+      "padrao": [
+        "Não sei dizer direito, moço.",
+        "Sei lá... umas poucas."
+      ]
+    },
+    {
+      "id": "plano",
+      "grupo": "situacao",
+      "irrelevante": true,
+      "texto": "Tem plano de saúde?",
+      "curto": "Plano de saúde?",
+      "rotulo": "Plano de saúde",
+      "padrao": [
+        "Plano? Tem não... precisa?",
+        "Tem, mas isso importa agora?"
+      ]
+    },
+    {
+      "id": "fogo",
+      "grupo": "riscos",
+      "texto": "Tem fogo ou fumaça?",
+      "curto": "Fogo ou fumaça?",
+      "rotulo": "Fogo",
+      "padrao": [
+        "Não, fogo não.",
+        "Fumaça não, nada disso."
+      ]
+    },
+    {
+      "id": "agua",
+      "grupo": "riscos",
+      "texto": "Tem água subindo ou enxurrada?",
+      "curto": "Água subindo?",
+      "rotulo": "Água",
+      "padrao": [
+        "Aqui não, moço.",
+        "Água subindo não."
+      ]
+    },
+    {
+      "id": "terra",
+      "grupo": "riscos",
+      "texto": "Tem muro, chão ou barranco cedendo?",
+      "curto": "Algo cedendo?",
+      "rotulo": "Estrutura",
+      "padrao": [
+        "Não que eu esteja vendo.",
+        "Não, tá tudo firme."
+      ]
+    },
+    {
+      "id": "fios",
+      "grupo": "riscos",
+      "texto": "Tem fio elétrico caído ou faísca?",
+      "curto": "Fio caído?",
+      "rotulo": "Fios",
+      "padrao": [
+        "Não, fio não.",
+        "Não vi nada disso."
+      ]
+    },
+    {
+      "id": "violencia",
+      "grupo": "riscos",
+      "texto": "Tem alguém armado, ameaçando ou fugindo?",
+      "curto": "Armado ou ameaçando?",
+      "rotulo": "Agressor",
+      "padrao": [
+        "Não, ninguém ameaçando ninguém.",
+        "Não, nada disso."
+      ]
+    },
+    {
+      "id": "animal",
+      "grupo": "riscos",
+      "texto": "Tem algum animal envolvido?",
+      "curto": "Animal envolvido?",
+      "rotulo": "Animal",
+      "padrao": [
+        "Bicho? Não.",
+        "Não, animal não."
+      ]
+    },
+    {
+      "id": "adulto",
+      "grupo": "quem_liga",
+      "texto": "Você é adulto? Tem um responsável aí?",
+      "curto": "É adulto?",
+      "rotulo": "Responsável",
+      "padrao": [
+        "Sou, claro.",
+        "Sou adulto, sim. Por quê?"
+      ]
+    },
+    {
+      "id": "nome",
+      "grupo": "quem_liga",
+      "irrelevante": true,
+      "texto": "Qual o seu nome, para retorno?",
+      "curto": "Nome?",
+      "rotulo": "Nome",
+      "padrao": [
+        "Anota depois, moço. Manda alguém!",
+        "Precisa disso agora?"
+      ]
+    },
+    {
+      "id": "celular",
+      "grupo": "quem_liga",
+      "irrelevante": true,
+      "texto": "Está ligando de celular ou de telefone fixo?",
+      "curto": "Celular ou fixo?",
+      "rotulo": "Telefone",
+      "padrao": [
+        "Celular. Por quê?",
+        "Do celular... isso importa?"
+      ]
+    },
+    {
+      "id": "profissao",
+      "grupo": "quem_liga",
+      "irrelevante": true,
+      "texto": "Qual é a sua profissão?",
+      "curto": "Profissão?",
+      "rotulo": "Profissão",
+      "padrao": [
+        "Como assim? Isso importa agora?",
+        "Trabalho com vendas... mas e a emergência?"
+      ]
+    },
+    {
+      "id": "primeira",
+      "grupo": "quem_liga",
+      "irrelevante": true,
+      "texto": "Já ligou para a central antes?",
+      "curto": "Já ligou antes?",
+      "rotulo": "Ligações anteriores",
+      "padrao": [
+        "Não, é a primeira vez.",
+        "Nunca precisei... até hoje."
+      ]
+    }
+  ]
+}
