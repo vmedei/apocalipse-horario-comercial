@@ -486,7 +486,7 @@ export function telaJogo(container) {
     if (motivo === 'expediente') {
       salvar('concluiu_dia_1', true);
       atualizarEstado({ partida: registrarDia(estado.partida ?? novaPartida(dia), dia, exp) });
-      window.setTimeout(() => irPara('jornal', { dia, turno: 'noite', fim: dados }), 1200);
+      window.setTimeout(() => irPara('relatorio', dados), 1200);
     } else {
       window.setTimeout(() => irPara('demitido', dados), 1200);
     }

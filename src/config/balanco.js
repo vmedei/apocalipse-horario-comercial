@@ -49,6 +49,20 @@ export const BALANCO = Object.freeze({
     tresAdaptacaoMinima: 0.3
   }),
 
+  // Relatório do dia: metas de cada indicador (abaixo da meta, a Dona Socorro comenta)
+  relatorio: Object.freeze({
+    metaAcertoPct: 85,
+    metaTriagem: 80,
+    metaTempoRespostaSegundos: 25, // da chegada na fila até o despacho, em segundos reais
+    metaAtendidasPct: 100,
+    metaAdaptacaoPct: 30,
+    // Jornal da noite
+    jornalAcertoAltoPct: 85,
+    jornalColapsoBaixo: 40, // "dia elogiado" só se o Colapso máximo ficou abaixo disso
+    jornalAcertoBaixoPct: 60,
+    jornalColapsoAlto: 70
+  }),
+
   // Dificuldade adaptativa
   dificuldade: Object.freeze({
     janelaChamadas: 6,

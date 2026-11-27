@@ -22,6 +22,24 @@
   {
     "dia": 1,
     "turno": "noite",
+    "condicao": "acerto_baixo",
+    "manchetes": [
+      "Viatura da polícia vai socorrer gato na árvore; bombeiros chegam depois",
+      "Moradores reclamam de confusão nas ligações para a central"
+    ]
+  },
+  {
+    "dia": 1,
+    "turno": "noite",
+    "condicao": "acerto_alto",
+    "manchetes": [
+      "Central de emergência é elogiada: \"atendimento rápido e certeiro\", diz moradora",
+      "Gato resgatado em mangueira vira celebridade no Centro"
+    ]
+  },
+  {
+    "dia": 1,
+    "turno": "noite",
     "manchetes": [
       "Dia tranquilo na cidade: gato resgatado vira celebridade no Centro",
       "Termômetros marcam 34 °C, dois graus acima da média"
@@ -45,6 +63,24 @@
     "manchetes": [
       "Calor recorde lota a central de emergência",
       "Hospitais registram alta nos atendimentos por desidratação"
+    ]
+  },
+  {
+    "dia": 2,
+    "turno": "noite",
+    "condicao": "acerto_baixo",
+    "manchetes": [
+      "Ambulância é mandada para briga enquanto idosa com insolação espera",
+      "Porto Ameno registra o dia mais quente do ano: 40,2 °C"
+    ]
+  },
+  {
+    "dia": 2,
+    "turno": "noite",
+    "condicao": "acerto_alto",
+    "manchetes": [
+      "Com 40 °C, central responde bem: nenhum caso grave fica sem socorro",
+      "Porto Ameno registra o dia mais quente do ano"
     ]
   },
   {
@@ -78,6 +114,24 @@
   {
     "dia": 3,
     "turno": "noite",
+    "condicao": "acerto_baixo",
+    "manchetes": [
+      "Equipes erradas e atrasos marcam o temporal em Porto Ameno",
+      "Chuva de um mês cai em seis horas; Beira-Rio fica debaixo d'água"
+    ]
+  },
+  {
+    "dia": 3,
+    "turno": "noite",
+    "condicao": "acerto_alto",
+    "manchetes": [
+      "Mesmo com chuva recorde, central acerta o socorro e o Morro é evacuado a tempo",
+      "Beira-Rio amanhece com ruas alagadas e carros arrastados"
+    ]
+  },
+  {
+    "dia": 3,
+    "turno": "noite",
     "manchetes": [
       "Chuva de um mês cai em seis horas; Defesa Civil evacua parte do Morro da Vista",
       "Beira-Rio amanhece com ruas alagadas e carros arrastados"
@@ -101,6 +155,24 @@
     "manchetes": [
       "Fumaça, calor e falta d'água: central não dá conta das ligações",
       "Brigadistas pedem reforço para conter o fogo no Parque"
+    ]
+  },
+  {
+    "dia": 4,
+    "turno": "noite",
+    "condicao": "acerto_baixo",
+    "manchetes": [
+      "Confusão na central: bombeiros vão a briga enquanto o fogo espera",
+      "Fogo consome 800 hectares do Parque Estadual"
+    ]
+  },
+  {
+    "dia": 4,
+    "turno": "noite",
+    "condicao": "acerto_alto",
+    "manchetes": [
+      "Central coordena bombeiros e SAMU no dia do fogo no Parque",
+      "Qualidade do ar em Porto Ameno é a pior já registrada"
     ]
   },
   {
@@ -138,6 +210,24 @@
     "condicao": "colapso_alto",
     "manchetes": [
       "Tempestade perfeita: semana termina com a central em colapso",
+      "Porto Ameno decreta situação de emergência"
+    ]
+  },
+  {
+    "dia": 5,
+    "turno": "noite",
+    "condicao": "acerto_baixo",
+    "manchetes": [
+      "Semana termina com socorro desencontrado e moradores ilhados",
+      "Porto Ameno decreta situação de emergência"
+    ]
+  },
+  {
+    "dia": 5,
+    "turno": "noite",
+    "condicao": "acerto_alto",
+    "manchetes": [
+      "Na pior tempestade da história da cidade, a central não perde o rumo",
       "Porto Ameno decreta situação de emergência"
     ]
   },

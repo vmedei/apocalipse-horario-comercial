@@ -313,6 +313,14 @@ export function resumoDoDia(exp) {
   const triagemMedia = atendidas ? Math.round(exp.resolvidas.reduce((s, r) => s + (r.triagem?.total ?? 0), 0) / atendidas) : 0;
   const enderecosConfirmados = exp.resolvidas.filter((r) => !r.chamada.trote && r.triagem?.estadoEndereco === 'confirmado').length;
   const reais = exp.resolvidas.filter((r) => !r.chamada.trote).length;
+  // Tempo de resposta: da chegada na fila até o despacho.
+  const tempoResposta = atendidas ? exp.resolvidas.reduce((s, r) => s + r.esperou + r.emLinha, 0) / atendidas : 0;
+  // O que chegou hoje (atendido ou não): mostra a mudança no tipo de chamada.
+  const chegaram = [...exp.resolvidas.map((r) => r.chamada), ...exp.naoAtendidas.map((i) => i.chamada)];
+  const climaticas = chegaram.filter((c) => c.climatica).length;
+  const contagem = {};
+  for (const c of chegaram) if (c.evento) contagem[c.evento] = (contagem[c.evento] ?? 0) + 1;
+  const eventoPrincipal = Object.entries(contagem).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
   return {
     atendidas,
     acertos,
@@ -323,7 +331,11 @@ export function resumoDoDia(exp) {
     colapsoMax: exp.colapsoMax,
     trotesIdentificados: exp.resolvidas.filter((r) => r.chamada.trote && r.escolha === 'trote').length,
     triagemMedia,
-    enderecoPct: reais ? Math.round((enderecosConfirmados / reais) * 100) : 0
+    enderecoPct: reais ? Math.round((enderecosConfirmados / reais) * 100) : 0,
+    tempoResposta,
+    chegaram: chegaram.length,
+    climaticasPct: chegaram.length ? Math.round((climaticas / chegaram.length) * 100) : 0,
+    eventoPrincipal
   };
 }
 

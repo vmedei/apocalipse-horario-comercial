@@ -1,0 +1,27 @@
+[
+  {
+    "dia": 1,
+    "selo": "AO VIVO",
+    "cobertura": ""
+  },
+  {
+    "dia": 2,
+    "selo": "AO VIVO",
+    "cobertura": "Onda de calor"
+  },
+  {
+    "dia": 3,
+    "selo": "URGENTE",
+    "cobertura": "Cobertura do temporal"
+  },
+  {
+    "dia": 4,
+    "selo": "PLANTÃO",
+    "cobertura": "Edição extraordinária"
+  },
+  {
+    "dia": 5,
+    "selo": "PLANTÃO",
+    "cobertura": "Cobertura especial"
+  }
+]

@@ -350,7 +350,7 @@ Lista completa a criar, por dia de liberação:
 ]
 ```
 
-Condições possíveis: `padrao`, `colapso_alto`, `investiu_adaptacao` e `nao_investiu`. O jornal usa a primeira condição verdadeira e, se nenhuma for, a `padrao`.
+Condições possíveis, em ordem de prioridade: `juninho_ignorado` (dia 5), `colapso_alto` (Colapso máximo ≥ 70), `acerto_baixo` (acerto < 60%), `acerto_alto` (acerto ≥ 85% com Colapso máximo < 40), e no Marco 5 `investiu_adaptacao` e `nao_investiu`. O jornal usa a primeira condição que tenha edição própria e, se nenhuma tiver, a padrão (sem `condicao`). Os limites ficam em `BALANCO.relatorio`.
 
 ### 6.6 `dicas_socorro.json`
 ```json
@@ -414,6 +414,8 @@ Em trotes, a parte do endereço vale para quem fez ao menos uma pergunta essenci
 - ★: completou os 5 dias.
 - ★★: acerto médio ≥ 70%.
 - ★★★: acerto ≥ 80% **e** ≥ 30% do orçamento total em adaptação. Concede o título de "Funcionário do Mês".
+
+As mesmas regras valem para as **estrelas do dia** no relatório: ★ por sobreviver ao dia, ★★ com acerto ≥ 70%, ★★★ com acerto ≥ 80% e (a partir do Marco 5) ≥ 30% do orçamento do dia em adaptação.
 
 **Dificuldade adaptativa:** a média móvel considera as últimas 6 chamadas.
 - Acerto > 85%: o intervalo entre chamadas cai 15%.
@@ -598,10 +600,12 @@ O jogador precisa **investigar** antes de despachar: as falas iniciais ficam men
 **Pronto quando:** dá para errar o órgão de uma chamada do dia 4 por não ter perguntado, e o feedback explica qual pergunta teria revelado a resposta.
 
 ### Marco 4 · Relatório do dia e jornal
-- [ ] `relatorio.js`: os indicadores (acerto, nota média da triagem, tempo médio, atendidas, % do orçamento em adaptação), sempre comparados ao dia anterior.
-- [ ] `grafico.js`: gráfico de linha em SVG com o acerto por dia.
-- [ ] Comentário da Dona Socorro escolhido pelo pior indicador do dia.
-- [ ] `jornal.js`: manchetes da manhã e da noite escolhidas pela condição (seção 6.5). A vinheta fica mais séria a cada dia (mudança de cor e de texto).
+- [x] `relatorio.js`: os indicadores (acerto, nota média da triagem, tempo médio de resposta, atendidas, % do orçamento em adaptação), sempre comparados ao dia anterior com seta e texto ("▲ +14 pontos · melhor que no dia 2"). As metas de cada um ficam em `BALANCO.relatorio`; a adaptação só é avaliada quando os investimentos existirem (Marco 5).
+- [x] `grafico.js`: gráfico de linha em SVG com o acerto por dia e a fatia de chamadas climáticas (linha cheia × tracejada, legenda, rótulo direto, dica ao passar o mouse e tabela "Ver os números").
+- [x] Comentário da Dona Socorro escolhido pelo pior indicador do dia (o mais longe da meta), com falas em `relatorio.json`; quem bate todas as metas recebe elogio.
+- [x] Estrelas do dia no topo do relatório (regras da seção 7.1).
+- [x] `jornal.js`: manchetes da manhã e da noite escolhidas pela condição (seção 6.5), agora também pelo desempenho (`acerto_alto`, `acerto_baixo`). A edição da noite fica dentro do relatório, como no wireframe. A vinheta fica mais séria a cada dia (`vinhetas.json`: AO VIVO → URGENTE → PLANTÃO piscando, com o nome da cobertura).
+- [x] A tela provisória de fim do dia saiu: o fluxo agora é jornal da manhã → expediente → relatório (com o jornal da noite) → investimentos.
 
 **Como testar:** jogue um dia acertando tudo (use o gabarito) e outro errando de propósito. Confira se os números, o gráfico, o comentário e a manchete mudam de acordo.
 
@@ -813,7 +817,7 @@ Os wireframes ficam em `referencias/`. Vale citá-los ao pedir cada tela ao Clau
 ## Apêndice C · Checklist antes de apresentar
 
 - [ ] Os 4 objetivos de aprendizagem têm uma mecânica que os exercita (identificar, relacionar, comparar, aplicar).
-- [ ] Os 4 indicadores de avaliação aparecem no relatório do dia.
+- [x] Os 4 indicadores de avaliação aparecem no relatório do dia.
 - [ ] A telemetria registra cada chamada, cada investimento e o resumo de cada dia, e o CSV abre numa planilha.
 - [ ] O Modo Hora Extra sempre termina em colapso.
 - [ ] O arco do Juninho e as ligações recorrentes (Arlindo, Kelly, Seu Zé) existem do dia 1 ao 5.

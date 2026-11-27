@@ -285,18 +285,21 @@
 /* ---------- Jornal Ameno ---------- */
 
 .tela-jornal {
+  display: grid;
+  gap: 1rem;
   max-width: 40rem;
   margin: 1.5rem auto 0;
-  padding: 0 0 1.25rem;
+}
+
+.jornal {
   border: 3px solid var(--cor-borda);
   border-radius: 14px;
   background: var(--cor-superficie);
   overflow: hidden;
 }
 
-.tela-jornal > :not(.vinheta) {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+.jornal-corpo {
+  padding: 0 1.5rem 1.25rem;
 }
 
 .vinheta {
@@ -334,23 +337,65 @@
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
-.tela-jornal.tom-4 .ao-vivo,
-.tela-jornal.tom-5 .ao-vivo {
+/* A vinheta fica mais séria a cada dia: selo mais forte e, nos dias 4 e 5, piscando. */
+.jornal.tom-3 .ao-vivo,
+.jornal.tom-4 .ao-vivo,
+.jornal.tom-5 .ao-vivo {
+  background: #fff;
+  color: var(--cor-dia);
+}
+
+.jornal.tom-4 .ao-vivo,
+.jornal.tom-5 .ao-vivo {
   animation: plantao 1.2s steps(2, start) infinite;
 }
 
+.jornal.tom-5 .vinheta {
+  border-bottom: 6px solid var(--cor-borda);
+}
+
+body.sem-piscar .ao-vivo {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ao-vivo {
+    animation: none !important;
+  }
+}
+
 @keyframes plantao {
-  50% { background: #fff; color: var(--cor-dia); }
+  50% { background: transparent; color: #fff; }
 }
 
 .manchete {
-  margin-top: 1.25rem;
+  margin: 1.25rem 0 0.75rem;
   font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
+.jornal.tom-4 .manchete,
+.jornal.tom-5 .manchete {
+  font-weight: 900;
+}
+
+.jornal.compacto .jornal-corpo {
+  padding: 0 1rem 1rem;
+}
+
+.jornal.compacto .manchete {
+  margin-top: 0.9rem;
+  font-size: 1.25rem;
+}
+
+.jornal.compacto .vinheta {
+  padding: 0.6rem 1rem;
+}
+
 .outras-manchetes {
+  margin: 0;
   padding-left: 1.2rem;
   color: var(--cor-texto-suave);
 }
@@ -367,7 +412,286 @@
 }
 
 .tela-jornal .fala-socorro {
+  background: var(--cor-superficie);
+}
+
+/* ---------- Relatório do dia ---------- */
+
+.tela-relatorio {
+  max-width: var(--largura-maxima);
+  margin: 1rem auto 0;
+}
+
+.relatorio-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.9rem 1.25rem;
+  border: 3px solid var(--cor-borda);
+  border-top: 6px solid var(--cor-dia, var(--cor-borda));
+  border-radius: 14px;
+  background: var(--cor-superficie);
+}
+
+.relatorio-topo h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+}
+
+.relatorio-topo .sobretitulo {
+  margin: 0.15rem 0 0;
+  color: var(--cor-texto-suave);
+}
+
+.estrelas {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.relatorio-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1rem;
   margin-top: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 56rem) {
+  .relatorio-grade {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.relatorio-numeros,
+.relatorio-lado {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+}
+
+/* Acerto e triagem em destaque na primeira linha; os outros três embaixo. */
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.indicador {
+  grid-column: span 2;
+}
+
+.indicador-acerto,
+.indicador-triagem {
+  grid-column: span 3;
+}
+
+@media (max-width: 40rem) {
+  .indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .indicador,
+  .indicador-acerto,
+  .indicador-triagem {
+    grid-column: span 1;
+  }
+
+  .indicador-adaptacao {
+    grid-column: span 2;
+  }
+
+}
+
+.indicador,
+.cartao-grafico {
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--cor-borda-suave);
+  border-radius: var(--raio);
+  background: var(--cor-superficie);
+}
+
+.rotulo-indicador {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.valor-indicador {
+  margin: 0.15rem 0 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.detalhe-indicador {
+  margin: 0.1rem 0 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+.comparacao {
+  margin: 0.4rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.comparacao:empty {
+  display: none;
+}
+
+.tendencia-melhor {
+  color: var(--cor-sucesso);
+}
+
+.tendencia-pior {
+  color: var(--cor-perigo);
+}
+
+.mais-numeros summary,
+.grafico-tabela summary {
+  cursor: pointer;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+.mais-numeros .resumo-dia {
+  background: var(--cor-superficie);
+}
+
+.relatorio-lado .fala-socorro {
+  background: var(--cor-superficie);
+}
+
+.botao-largo {
+  flex: 1 1 100%;
+  padding-block: 0.9rem;
+  font-size: 1.15rem;
+}
+
+/* Gráfico de evolução */
+
+.grafico {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 0.25rem;
+}
+
+.grafico-grade line {
+  stroke: var(--cor-borda-suave);
+  stroke-width: 1;
+  opacity: 0.5;
+}
+
+.grafico-grade text,
+.grafico-dia {
+  fill: var(--cor-texto-suave);
+  font-size: 12px;
+}
+
+.grafico-dia.atual {
+  fill: var(--cor-texto);
+  font-weight: 700;
+}
+
+.grafico-dia.futuro {
+  opacity: 0.55;
+}
+
+.grafico-eixo {
+  stroke: var(--cor-borda-suave);
+  stroke-width: 1.5;
+}
+
+.grafico .linha {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.serie-acerto .linha {
+  stroke: var(--cor-texto);
+}
+
+.serie-acerto .marca {
+  fill: var(--cor-texto);
+  stroke: var(--cor-superficie);
+  stroke-width: 2;
+}
+
+.serie-climaticas .linha {
+  stroke: var(--cor-texto-suave);
+  stroke-dasharray: 6 5;
+}
+
+.serie-climaticas .marca {
+  fill: var(--cor-superficie);
+  stroke: var(--cor-texto-suave);
+  stroke-width: 2;
+}
+
+.ponto .alvo {
+  fill: transparent;
+}
+
+.ponto:hover .marca {
+  stroke-width: 3;
+}
+
+.rotulo-direto {
+  fill: var(--cor-texto);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.grafico-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  margin: 0.45rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.amostra {
+  display: inline-block;
+  width: 24px;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+  border-top: 2px solid var(--cor-texto);
+}
+
+.amostra.serie-climaticas {
+  border-top: 2px dashed var(--cor-texto-suave);
+}
+
+.grafico-tabela table {
+  width: 100%;
+  margin-top: 0.4rem;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.grafico-tabela th,
+.grafico-tabela td {
+  padding: 0.25rem 0.4rem;
+  border-bottom: 1px solid var(--cor-borda-suave);
+  text-align: right;
+}
+
+.grafico-tabela th:first-child {
+  text-align: left;
 }
 
 /* ---------- Fim da semana ---------- */
@@ -388,4 +712,21 @@
 
 .tabela-semana th:first-child {
   text-align: left;
+}
+
+/* No celular o gráfico encolhe: textos maiores em unidades do desenho para continuarem legíveis. */
+@media (max-width: 40rem) {
+  .grafico-grade text,
+  .grafico-dia,
+  .rotulo-direto {
+    font-size: 19px;
+  }
+
+  .grafico .marca {
+    stroke-width: 3;
+  }
+
+  .valor-indicador {
+    font-size: 1.5rem;
+  }
 }

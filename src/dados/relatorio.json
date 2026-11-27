@@ -1,0 +1,54 @@
+{
+  "indicadores": {
+    "acerto": {
+      "rotulo": "Acerto no encaminhamento"
+    },
+    "triagem": {
+      "rotulo": "Nota da triagem"
+    },
+    "tempo": {
+      "rotulo": "Tempo médio de resposta"
+    },
+    "atendidas": {
+      "rotulo": "Chamadas atendidas"
+    },
+    "adaptacao": {
+      "rotulo": "Orçamento em adaptação"
+    }
+  },
+  "sem_evento": "Dia comum",
+  "comentarios": {
+    "acerto": [
+      "Você mandou gente para o lugar errado vezes demais hoje, meu filho. Antes de despachar, pergunta o que está acontecendo.",
+      "Encaminhamento é tudo: fogo e gente presa é 193, saúde é 192, briga e roubo é 190, risco de desabar é 199.",
+      "Hoje o pessoal saiu para o lugar errado mais de uma vez. Lá fora, isso custa caro."
+    ],
+    "triagem": [
+      "Faltou perguntar, meu filho. Endereço primeiro, depois o que decide quem mandar.",
+      "Quem está em perigo? Tem fogo? Tem água subindo? É isso que decide o socorro. Pergunta antes de despachar.",
+      "Endereço sem confirmar faz a viatura rodar em círculo. Pede uma referência!"
+    ],
+    "tempo": [
+      "A fila andou devagar hoje. Não precisa perguntar tudo: o essencial basta.",
+      "Quem liga para cá não pode esperar. Atende a mais antiga e decide mais rápido.",
+      "Tempo é vida, meu filho. Cada minuto na fila é alguém esperando."
+    ],
+    "atendidas": [
+      "Teve ligação que ninguém atendeu. São essas que mais me tiram o sono.",
+      "Quando a fila estoura, a gente perde gente. Não deixa ninguém esperando até o fim do dia.",
+      "Muita gente ficou sem resposta hoje. Talvez seja hora de pensar em prevenção, para chegar menos ligação."
+    ],
+    "adaptacao": [
+      "A gente só apaga incêndio, né? Já pensou em gastar um pouco com prevenção?",
+      "Mais viatura ajuda hoje. Obra de adaptação ajuda amanhã.",
+      "Se a cidade não se adaptar, essa fila só vai crescer."
+    ],
+    "tudo_bem": [
+      "Hoje você segurou bem a central. Trinta anos aqui e eu ainda me surpreendo.",
+      "Bom trabalho, meu filho. Mas não se acostuma: amanhã promete.",
+      "Assim que se faz. Pena que o tempo lá fora não está colaborando.",
+      "Você está pegando o jeito. Só não sei se a cidade vai aguentar esse ritmo.",
+      "Que semana, meu filho. E você deu conta. Vai descansar."
+    ]
+  }
+}

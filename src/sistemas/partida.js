@@ -3,6 +3,7 @@
 // (resumo, trotes do Juninho, o desfecho da ligação real dele).
 
 import { resumoDoDia } from './expediente.js';
+import { BALANCO } from '../config/balanco.js';
 
 /**
  * @typedef {Object} Partida
@@ -10,6 +11,7 @@ import { resumoDoDia } from './expediente.js';
  * @property {Record<number, ReturnType<typeof resumoDoDia>>} dias
  * @property {number} trotesJuninho
  * @property {null | 'resgatado' | 'ignorado' | 'orgao_errado' | 'nao_atendido'} juninhoReal
+ * @property {Record<number, number>} [adaptacaoPct]  % do orçamento em adaptação por dia (Marco 5)
  */
 
 /** @returns {Partida} */
@@ -55,11 +57,15 @@ export function desfechoJuninho(exp) {
  * @param {number} dia
  */
 export function condicoesDaNoite(partida, dia) {
+  const m = BALANCO.relatorio;
+  const r = partida.dias[dia];
   const condicoes = [];
   if (dia === 5 && (partida.juninhoReal === 'ignorado' || partida.juninhoReal === 'nao_atendido')) {
     condicoes.push('juninho_ignorado');
   }
-  if ((partida.dias[dia]?.colapsoMax ?? 0) >= 70) condicoes.push('colapso_alto');
+  if ((r?.colapsoMax ?? 0) >= m.jornalColapsoAlto) condicoes.push('colapso_alto');
+  if (r && r.atendidas && r.acertoPct < m.jornalAcertoBaixoPct) condicoes.push('acerto_baixo');
+  if (r && r.atendidas && r.acertoPct >= m.jornalAcertoAltoPct && r.colapsoMax < m.jornalColapsoBaixo) condicoes.push('acerto_alto');
   return condicoes;
 }
 
